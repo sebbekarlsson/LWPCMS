@@ -6,6 +6,6 @@ bp = Blueprint(
     template_folder='templates'
 )
 
-@bp.route('/')
+@bp.route('/admin')
 def render():
     return render_template('index.html')
