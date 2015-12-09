@@ -13,6 +13,7 @@
         <table class='lwpcms-table'>
             <tr>
                 <th>Name</th>
+                <th>Description</th>
                 <th>Version</th>
                 <th>Author</th>
                 <th>Activate</th>
@@ -20,6 +21,7 @@
             {% for module in modules %}
                 <tr>
                     <td>{{ module['name'] }}</td>
+                    <td>{{ module['description'] }}</td>
                     <td>{{ module['version'] }}</td>
                     <td>{{ module['author'] }}</td>
                     <td><button class='lwpcms-button'>Activate</button></td>
