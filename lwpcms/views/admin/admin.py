@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, abort
+from flask import Blueprint, render_template, abort, request
 
 import glob
 
@@ -35,7 +35,7 @@ def render_users():
     return render_template('admin_users.html', side_nav_data=side_nav_data)
 
 
-@bp.route('/modules')
+@bp.route('/modules', methods=['POST', 'GET'])
 def render_modules():
     with open('lwpcms/static/shards/admin/side_nav.json') as file:
         side_nav_data = json.loads(file.read())
@@ -45,7 +45,33 @@ def render_modules():
     avail_modules = glob.glob('lwpcms/modules/*_module')
     for avail_module in avail_modules:
         with open('{}/module.json'.format(avail_module)) as file:
-            modules.append(json.loads(file.read())['module'])
+            data = json.loads(file.read())
+            module = data['module']
+            module['path'] = avail_module
+            
+            activated = False
+
+            if 'activated' in module:
+                activated = module['activated']
+
+            module['activated'] = activated
+
+            modules.append(module)
+
+    if request.method == 'POST':
+        if 'module_path' in request.form:
+            module_path = request.form['module_path'] 
+            
+            if activated:
+                activated = False
+            else:
+                activated = True
+
+            module['activated'] = activated
+
+            with open('{}/module.json'.format(module_path), 'w') as jsonFile:
+                jsonFile.write(json.dumps(data))
+
 
     return render_template('admin_modules.html', side_nav_data=side_nav_data, modules=modules)
 

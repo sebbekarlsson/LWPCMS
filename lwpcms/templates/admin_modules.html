@@ -24,7 +24,22 @@
                     <td>{{ module['description'] }}</td>
                     <td>{{ module['version'] }}</td>
                     <td>{{ module['author'] }}</td>
-                    <td><button class='lwpcms-button'>Activate</button></td>
+                    <td>
+                        <form method='POST'>
+                            <input
+                                type='hidden'
+                                name='module_path'
+                                value='{{ module["path"] }}'>
+                            {% if module['activated'] == false %}
+                                <button class='lwpcms-button'>Activate</button>
+                            {% else %}
+                                <input
+                                    type='submit'
+                                    class='lwpcms-button'
+                                    value='Deactivate'>
+                            {% endif %}
+                        </form>
+                    </td>
                 </tr>
             {% endfor %}
         </table>
