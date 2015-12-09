@@ -70,7 +70,13 @@ def render_modules():
             module['activated'] = activated
 
             with open('{}/module.json'.format(module_path), 'w') as jsonFile:
-                jsonFile.write(json.dumps(data))
+                jsonFile.write(
+                        json.dumps(
+                            data,
+                            sort_keys=True,indent=4,
+                            separators=(',', ': ')
+                            )
+                        )
 
     return render_template('admin_modules.html', side_nav_data=side_nav_data, modules=modules)
 

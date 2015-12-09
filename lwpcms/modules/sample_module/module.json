@@ -1,1 +1,11 @@
-{"module": {"path": "lwpcms/modules/sample_module", "version": "1.0", "name": "Sample Module", "author": "lwpcms", "license": "none", "activated": true, "description": "This is just a sample module, nothing fancy."}}
+{
+    "module": {
+        "activated": false,
+        "author": "lwpcms",
+        "description": "This is just a sample module, nothing fancy.",
+        "license": "none",
+        "name": "Sample Module",
+        "path": "lwpcms/modules/sample_module",
+        "version": "1.0"
+    }
+}
