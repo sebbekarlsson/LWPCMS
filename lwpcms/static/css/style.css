@@ -55,4 +55,34 @@ html, body {
 section {
   padding: 8px; }
 
+.lwpcms-table {
+  width: 100%;
+  text-align: left; }
+  .lwpcms-table tr {
+    height: 32px;
+    line-height: 32px;
+    background-color: #F7EDBF; }
+    .lwpcms-table tr td, .lwpcms-table tr th {
+      padding: 8px;
+      outline-color: white;
+      outline-style: solid;
+      outline-width: 1px; }
+
+.lwpcms-button {
+  background-color: #58351A;
+  outline: none;
+  border: none;
+  font-size: 100%;
+  color: #F7EDBF;
+  height: 32px;
+  line-height: 32px;
+  min-width: 92px;
+  padding-left: 4px;
+  padding-right: 4px;
+  transition: .2s; }
+  .lwpcms-button:hover {
+    background-color: #382313;
+    cursor: pointer;
+    transition: .2s; }
+
 /*# sourceMappingURL=style.css.map */

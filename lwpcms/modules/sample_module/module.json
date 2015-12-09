@@ -1,0 +1,9 @@
+{
+    "module": {
+        "name": "Sample Module",
+        "description": "This is just a sample module, nothing fancy.",
+        "author": "lwpcms",
+        "version": "1.0",
+        "license": "none"
+    }
+}

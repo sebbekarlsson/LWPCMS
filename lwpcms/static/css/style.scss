@@ -78,3 +78,42 @@ section {
     padding: 8px;
 }
 
+.lwpcms-table {
+    width: 100%;
+    text-align: left;
+
+    tr {
+        height: 32px;
+        line-height: 32px;
+        background-color: $sec-color-strong;
+
+        td, th {
+            padding: 8px;
+            outline-color: white;
+            outline-style: solid;
+            outline-width: 1px;
+        }
+    }
+}
+
+.lwpcms-button {
+    background-color: $main-color-lighter;
+    outline: none;
+    border: none;
+    font-size: 100%;
+    color: $sec-color-strong;
+    height: 32px;
+    line-height: 32px;
+    min-width: 92px;
+    padding-left: 4px;
+    padding-right: 4px;
+    transition: .2s;
+
+    &:hover {
+        background-color: $main-color-light;
+        cursor: pointer;
+        transition: .2s;
+    }
+
+}
+

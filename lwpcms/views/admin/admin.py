@@ -40,7 +40,14 @@ def render_modules():
     with open('lwpcms/static/shards/admin/side_nav.json') as file:
         side_nav_data = json.loads(file.read())
 
-    return render_template('admin_modules.html', side_nav_data=side_nav_data)
+    modules = []
+
+    avail_modules = glob.glob('lwpcms/modules/*_module')
+    for avail_module in avail_modules:
+        with open('{}/module.json'.format(avail_module)) as file:
+            modules.append(json.loads(file.read())['module'])
+
+    return render_template('admin_modules.html', side_nav_data=side_nav_data, modules=modules)
 
 
 @bp.route('/files')
