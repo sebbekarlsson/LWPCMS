@@ -1,0 +1,30 @@
+{
+    "buttons": [
+        {
+            "label": "Publish",
+            "svg": "books.svg",
+            "href": "/"
+        },
+        {
+            "label": "Users",
+            "svg": "emoticon.svg",
+            "href": "/"
+        },
+        {
+            "label": "Modules",
+            "svg": "plug.svg",
+            "href": "/"
+        },
+        {
+            "label": "Files",
+            "svg": "folder.svg",
+            "href": "/"
+        },
+        {
+            "label": "Settings",
+            "svg": "settings.svg",
+            "href": "/"
+        }
+
+    ]
+}

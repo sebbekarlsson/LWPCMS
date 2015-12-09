@@ -5,38 +5,22 @@
 {% block lwpcms_content %}
     <nav class='lwpcms-side-nav'>
         <ul class='lwpcms-side-nav-side'>
-            <li>
-                <a class='lwpcms-side-nav-point'>
-                    <span>{{ render_svg('books.svg', 'white') }}</span>
-                </a>
-            </li>
-            <li>
-                <a class='lwpcms-side-nav-point'>
-                    <span>{{ render_svg('emoticon.svg', 'white') }}</span>
-                </a>
-            </li>
-            <li>
-                <a class='lwpcms-side-nav-point'>
-                    <span>{{ render_svg('plug.svg', 'white') }}</span>
-                </a>
-            </li>
-            <li>
-                <a class='lwpcms-side-nav-point'>
-                    <span>{{ render_svg('folder.svg', 'white') }}</span>
-                </a>
-            </li>
-            <li>
-                <a class='lwpcms-side-nav-point'>
-                    <span>{{ render_svg('settings.svg', 'white') }}</span>
-                </a>
-            </li>
-        </ul>
+            {% for button in side_nav_buttons['buttons'] %}
+                <li>
+                    <a class='lwpcms-side-nav-point'>
+                        <span>{{ render_svg(button['svg'], 'white') }}</span>
+                    </a>
+                </li>
+            {% endfor %}
+        </ul> 
         <ul>
-            <li><a class='lwpcms-side-nav-btn'><span>Publish</span></a></li>
-            <li><a class='lwpcms-side-nav-btn'><span>Users</span></a></li>
-            <li><a class='lwpcms-side-nav-btn'><span>Modules</span></a></li>
-            <li><a class='lwpcms-side-nav-btn'><span>Files</span></a></li>
-            <li><a class='lwpcms-side-nav-btn'><span>Settings</span></a></li>
+            {% for button in side_nav_buttons['buttons'] %}
+                <li>
+                    <a class='lwpcms-side-nav-btn' href='{{ button["href"] }}'>
+                        <span>{{ button["label"] }}</span>
+                    </a>
+                </li>
+            {% endfor %}
         </ul>
     </nav>
 {% endblock %}
