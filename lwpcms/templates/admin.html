@@ -1,0 +1,36 @@
+{% extends 'layout.html' %}
+{% from '_svg.html' import render_svg %}
+
+
+{% block lwpcms_content %}
+    <nav class='lwpcms-side-nav'>
+        <ul class='lwpcms-side-nav-side'>
+            <li>
+                <a class='lwpcms-side-nav-point'>
+                    <span>{{ render_svg('books.svg', 'white') }}</span>
+                </a>
+            </li>
+            <li>
+                <a class='lwpcms-side-nav-point'>
+                    <span>{{ render_svg('emoticon.svg', 'white') }}</span>
+                </a>
+            </li>
+            <li>
+                <a class='lwpcms-side-nav-point'>
+                    <span>{{ render_svg('plug.svg', 'white') }}</span>
+                </a>
+            </li>
+            <li>
+                <a class='lwpcms-side-nav-point'>
+                    <span>{{ render_svg('settings.svg', 'white') }}</span>
+                </a>
+            </li>
+        </ul>
+        <ul>
+            <li><a class='lwpcms-side-nav-btn'><span>Publish</span></a></li>
+            <li><a class='lwpcms-side-nav-btn'><span>Users</span></a></li>
+            <li><a class='lwpcms-side-nav-btn'><span>Modules</span></a></li>
+            <li><a class='lwpcms-side-nav-btn'><span>Settings</span></a></li>
+        </ul>
+    </nav>
+{% endblock %}

@@ -8,4 +8,4 @@ bp = Blueprint(
 
 @bp.route('/admin')
 def render():
-    return render_template('index.html')
+    return render_template('admin.html')

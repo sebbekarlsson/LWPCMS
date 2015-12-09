@@ -1,0 +1,3 @@
+{% macro render_svg(src, color) %}
+  <object fill='{{ color }}' data="{{url_for('static', filename='image/' + src)}}" onerror="this.onerror=null;"></object>
+{% endmacro %}

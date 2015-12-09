@@ -1,4 +1,69 @@
+$main-color: #2E221F;
+$main-color-light: #382313;
+$main-color-lighter: #58351A;
+$sec-color-strong: #F7EDBF;
+$sec-color-dim: #F1EED9;
+
+
 * {
     margin: 0px;
     padding: 0px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+html, body {
+    height: 100%;
+}
+
+.lwpcms-side-nav {
+    background-color: $main-color-light;
+    color: $sec-color-strong;
+    width: 25%;
+    height: 100vh;
+    
+    ul, li {
+        list-style: none;
+        width: 100%;
+        .lwpcms-side-nav-btn {
+             width: 100%;
+             height: 48px;
+             line-height: 48px;
+             text-decoration: none;
+             color: $sec-color-strong;
+             display: block;
+             transition: .2s;
+             font-size: 1rem;
+
+             span {
+                 padding-left: 8px;
+             }
+
+             &:hover {
+                 background-color: $main-color-lighter;
+                 color: $sec-color-dim;
+                 cursor: pointer;
+                 transition: .2s;
+             }
+        }
+    }
+
+    .lwpcms-side-nav-side {
+        height: 100vh;
+        width: 10%;
+        background-color: $main-color;
+        float: left;
+
+        .lwpcms-side-nav-point {
+            width: 100%;
+            height: 48px;
+            line-height: 48px;
+            text-decoration: none;
+            color: $sec-color-dim;
+            display: block;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
 }
