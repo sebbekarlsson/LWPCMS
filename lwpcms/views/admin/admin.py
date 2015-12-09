@@ -72,7 +72,6 @@ def render_modules():
             with open('{}/module.json'.format(module_path), 'w') as jsonFile:
                 jsonFile.write(json.dumps(data))
 
-
     return render_template('admin_modules.html', side_nav_data=side_nav_data, modules=modules)
 
 
