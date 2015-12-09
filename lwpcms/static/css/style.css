@@ -10,6 +10,7 @@ html, body {
   background-color: #382313;
   color: #F7EDBF;
   width: 25%;
+  min-width: 360px;
   height: 100vh; }
   .lwpcms-side-nav ul, .lwpcms-side-nav li {
     list-style: none;
@@ -32,7 +33,7 @@ html, body {
         transition: .2s; }
   .lwpcms-side-nav .lwpcms-side-nav-side {
     height: 100vh;
-    width: 10%;
+    width: 15%;
     background-color: #2E221F;
     float: left; }
     .lwpcms-side-nav .lwpcms-side-nav-side .lwpcms-side-nav-point {

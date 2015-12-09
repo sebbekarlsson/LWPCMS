@@ -19,6 +19,7 @@ html, body {
     background-color: $main-color-light;
     color: $sec-color-strong;
     width: 25%;
+    min-width: 360px;
     height: 100vh;
     
     ul, li {
@@ -49,7 +50,7 @@ html, body {
 
     .lwpcms-side-nav-side {
         height: 100vh;
-        width: 10%;
+        width: 15%;
         background-color: $main-color;
         float: left;
 
