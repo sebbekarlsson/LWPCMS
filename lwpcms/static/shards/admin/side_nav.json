@@ -1,29 +1,34 @@
 {
     "buttons": [
         {
+            "label": "Website",
+            "svg": "aspect.svg",
+            "href": "/"
+        },
+        {
             "label": "Publish",
             "svg": "books.svg",
-            "href": "/"
+            "href": "/admin/publish"
         },
         {
             "label": "Users",
             "svg": "emoticon.svg",
-            "href": "/"
+            "href": "/admin/users"
         },
         {
             "label": "Modules",
             "svg": "plug.svg",
-            "href": "/"
+            "href": "/admin/modules"
         },
         {
             "label": "Files",
             "svg": "folder.svg",
-            "href": "/"
+            "href": "/admin/files"
         },
         {
             "label": "Settings",
             "svg": "settings.svg",
-            "href": "/"
+            "href": "/admin/settings"
         }
 
     ]

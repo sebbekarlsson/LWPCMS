@@ -9,9 +9,10 @@ html, body {
 .lwpcms-side-nav {
   background-color: #382313;
   color: #F7EDBF;
-  width: 25%;
-  min-width: 360px;
-  height: 100vh; }
+  width: 16%;
+  min-width: 286px;
+  height: 100vh;
+  float: left; }
   .lwpcms-side-nav ul, .lwpcms-side-nav li {
     list-style: none;
     width: 100%; }
@@ -47,5 +48,11 @@ html, body {
       display: flex;
       align-items: center;
       justify-content: center; }
+
+#lwpcms-admin-content {
+  float: left; }
+
+section {
+  padding: 8px; }
 
 /*# sourceMappingURL=style.css.map */
