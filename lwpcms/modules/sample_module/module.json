@@ -1,6 +1,6 @@
 {
     "module": {
-        "activated": false,
+        "activated": true,
         "author": "lwpcms",
         "description": "This is just a sample module, nothing fancy.",
         "license": "none",

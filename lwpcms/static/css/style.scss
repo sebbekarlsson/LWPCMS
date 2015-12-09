@@ -74,6 +74,13 @@ html, body {
     float: left;
 }
 
+.lwpcms-content-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
 section {
     padding: 8px;
 }
@@ -115,5 +122,14 @@ section {
         transition: .2s;
     }
 
+}
+
+.lwpcms-focused-card {
+    width: 360px;
+    min-height: 256px;
+    border-style: solid;
+    border-radius: 8px;
+    border-width: 2px;
+    border-color: lightgray;
 }
 
