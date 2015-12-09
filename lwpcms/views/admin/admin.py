@@ -12,10 +12,7 @@ bp = Blueprint(
 
 @bp.route('/admin')
 def render():
-    side_nav_buttons = []
+    with open('lwpcms/static/shards/admin/side_nav.json') as file:
+        side_nav_data = json.loads(file.read())
 
-    for json_file in glob.glob('lwpcms/static/shards/admin/side_nav/*.json'):
-        with open(json_file) as file:
-            side_nav_buttons += json.loads(file.read())['buttons']
-
-    return render_template('admin.html', side_nav_buttons=side_nav_buttons)
+    return render_template('admin.html', side_nav_data=side_nav_data)
