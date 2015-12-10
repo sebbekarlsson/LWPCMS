@@ -17,8 +17,13 @@
         },
         {
             "label": "Modules",
-            "svg": "plug.svg",
+            "svg": "extension.svg",
             "href": "/admin/modules"
+        },
+        {
+            "label": "Themes",
+            "svg": "colors.svg",
+            "href": "/admin/themes"
         },
         {
             "label": "Files",
