@@ -74,7 +74,7 @@ section {
       outline-style: solid;
       outline-width: 1px; }
 
-.lwpcms-button {
+.lwpcms-button, .lwpcms-focused-card input[type='submit'] {
   background-color: #58351A;
   outline: none;
   border: none;
@@ -86,7 +86,7 @@ section {
   padding-left: 4px;
   padding-right: 4px;
   transition: .2s; }
-  .lwpcms-button:hover {
+  .lwpcms-button:hover, .lwpcms-focused-card input[type='submit']:hover {
     background-color: #382313;
     cursor: pointer;
     transition: .2s; }
@@ -98,5 +98,16 @@ section {
   border-radius: 8px;
   border-width: 2px;
   border-color: lightgray; }
+  .lwpcms-focused-card input[type='text'], .lwpcms-focused-card input[type='password'], .lwpcms-focused-card input[type='email'] {
+    display: block;
+    height: 32px;
+    line-height: 32px;
+    outline: none;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: lightgray; }
 
 /*# sourceMappingURL=style.css.map */
