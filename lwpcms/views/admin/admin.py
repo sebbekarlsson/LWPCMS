@@ -81,6 +81,14 @@ def render_modules():
     return render_template('admin_modules.html', side_nav_data=side_nav_data, modules=modules)
 
 
+@bp.route('/themes')
+def render_themes():
+    with open('lwpcms/static/shards/admin/side_nav.json') as file:
+        side_nav_data = json.loads(file.read())
+
+    return render_template('admin_themes.html', side_nav_data=side_nav_data)
+
+
 @bp.route('/files')
 def render_files():
     with open('lwpcms/static/shards/admin/side_nav.json') as file:
