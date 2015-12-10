@@ -8,8 +8,8 @@ bp = Blueprint(
     template_folder='templates'
 )
 
-@bp.route('/create', methods=['POST', 'GET'])
+@bp.route('/setup', methods=['POST', 'GET'])
 def render():
     form = SetupForm(csrf_enabled=False)
 
-    return render_template('create.html', form=form)
+    return render_template('setup.html', form=form)

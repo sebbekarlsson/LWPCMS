@@ -97,7 +97,8 @@ section {
   border-style: solid;
   border-radius: 8px;
   border-width: 2px;
-  border-color: lightgray; }
+  border-color: lightgray;
+  background-color: #F1EED9; }
   .lwpcms-focused-card input[type='text'], .lwpcms-focused-card input[type='password'], .lwpcms-focused-card input[type='email'] {
     display: block;
     height: 32px;

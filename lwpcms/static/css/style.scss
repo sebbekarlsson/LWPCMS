@@ -131,6 +131,7 @@ section {
     border-radius: 8px;
     border-width: 2px;
     border-color: lightgray;
+    background-color: $sec-color-dim;
 
     input[type='text'], input[type='password'], input[type='email'] {
         display: block;
