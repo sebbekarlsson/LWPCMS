@@ -4,6 +4,8 @@ import glob
 
 import json
 
+from lwpcms.forms import UploadFileForm
+
 
 bp = Blueprint(
     __name__, __name__,
@@ -89,12 +91,18 @@ def render_themes():
     return render_template('admin_themes.html', side_nav_data=side_nav_data)
 
 
-@bp.route('/files')
+@bp.route('/files', methods=['POST', 'GET'])
 def render_files():
     with open('lwpcms/static/shards/admin/side_nav.json') as file:
         side_nav_data = json.loads(file.read())
 
-    return render_template('admin_files.html', side_nav_data=side_nav_data)
+
+    form = UploadFileForm(csrf_enabled=False)
+
+    return render_template('admin_files.html',
+        side_nav_data=side_nav_data,
+        form=form
+    )
 
 
 @bp.route('/settings')

@@ -4,7 +4,7 @@ from sqlalchemy.orm import relationship, sessionmaker
 
 
 Base = declarative_base()
-engine = sa.create_engine('sqlite:///{}.sqlite'.format(db_name),
+engine = sa.create_engine('sqlite:///{}.sqlite'.format('lwpcms'),
         connect_args={'check_same_thread': False})
 
 

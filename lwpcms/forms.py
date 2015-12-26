@@ -1,4 +1,11 @@
-from wtforms import Form, BooleanField, TextField, PasswordField, validators, SubmitField
+from wtforms import (Form,
+    BooleanField,
+    TextField,
+    PasswordField,
+    validators,
+    SubmitField,
+    FileField
+)
 
 
 class SetupForm(Form):
@@ -10,3 +17,11 @@ class SetupForm(Form):
     ])
     password_confirm = PasswordField('Repeat Password')
     submit = SubmitField('Create')
+
+
+class UploadFileForm(Form):
+    file = FileField('File')
+    title = TextField('Title', [validators.Length(min=4, max=256)])
+    description = TextField('Description',
+            [validators.Length(min=4, max=1024)])
+    submit = SubmitField('Upload')

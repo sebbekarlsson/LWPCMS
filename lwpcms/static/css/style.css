@@ -81,7 +81,7 @@ section {
   background-color: white;
   outline: none;
   border: none;
-  font-size: 100%;
+  font-size: 1rem;
   color: black;
   height: 32px;
   line-height: 32px;
@@ -99,15 +99,15 @@ section {
   outline-width: 1px;
   outline-style: solid; }
 
-.lwpcms-focused-card {
+.lwpcms-focused-card, .lwpcms-form {
   width: 360px;
   min-height: 256px;
   border-style: solid;
-  border-radius: 8px;
   border-width: 2px;
   border-color: lightgray;
-  background-color: #F1EED9; }
-  .lwpcms-focused-card input[type='text'], .lwpcms-focused-card input[type='password'], .lwpcms-focused-card input[type='email'] {
+  background-color: #bdc3c7;
+  color: white; }
+  .lwpcms-focused-card input[type='text'], .lwpcms-focused-card input[type='password'], .lwpcms-focused-card input[type='email'], .lwpcms-form input[type='text'], .lwpcms-form input[type='password'], .lwpcms-form input[type='email'] {
     display: block;
     height: 32px;
     line-height: 32px;

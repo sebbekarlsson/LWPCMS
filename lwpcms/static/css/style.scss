@@ -110,7 +110,7 @@ section {
     background-color: $main-color-light;
     outline: none;
     border: none;
-    font-size: 100%;
+    font-size: 1rem;
     color: $sec-color-strong;
     height: 32px;
     line-height: 32px;
@@ -133,14 +133,14 @@ section {
     outline-style: solid;
 }
 
-.lwpcms-focused-card {
+.lwpcms-focused-card, .lwpcms-form {
     width: 360px;
     min-height: 256px;
     border-style: solid;
-    border-radius: 8px;
     border-width: 2px;
     border-color: lightgray;
-    background-color: $sec-color-dim;
+    background-color: $main-color;
+    color: $main-color-light;
 
     input[type='text'], input[type='password'], input[type='email'] {
         display: block;
