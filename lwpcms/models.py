@@ -38,6 +38,7 @@ class Post(Base, Data):
     id = sa.Column(sa.Integer, primary_key=True)
     title = sa.Column(sa.String(256))
     content = sa.Column(sa.String(1024))
+    type = sa.Column(sa.String(256))
     author = relationship("User", uselist=False, backref="posts")
 
 
