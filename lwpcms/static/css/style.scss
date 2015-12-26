@@ -1,7 +1,7 @@
-$main-color: #2E221F;
-$main-color-light: #382313;
+$main-color: #bdc3c7;
+$main-color-light: white;
 $main-color-lighter: #58351A;
-$sec-color-strong: #F7EDBF;
+$sec-color-strong: black;
 $sec-color-dim: #F1EED9;
 
 
@@ -17,6 +17,9 @@ html, body {
 
 .lwpcms-side-nav {
     background-color: $main-color-light;
+    border-right-color: $main-color;
+    border-right-width: 1px;
+    border-right-style: solid;
     color: $sec-color-strong;
     width: 16%;
     min-width: 286px;
@@ -41,7 +44,7 @@ html, body {
              }
 
              &:hover {
-                 background-color: $main-color-lighter;
+                 background-color: $main-color;
                  color: $sec-color-dim;
                  cursor: pointer;
                  transition: .2s;
@@ -92,7 +95,7 @@ section {
     tr {
         height: 32px;
         line-height: 32px;
-        background-color: $sec-color-strong;
+        background-color: $main-color;
 
         td, th {
             padding: 8px;
@@ -104,7 +107,7 @@ section {
 }
 
 .lwpcms-button, .lwpcms-focused-card input[type='submit'] {
-    background-color: $main-color-lighter;
+    background-color: $main-color-light;
     outline: none;
     border: none;
     font-size: 100%;
@@ -122,6 +125,12 @@ section {
         transition: .2s;
     }
 
+}
+
+.lwpcms-outlined {
+    outline-color: $main-color;
+    outline-width: 1px;
+    outline-style: solid;
 }
 
 .lwpcms-focused-card {

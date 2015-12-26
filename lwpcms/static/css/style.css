@@ -7,8 +7,11 @@ html, body {
   height: 100%; }
 
 .lwpcms-side-nav {
-  background-color: #382313;
-  color: #F7EDBF;
+  background-color: white;
+  border-right-color: #bdc3c7;
+  border-right-width: 1px;
+  border-right-style: solid;
+  color: black;
   width: 16%;
   min-width: 286px;
   height: 100vh;
@@ -21,21 +24,21 @@ html, body {
       height: 48px;
       line-height: 48px;
       text-decoration: none;
-      color: #F7EDBF;
+      color: black;
       display: block;
       transition: .2s;
       font-size: 1rem; }
       .lwpcms-side-nav ul .lwpcms-side-nav-btn span, .lwpcms-side-nav li .lwpcms-side-nav-btn span {
         padding-left: 8px; }
       .lwpcms-side-nav ul .lwpcms-side-nav-btn:hover, .lwpcms-side-nav li .lwpcms-side-nav-btn:hover {
-        background-color: #58351A;
+        background-color: #bdc3c7;
         color: #F1EED9;
         cursor: pointer;
         transition: .2s; }
   .lwpcms-side-nav .lwpcms-side-nav-side {
     height: 100vh;
     width: 15%;
-    background-color: #2E221F;
+    background-color: #bdc3c7;
     float: left; }
     .lwpcms-side-nav .lwpcms-side-nav-side .lwpcms-side-nav-point {
       width: 100%;
@@ -67,7 +70,7 @@ section {
   .lwpcms-table tr {
     height: 32px;
     line-height: 32px;
-    background-color: #F7EDBF; }
+    background-color: #bdc3c7; }
     .lwpcms-table tr td, .lwpcms-table tr th {
       padding: 8px;
       outline-color: white;
@@ -75,11 +78,11 @@ section {
       outline-width: 1px; }
 
 .lwpcms-button, .lwpcms-focused-card input[type='submit'] {
-  background-color: #58351A;
+  background-color: white;
   outline: none;
   border: none;
   font-size: 100%;
-  color: #F7EDBF;
+  color: black;
   height: 32px;
   line-height: 32px;
   min-width: 92px;
@@ -87,9 +90,14 @@ section {
   padding-right: 4px;
   transition: .2s; }
   .lwpcms-button:hover, .lwpcms-focused-card input[type='submit']:hover {
-    background-color: #382313;
+    background-color: white;
     cursor: pointer;
     transition: .2s; }
+
+.lwpcms-outlined {
+  outline-color: #bdc3c7;
+  outline-width: 1px;
+  outline-style: solid; }
 
 .lwpcms-focused-card {
   width: 360px;
