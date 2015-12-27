@@ -28,3 +28,22 @@ def upload_file(file, title):
         return True
     else:
         return False
+
+
+def is_image(filename):
+    image_extensions = [
+                '.jpg',
+                '.jpeg',
+                '.png',
+                '.gif',
+                '.bmp',
+                '.svg',
+                '.ico'
+            ]
+    filename, file_extension = os.path.splitext(filename)
+    
+    if file_extension in image_extensions or file_extension in\
+            [extension.upper() for extension in image_extensions]:
+                return True
+
+    return False
