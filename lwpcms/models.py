@@ -39,7 +39,7 @@ class Post(Base, Data):
     title = sa.Column(sa.String(256))
     content = sa.Column(sa.String(1024))
     type = sa.Column(sa.String(256))
-    author = relationship("User", uselist=False, backref="posts")
+    author_id = sa.Column(sa.Integer, sa.ForeignKey('users.id'))
 
 
 sess = new_session()

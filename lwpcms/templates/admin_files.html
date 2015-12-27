@@ -12,7 +12,7 @@
         </p>
     </section>
     <section>
-        <form method='POST' class='lwpcms-form'>
+        <form method='POST' class='lwpcms-form' enctype="multipart/form-data">
             <section>
                 <h3>Upload File</h3>
             </section>
@@ -24,5 +24,12 @@
                 {{ render_field(form.submit) }}
             </section>
         </form>
+    </section>
+    <section>
+        <ul>
+            {% for file in files %}
+                <li>{{ file.content }}</li>
+            {% endfor %}
+        </ul>
     </section>
 {% endblock %}

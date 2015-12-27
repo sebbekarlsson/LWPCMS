@@ -1,4 +1,4 @@
-from wtforms import (Form,
+from wtforms import (
     BooleanField,
     TextField,
     PasswordField,
@@ -6,6 +6,7 @@ from wtforms import (Form,
     SubmitField,
     FileField
 )
+from flask.ext.wtf import Form
 
 
 class SetupForm(Form):
@@ -22,6 +23,4 @@ class SetupForm(Form):
 class UploadFileForm(Form):
     file = FileField('File')
     title = TextField('Title', [validators.Length(min=4, max=256)])
-    description = TextField('Description',
-            [validators.Length(min=4, max=1024)])
     submit = SubmitField('Upload')

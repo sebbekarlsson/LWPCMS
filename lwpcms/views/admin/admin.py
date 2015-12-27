@@ -5,6 +5,8 @@ import glob
 import json
 
 from lwpcms.forms import UploadFileForm
+from lwpcms.api.files import upload_file
+from lwpcms.models import sess, Post
 
 
 bp = Blueprint(
@@ -96,12 +98,16 @@ def render_files():
     with open('lwpcms/static/shards/admin/side_nav.json') as file:
         side_nav_data = json.loads(file.read())
 
-
     form = UploadFileForm(csrf_enabled=False)
+    if form.validate_on_submit():
+        upload_file(form.file.data, form.title.data)
 
+    files = sess.query(Post).filter(Post.type=='file').all()
+    
     return render_template('admin_files.html',
         side_nav_data=side_nav_data,
-        form=form
+        form=form,
+        files=files
     )
 
 
