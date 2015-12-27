@@ -12,7 +12,7 @@ $sec-color-dim: #F1EED9;
 }
 
 html, body {
-    height: 100vh;
+    height: 100%;
 }
 
 .lwpcms-side-nav {
@@ -75,7 +75,6 @@ html, body {
 
 #lwpcms-admin-content {
     float: left;
-    width: 80%;
 }
 
 .lwpcms-content-center {
@@ -160,8 +159,6 @@ section {
 .lwpcms-gallery {
     display: flex;
     flex-wrap: wrap;
-    flex-direction: row;
-    width: 100%;
 
     .lwpcms-gallery-item {
         display: flex;
@@ -170,8 +167,8 @@ section {
         justify-content: center;
         align-items: center;
 
-        width: 156px;
-        height: 156px;
+        width: 128px;
+        height: 128px;
         outline-color: $main-color;
         outline-width: 1px;
         outline-style: solid;
@@ -184,8 +181,7 @@ section {
             outline-width: 1px;
             outline-style: solid;
             cursor: pointer;
-            background-color: $main-color;
-            transition: .2s;
+            background-color: $main-color-light;
         }
 
         img, object {

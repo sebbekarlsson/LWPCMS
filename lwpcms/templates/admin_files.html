@@ -26,10 +26,30 @@
         </form>
     </section>
     <section>
-        <ul>
+        <div class='lwpcms-gallery'>
             {% for file in files %}
-                <li>{{ file.content }}</li>
+                <div
+                    onClick='window.location.href="{{
+                        url_for("static", filename="upload/"+file.content)
+                    }}";'
+                    class='lwpcms-gallery-item'>
+                    <p>
+                        {{ file.title }}
+                    </p>
+                    {% if is_image(file.content) %}
+                        <img 
+                        src='{{
+                        url_for("static", filename="upload/"+file.content)
+                        }}'>
+                    {% else %}
+                        {{ render_svg('drive_file.svg', 'black') }}
+                    {% endif %}
+                    <br>
+                    <p>
+                        {{ file.content }}
+                    </p>
+                </div>
             {% endfor %}
-        </ul>
+        </div>
     </section>
 {% endblock %}

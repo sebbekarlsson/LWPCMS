@@ -102,7 +102,10 @@ def render_files():
     if form.validate_on_submit():
         upload_file(form.file.data, form.title.data)
 
-    files = sess.query(Post).filter(Post.type=='file').all()
+    files = sess.query(Post)\
+            .filter(Post.type=='file')\
+            .order_by(Post.created.desc())\
+            .all()
     
     return render_template('admin_files.html',
         side_nav_data=side_nav_data,
