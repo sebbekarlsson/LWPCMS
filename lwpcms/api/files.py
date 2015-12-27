@@ -6,15 +6,12 @@ import os
 
 
 def upload_file(file, title):
-    print('UPLOAD')
     if file:        
         filename = secure_filename(
             time.strftime("%H:%M:%S")\
             + '_' +
             file.filename
-        ) 
-        
-        print(filename)
+        )
 
         file.save(os.path.join('lwpcms/static/upload', filename))
 
