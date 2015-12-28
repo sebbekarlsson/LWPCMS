@@ -138,7 +138,8 @@ section {
     outline-style: solid;
     margin: 4px;
     overflow: hidden;
-    transition: .2s; }
+    transition: .2s;
+    position: relative; }
     .lwpcms-gallery .lwpcms-gallery-item:hover {
       outline-color: black;
       outline-width: 1px;
@@ -158,5 +159,34 @@ section {
       width: 100%;
       max-width: 128px;
       font-size: 0.7rem; }
+    .lwpcms-gallery .lwpcms-gallery-item .lwpcms-gallery-item-bar {
+      display: flex;
+      align-items: right;
+      justify-content: right;
+      flex-direction: row-reverse;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 24px;
+      line-height: 24px;
+      vertical-align: middle; }
+      .lwpcms-gallery .lwpcms-gallery-item .lwpcms-gallery-item-bar .lwpcms-gallery-item-bar-btn {
+        display: block;
+        background-color: white;
+        outline: #bdc3c7;
+        outline-style: solid;
+        outline-width: 1px;
+        border-radius: none;
+        border: none;
+        width: 16px;
+        height: 16px;
+        outline-color: #bdc3c7; }
+      .lwpcms-gallery .lwpcms-gallery-item .lwpcms-gallery-item-bar .warning {
+        transition: .2s; }
+        .lwpcms-gallery .lwpcms-gallery-item .lwpcms-gallery-item-bar .warning:hover {
+          background-color: #e74c3c;
+          cursor: crosshair;
+          transition: .2s; }
 
 /*# sourceMappingURL=style.css.map */

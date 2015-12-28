@@ -33,6 +33,9 @@
                         url_for("static", filename="upload/"+file.content)
                     }}";'
                     class='lwpcms-gallery-item'>
+                    <div class='lwpcms-gallery-item-bar'>
+                        <button onClick='event.cancelBubble=true; delete_file(this, {{ file.id }});' class='lwpcms-gallery-item-bar-btn warning'>X</button>
+                    </div>
                     <p>
                         {{ file.title }}
                     </p>
