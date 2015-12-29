@@ -4,18 +4,20 @@
   font-family: 'Open Sans', sans-serif; }
 
 html, body {
-  height: 100vh; }
+  height: 100%; }
+
+#lwpcms-content {
+  display: flex; }
 
 .lwpcms-side-nav {
+  display: flex;
   background-color: white;
   border-right-color: #bdc3c7;
   border-right-width: 1px;
   border-right-style: solid;
   color: black;
   width: 16%;
-  min-width: 286px;
-  height: 100vh;
-  float: left; }
+  min-width: 286px; }
   .lwpcms-side-nav ul, .lwpcms-side-nav li {
     list-style: none;
     width: 100%; }
@@ -36,10 +38,8 @@ html, body {
         cursor: pointer;
         transition: .2s; }
   .lwpcms-side-nav .lwpcms-side-nav-side {
-    height: 100vh;
     width: 15%;
-    background-color: #bdc3c7;
-    float: left; }
+    background-color: #bdc3c7; }
     .lwpcms-side-nav .lwpcms-side-nav-side .lwpcms-side-nav-point {
       width: 100%;
       height: 48px;
@@ -53,8 +53,7 @@ html, body {
       justify-content: center; }
 
 #lwpcms-admin-content {
-  float: left;
-  width: 80%; }
+  width: 100%; }
 
 .lwpcms-content-center {
   display: flex;
