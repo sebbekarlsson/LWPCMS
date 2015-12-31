@@ -109,6 +109,10 @@ section {
     }
 }
 
+.lwpcms-table-td {
+    display: flex;
+}
+
 .lwpcms-button, .lwpcms-focused-card input[type='submit'] {
     background-color: $main-color-light;
     outline: none;
@@ -149,6 +153,21 @@ section {
         display: block;
         height: 32px;
         line-height: 32px;
+        outline: none;
+        border-left: none;
+        border-right: none;
+        border-top: none;
+        border-bottom-style: solid;
+        border-bottom-width: 1px;
+        border-bottom-color: lightgray;
+        font-size: 100%;
+    }
+
+    textarea {
+        display: block;
+        width: 100%;
+        min-height: 256px;
+        resize: none;
         outline: none;
         border-left: none;
         border-right: none;

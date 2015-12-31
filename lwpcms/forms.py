@@ -1,6 +1,7 @@
 from wtforms import (
     BooleanField,
     TextField,
+    TextAreaField,
     PasswordField,
     validators,
     SubmitField,
@@ -24,3 +25,9 @@ class UploadFileForm(Form):
     file = FileField('File')
     title = TextField('Title', [validators.Length(min=4, max=256)])
     submit = SubmitField('Upload')
+
+
+class PostForm(Form):
+    title = TextField('Title', [validators.Length(min=4, max=256)])
+    content = TextAreaField('Content', [validators.Length(min=4, max=1024)])
+    submit = SubmitField('Publish')

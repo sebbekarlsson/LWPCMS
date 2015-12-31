@@ -22,3 +22,12 @@ def delete_file(id):
     sess.commit()
 
     return 'ok', 200
+
+
+@bp.route('/delete_post/<id>', methods=['POST', 'GET'])
+def delete_post(id):
+    post = sess.query(Post).filter(Post.id==id).first()
+    sess.delete(post)
+    sess.commit()
+
+    return 'ok', 200

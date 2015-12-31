@@ -11,6 +11,11 @@
             "href": "/admin/publish"
         },
         {
+            "label": "Posts",
+            "svg": "content.svg",
+            "href": "/admin/posts"
+        },
+        {
             "label": "Users",
             "svg": "emoticon.svg",
             "href": "/admin/users"

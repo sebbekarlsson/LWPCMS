@@ -4,8 +4,9 @@ import glob
 
 import json
 
-from lwpcms.forms import UploadFileForm
+from lwpcms.forms import UploadFileForm, PostForm
 from lwpcms.api.files import upload_file
+from lwpcms.api.posts import publish_post
 from lwpcms.models import sess, Post
 
 
@@ -23,12 +24,30 @@ def render():
     return render_template('admin.html', side_nav_data=side_nav_data)
 
 
-@bp.route('/publish')
+@bp.route('/publish', methods=['POST', 'GET'])
 def render_publish():
     with open('lwpcms/static/shards/admin/side_nav.json') as file:
         side_nav_data = json.loads(file.read())
 
-    return render_template('admin_publish.html', side_nav_data=side_nav_data)
+    form = PostForm(csrf_enabled=False)
+    if form.validate_on_submit():
+        publish_post(title=form.title.data, content=form.content.data)        
+
+    return render_template('admin_publish.html', side_nav_data=side_nav_data,
+            form=form)
+
+
+@bp.route('/posts')
+def render_posts():
+    with open('lwpcms/static/shards/admin/side_nav.json') as file:
+        side_nav_data = json.loads(file.read())
+
+    posts = sess.query(Post)\
+            .filter(Post.type=='post')\
+            .order_by(Post.created.desc()).all()
+
+    return render_template('admin_posts.html', side_nav_data=side_nav_data,
+            posts=posts)
 
 
 @bp.route('/users')
