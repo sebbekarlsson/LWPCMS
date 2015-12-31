@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, abort, request
+from flask import Blueprint, render_template, abort, request, redirect, url_for
 
 import glob
 
@@ -8,6 +8,7 @@ from lwpcms.forms import UploadFileForm, PostForm
 from lwpcms.api.files import upload_file
 from lwpcms.api.posts import publish_post
 from lwpcms.models import sess, Post
+from lwpcms.api.modules import call_module_event
 
 
 bp = Blueprint(
@@ -24,14 +25,28 @@ def render():
     return render_template('admin.html', side_nav_data=side_nav_data)
 
 
-@bp.route('/publish', methods=['POST', 'GET'])
-def render_publish():
+@bp.route('/publish/<id>', methods=['POST', 'GET']) 
+@bp.route('/publish', defaults={'id': None}, methods=['POST', 'GET'])
+def render_publish(id):
     with open('lwpcms/static/shards/admin/side_nav.json') as file:
         side_nav_data = json.loads(file.read())
 
     form = PostForm(csrf_enabled=False)
+
+    if id:
+        post = sess.query(Post)\
+                .filter(Post.id==int(id), Post.type=='post')\
+                .first()
+        if post and request.method != 'POST':    
+            form.title.data = post.title
+            form.content.data = post.content
+
     if form.validate_on_submit():
-        publish_post(title=form.title.data, content=form.content.data)        
+        new_post = publish_post(title=form.title.data, content=form.content.data,
+                id=id) 
+
+        return redirect('/admin/publish/{}'.format(new_post.id))
+        
 
     return render_template('admin_publish.html', side_nav_data=side_nav_data,
             form=form)
