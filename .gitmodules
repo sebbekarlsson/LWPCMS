@@ -1,0 +1,12 @@
+[submodule "SampleLWPCMSModule"]
+	path = SampleLWPCMSModule
+	url = https://github.com/sebbekarlsson/SampleLWPCMSModule.git
+[submodule "lwpcms/modules/-f"]
+	path = lwpcms/modules/-f
+	url = https://github.com/sebbekarlsson/SampleLWPCMSModule.git
+[submodule "lwpcms/modules/SampleLWPCMSModule"]
+	path = lwpcms/modules/SampleLWPCMSModule
+	url = https://github.com/sebbekarlsson/SampleLWPCMSModule.git
+[submodule "lwpcms/modules/SampleLWPCMSModule_module"]
+	path = lwpcms/modules/SampleLWPCMSModule_module
+	url = https://github.com/sebbekarlsson/SampleLWPCMSModule_module
