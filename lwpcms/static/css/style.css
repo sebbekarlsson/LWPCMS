@@ -71,12 +71,18 @@ section {
   .lwpcms-table tr {
     height: 32px;
     line-height: 32px;
-    background-color: #bdc3c7; }
+    background-color: white;
+    color: gray; }
     .lwpcms-table tr td, .lwpcms-table tr th {
       padding: 8px;
       outline-color: white;
       outline-style: solid;
       outline-width: 1px; }
+    .lwpcms-table tr th {
+      background-color: white;
+      color: black; }
+  .lwpcms-table .alt {
+    background-color: #bdc3c7; }
 
 .lwpcms-table-td {
   display: flex; }
@@ -204,5 +210,27 @@ section {
           background-color: #e74c3c;
           cursor: crosshair;
           transition: .2s; }
+
+.lwpcms-btn {
+  display: inline-block;
+  background-color: white;
+  outline-width: 1px;
+  outline-style: solid;
+  outline-color: lightgray;
+  color: #3498db;
+  padding-left: 6px;
+  padding-right: 6px;
+  min-width: 128px;
+  height: 32px;
+  line-height: 32px;
+  text-align: center;
+  vertical-align: middle;
+  border: none;
+  transition: .2s; }
+  .lwpcms-btn:hover {
+    cursor: pointer;
+    background-color: #3498db;
+    color: white;
+    transition: .2s; }
 
 /*# sourceMappingURL=style.css.map */

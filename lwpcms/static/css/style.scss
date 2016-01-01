@@ -1,6 +1,6 @@
 $main-color: #bdc3c7;
 $main-color-light: white;
-$main-color-lighter: #58351A;
+$main-color-lighter: #3498db;
 $sec-color-strong: black;
 $sec-color-dim: #F1EED9;
 $warning-color: #e74c3c;
@@ -98,7 +98,8 @@ section {
     tr {
         height: 32px;
         line-height: 32px;
-        background-color: $main-color;
+        background-color: $main-color-light;
+        color: gray;
 
         td, th {
             padding: 8px;
@@ -106,6 +107,15 @@ section {
             outline-style: solid;
             outline-width: 1px;
         }
+
+        th {
+            background-color: white;
+            color: black;
+        }
+    }
+
+    .alt {
+        background-color: $main-color;   
     }
 }
 
@@ -267,3 +277,27 @@ section {
     }
 }
 
+.lwpcms-btn {
+    display: inline-block;
+    background-color: $main-color-light;
+    outline-width: 1px;
+    outline-style: solid;
+    outline-color: lightgray;
+    color: $main-color-lighter;
+    padding-left: 6px;
+    padding-right: 6px;
+    min-width: 128px;
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    vertical-align: middle;
+    border: none;
+    transition: .2s;
+
+    &:hover {
+        cursor: pointer;
+        background-color: $main-color-lighter;
+        color: white;
+        transition: .2s;
+    }
+}
