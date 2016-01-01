@@ -30,6 +30,9 @@
     <footer>
         <script
             type='text/javascript'
+            src='{{ url_for("static", filename="js/tables.js") }}'></script>
+        <script
+            type='text/javascript'
             src='{{ url_for("static", filename="js/svg_color.js") }}'></script>
         <script
             type='text/javascript'
@@ -37,9 +40,6 @@
         <script
             type='text/javascript'
             src='{{ url_for("static", filename="js/posts.js") }}'></script>
-        <script
-            type='text/javascript'
-            src='{{ url_for("static", filename="js/tables.js") }}'></script>
 
         {% set m_footer = call_module_event(4, none) %}
         {% if m_footer %}
