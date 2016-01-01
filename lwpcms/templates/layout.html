@@ -9,12 +9,22 @@
         <link 
             href='https://fonts.googleapis.com/css?family=Open+Sans'
             rel='stylesheet'
-            type='text/css'> 
+            type='text/css'>
+
+        {% set m_head = call_module_event(2, none) %}
+        {% if m_head %}
+            {{ m_head|safe }}
+        {% endif%}
     </head>
     <body>
         <div id='lwpcms-content'>
             {% block lwpcms_content %}
             {% endblock %}
+            
+            {% set m_body = call_module_event(3, none) %}
+            {% if m_body %}
+                {{ m_body|safe }}
+            {% endif%}
         </div>
     </body>
     <footer>
@@ -30,5 +40,10 @@
         <script
             type='text/javascript'
             src='{{ url_for("static", filename="js/tables.js") }}'></script>
+
+        {% set m_footer = call_module_event(4, none) %}
+        {% if m_footer %}
+            {{ m_footer|safe }}
+        {% endif%}
     </footer>
 </html>

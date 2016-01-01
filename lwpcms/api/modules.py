@@ -27,4 +27,4 @@ def call_module_event(event, data):
     for module in modules:
         obj = importlib.import_module(
                 module['path'].replace('/', '.') + '.module')
-        obj.module.event(event, data)
+        return obj.module.event(event, data)
