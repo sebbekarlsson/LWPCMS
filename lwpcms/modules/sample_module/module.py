@@ -3,19 +3,17 @@ from lwpcms.api.constants import hooks
 
 
 class SampleModule(LWPCMSModule):
+    
+    def __init__(self):
+        super().__init__()
 
-    def event(self, event, data):
-        if event == hooks['post_publish']:
-            data['post'].content += '\r\n ~ sample_module'
+        self.register_event(hooks['layout_head'], self.layout_head)
+        self.register_event(hooks['layout_footer'], self.layout_footer)
 
-        elif event == hooks['layout_head']:
-            return '<script type="text/javascript">console.log("head from SampleModule");</script>'
+    def layout_head(self, data):
+        return '<script>console.log("test");</script>'
 
-        elif event == hooks['layout_body']:
-            return '<div style="display:none;">body from SampleModule></div>'
+    def layout_footer(self, data):
+        return '<div style="display:none;">SampleModule</div>'
 
-        elif event == hooks['layout_footer']:
-            return '<div style="display:none;">footer from SampleModule></div>'
-
-        
 module = SampleModule()
