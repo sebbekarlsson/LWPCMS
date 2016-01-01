@@ -11,20 +11,18 @@
             rel='stylesheet'
             type='text/css'>
 
-        {% set m_head = call_module_event(2, none) %}
-        {% if m_head %}
+        {% for m_head in call_module_event(2, none) %}
             {{ m_head|safe }}
-        {% endif%}
+        {% endfor %}
     </head>
     <body>
         <div id='lwpcms-content'>
             {% block lwpcms_content %}
             {% endblock %}
-            
-            {% set m_body = call_module_event(3, none) %}
-            {% if m_body %}
+
+            {% for m_body in call_module_event(3, none) %}
                 {{ m_body|safe }}
-            {% endif%}
+            {% endfor %}
         </div>
     </body>
     <footer>
@@ -41,9 +39,8 @@
             type='text/javascript'
             src='{{ url_for("static", filename="js/posts.js") }}'></script>
 
-        {% set m_footer = call_module_event(4, none) %}
-        {% if m_footer %}
+        {% for m_footer in call_module_event(4, none) %}
             {{ m_footer|safe }}
-        {% endif%}
+        {% endfor %}
     </footer>
 </html>

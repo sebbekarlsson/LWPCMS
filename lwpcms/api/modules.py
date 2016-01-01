@@ -23,8 +23,12 @@ def get_activated_modules():
 
 def call_module_event(event, data):
     modules = get_activated_modules()
+    results = []
 
     for module in modules:
         obj = importlib.import_module(
                 module['path'].replace('/', '.') + '.module')
-        return obj.module.event(event, data)
+
+        results.append(obj.module.event(event, data))
+
+    return results
