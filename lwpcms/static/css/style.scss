@@ -59,6 +59,7 @@ html, body {
 
     .lwpcms-side-nav-side {
         width: 20%;
+        min-width: 52px;
         background-color: $main-color-lighter;
 
         .lwpcms-side-nav-point {

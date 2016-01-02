@@ -40,6 +40,7 @@ html, body {
         transition: .2s; }
   .lwpcms-side-nav .lwpcms-side-nav-side {
     width: 20%;
+    min-width: 52px;
     background-color: #3498db; }
     .lwpcms-side-nav .lwpcms-side-nav-side .lwpcms-side-nav-point {
       width: 100%;
