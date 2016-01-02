@@ -1,4 +1,4 @@
-> ##### Standards
+# Standards
 > If you're using LWPCMS, you should follow these standars/recommendations:
 > * Just because you are allowed to edit the source code does not mean you
 should (unless you are contributing). If there is an LWPCMS update, it will
