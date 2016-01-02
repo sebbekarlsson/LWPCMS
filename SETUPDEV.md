@@ -9,7 +9,7 @@
 > * cd back to the root of the project.
 > * Run:
 
-        python3 setup.py
+        python3 setup.py develop
         python3 __main__.py
 
 > * Open up another shell.
