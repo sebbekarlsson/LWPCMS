@@ -4,7 +4,7 @@
 
 > ##### Table of content:
 > * [Info](README.md)
-> * [Standars](STANDARDS.md)
+> * [Standards](STANDARDS.md)
 > * [Setting up the dev environment](SETUPDEV.md)
 
 > LWPCMS is a web content management system written in python.
