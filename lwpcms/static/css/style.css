@@ -34,13 +34,13 @@ html, body {
       .lwpcms-side-nav ul .lwpcms-side-nav-btn span, .lwpcms-side-nav li .lwpcms-side-nav-btn span {
         padding-left: 8px; }
       .lwpcms-side-nav ul .lwpcms-side-nav-btn:hover, .lwpcms-side-nav li .lwpcms-side-nav-btn:hover {
-        background-color: #bdc3c7;
-        color: #F1EED9;
+        background-color: #3498db;
+        color: white;
         cursor: pointer;
         transition: .2s; }
   .lwpcms-side-nav .lwpcms-side-nav-side {
     width: 20%;
-    background-color: #bdc3c7; }
+    background-color: #3498db; }
     .lwpcms-side-nav .lwpcms-side-nav-side .lwpcms-side-nav-point {
       width: 100%;
       height: 48px;
@@ -74,15 +74,14 @@ section {
     background-color: white;
     color: gray; }
     .lwpcms-table tr td, .lwpcms-table tr th {
-      padding: 8px;
-      outline-color: white;
-      outline-style: solid;
-      outline-width: 1px; }
+      padding: 8px; }
+    .lwpcms-table tr td {
+      border-bottom-color: #3498db;
+      border-bottom-style: solid;
+      border-bottom-width: 2px; }
     .lwpcms-table tr th {
       background-color: white;
       color: black; }
-  .lwpcms-table .alt {
-    background-color: #bdc3c7; }
 
 .lwpcms-table-td {
   display: flex; }

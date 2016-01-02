@@ -49,8 +49,8 @@ html, body {
              }
 
              &:hover {
-                 background-color: $main-color;
-                 color: $sec-color-dim;
+                 background-color: $main-color-lighter;
+                 color: $main-color-light;
                  cursor: pointer;
                  transition: .2s;
              }
@@ -59,7 +59,7 @@ html, body {
 
     .lwpcms-side-nav-side {
         width: 20%;
-        background-color: $main-color;
+        background-color: $main-color-lighter;
 
         .lwpcms-side-nav-point {
             width: 100%;
@@ -103,9 +103,12 @@ section {
 
         td, th {
             padding: 8px;
-            outline-color: white;
-            outline-style: solid;
-            outline-width: 1px;
+        }
+
+        td {
+            border-bottom-color: $main-color-lighter;
+            border-bottom-style: solid;
+            border-bottom-width: 2px;
         }
 
         th {
@@ -115,7 +118,8 @@ section {
     }
 
     .alt {
-        background-color: $main-color;   
+        //background-color: rgb(220, 220, 220);
+        //color: $main-color-light;   
     }
 }
 
