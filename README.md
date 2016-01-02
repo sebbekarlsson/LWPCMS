@@ -19,7 +19,10 @@ free to use it right now or why not contribute to the project?
 > * Full access to source code.
 
 > Some of these stuff are not implemented yet, please see "issues".<br>
-> And of course, there is more to come...
+> And of course, there is more to come...<br>
+> <b><i>
+Contribute to the project by implementing the "TODO" stuff on "issues"!</i></b>
+<br>
 
 > ##### Standards
 > If you're using LWPCMS, you should follow these standars/recommendations:
