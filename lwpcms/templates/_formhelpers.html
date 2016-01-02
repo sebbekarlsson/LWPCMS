@@ -2,7 +2,12 @@
     {% if field.type != 'SubmitField' %}
         <dt>{{ field.label }}
     {% endif %}
-  <dd>{{ field(**kwargs)|safe }}
+    <dd>
+    {% if field.type == 'SubmitField' %}
+        {{ field(class_='lwpcms-btn', **kwargs)|safe }}
+    {% else %}
+        {{ field(**kwargs)|safe }}
+    {% endif %}
   {% if field.errors %}
     <ul class=errors>
     {% for error in field.errors %}

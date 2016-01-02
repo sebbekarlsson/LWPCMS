@@ -108,15 +108,14 @@ section {
   outline-width: 1px;
   outline-style: solid; }
 
-.lwpcms-focused-card, .lwpcms-form {
-  width: 360px;
+.lwpcms-form {
+  width: 100%;
   min-height: 256px;
   border-style: solid;
   border-width: 2px;
-  border-color: lightgray;
-  background-color: #bdc3c7;
-  color: white; }
-  .lwpcms-focused-card input[type='text'], .lwpcms-focused-card input[type='password'], .lwpcms-focused-card input[type='email'], .lwpcms-form input[type='text'], .lwpcms-form input[type='password'], .lwpcms-form input[type='email'] {
+  border-color: #bdc3c7;
+  color: #3498db; }
+  .lwpcms-form input[type='text'], .lwpcms-form input[type='password'], .lwpcms-form input[type='email'] {
     display: block;
     height: 32px;
     line-height: 32px;
@@ -127,8 +126,9 @@ section {
     border-bottom-style: solid;
     border-bottom-width: 1px;
     border-bottom-color: lightgray;
-    font-size: 100%; }
-  .lwpcms-focused-card textarea, .lwpcms-form textarea {
+    font-size: 100%;
+    width: 100%; }
+  .lwpcms-form textarea {
     display: block;
     width: 100%;
     min-height: 256px;
@@ -166,7 +166,7 @@ section {
       outline-width: 1px;
       outline-style: solid;
       cursor: pointer;
-      background-color: #bdc3c7;
+      background-color: #3498db;
       transition: .2s; }
     .lwpcms-gallery .lwpcms-gallery-item img, .lwpcms-gallery .lwpcms-gallery-item object {
       display: block;

@@ -49,7 +49,7 @@ def render_publish(id):
         
 
     return render_template('admin_publish.html', side_nav_data=side_nav_data,
-            form=form)
+            form=form, id=id)
 
 
 @bp.route('/posts')

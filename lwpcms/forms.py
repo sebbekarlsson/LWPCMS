@@ -31,3 +31,4 @@ class PostForm(Form):
     title = TextField('Title', [validators.Length(min=4, max=256)])
     content = TextAreaField('Content', [validators.Length(min=4, max=1024)])
     submit = SubmitField('Publish')
+    update = SubmitField('Update')

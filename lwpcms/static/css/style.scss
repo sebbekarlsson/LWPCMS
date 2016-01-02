@@ -154,14 +154,13 @@ section {
     outline-style: solid;
 }
 
-.lwpcms-focused-card, .lwpcms-form {
-    width: 360px;
+.lwpcms-form {
+    width: 100%;
     min-height: 256px;
     border-style: solid;
     border-width: 2px;
-    border-color: lightgray;
-    background-color: $main-color;
-    color: $main-color-light;
+    border-color: $main-color;
+    color: $main-color-lighter;
 
     input[type='text'], input[type='password'], input[type='email'] {
         display: block;
@@ -175,6 +174,7 @@ section {
         border-bottom-width: 1px;
         border-bottom-color: lightgray;
         font-size: 100%;
+        width: 100%;
     }
 
     textarea {
@@ -221,7 +221,7 @@ section {
             outline-width: 1px;
             outline-style: solid;
             cursor: pointer;
-            background-color: $main-color;
+            background-color: $main-color-lighter;
             transition: .2s;
         }
 

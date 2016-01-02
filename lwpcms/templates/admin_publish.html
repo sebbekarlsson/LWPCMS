@@ -21,7 +21,11 @@
                 {{ render_field(form.content) }}
             </section>
             <section>
-                {{ render_field(form.submit) }}
+                {% if not id %}
+                    {{ render_field(form.submit) }}
+                {% else %}
+                    {{ render_field(form.update) }}
+                {% endif %}
             </section>
         </form>
     </section>
