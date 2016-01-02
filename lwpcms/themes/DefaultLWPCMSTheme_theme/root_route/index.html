@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+
+{% block lwpcms_head %}
+    <link
+    rel='stylesheet'
+    type='text/css'
+    href='{{
+    url_for("static", filename="css/style.css")
+    }}'>
+{% endblock %}
+
+{% block lwpcms_content %}
+    <section>
+        <h2>Default Theme</h2>
+    </section>
+    <section>
+        <ul>
+            {% for post in posts %}
+                <li>{{ post.title }}</li>
+            {% endfor %}
+        </ul>
+    </section>
+{% endblock %}

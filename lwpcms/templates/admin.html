@@ -3,28 +3,30 @@
 
 
 {% block lwpcms_content %}
-    <nav class='lwpcms-side-nav'>
-        <ul class='lwpcms-side-nav-side'>
-            {% for button in side_nav_data['buttons'] %}
-                <li>
-                    <a class='lwpcms-side-nav-point'>
-                        <span>{{ render_svg(button['svg'], 'white') }}</span>
-                    </a>
-                </li>
-            {% endfor %}
-        </ul> 
-        <ul>
-            {% for button in side_nav_data['buttons'] %}
-                <li>
-                    <a class='lwpcms-side-nav-btn' href='{{ button["href"] }}'>
-                        <span>{{ button["label"] }}</span>
-                    </a>
-                </li>
-            {% endfor %}
-        </ul>
-    </nav>
-    <section id='lwpcms-admin-content'> 
-        {% block admin_content %}
-        {% endblock %}
-    </section>
+    <div id='lwpcms-content-admin'>
+        <nav class='lwpcms-side-nav'>
+            <ul class='lwpcms-side-nav-side'>
+                {% for button in side_nav_data['buttons'] %}
+                    <li>
+                        <a class='lwpcms-side-nav-point'>
+                            <span>{{ render_svg(button['svg'], 'white') }}</span>
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul> 
+            <ul>
+                {% for button in side_nav_data['buttons'] %}
+                    <li>
+                        <a class='lwpcms-side-nav-btn' href='{{ button["href"] }}'>
+                            <span>{{ button["label"] }}</span>
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </nav>
+        <section id='lwpcms-admin-content'> 
+            {% block admin_content %}
+            {% endblock %}
+        </section>
+    </div>
 {% endblock %}

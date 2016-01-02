@@ -11,6 +11,9 @@
             rel='stylesheet'
             type='text/css'>
 
+        {% block lwpcms_head %}
+        {% endblock %}
+
         {% for m_head in call_module_event(2, none) %}
             {{ m_head|safe }}
         {% endfor %}
@@ -38,6 +41,9 @@
         <script
             type='text/javascript'
             src='{{ url_for("static", filename="js/posts.js") }}'></script>
+
+        {% block lwpcms_footer %}
+        {% endblock %}
 
         {% for m_footer in call_module_event(4, none) %}
             {{ m_footer|safe }}
