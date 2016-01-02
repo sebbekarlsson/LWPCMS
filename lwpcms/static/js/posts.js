@@ -10,7 +10,7 @@ function delete_post(e, id) {
 
     http.onreadystatechange = function() {
         if(http.readyState == 4 && http.status == 200) {
-            e.parentNode.parentNode.parentNode.parentNode.style.display = 'none';
+            e.parentNode.parentNode.parentNode.style.display = 'none';
         }
     }
 
