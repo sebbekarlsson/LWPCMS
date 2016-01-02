@@ -1,4 +1,4 @@
-# How to set up the dev environment test
+# How to set up the dev environment
 > * clone, pull down the repo.
 > * cd into the folder.
 > * cd into lwpcms/static.
