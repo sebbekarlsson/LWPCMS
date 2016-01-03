@@ -1,6 +1,7 @@
 {% extends 'admin.html' %}
 
 {% from '_formhelpers.html' import render_field %}
+{% from '_svg.html' import render_svg %}
 
 
 {% block admin_content %}
@@ -19,6 +20,18 @@
             <section>
                 {{ render_field(form.title) }}
                 {{ render_field(form.content) }}
+            </section>
+            <section>
+                <div class='lwpcms-addlist' type='attachment'>
+                    <!--<div class='lwpcms-addlist-item'>
+                        <section class='lwpcms-addlist-left'>
+                            {{ render_svg('add.svg', 'black') }}
+                        </section>
+                        <section class='lwpcms-inputs lwpcms-addlist-right'>
+                            <input type='text' placeholder='Test'></input>
+                        </section>
+                    </div>-->
+                </div>
             </section>
             <section>
                 {% if not id %}

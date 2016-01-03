@@ -31,3 +31,26 @@ def delete_post(id):
     sess.commit()
 
     return 'ok', 200
+
+
+@bp.route('/query_attachments/<query>', methods=['POST', 'GET'])
+def query_attachments(query):
+    attachments = sess.query(Post)\
+            .filter(Post.type=='file')\
+            .filter(Post.title.like('%{}%'.format(query)))\
+            .all()
+    print(attachments)
+    return jsonify(
+                {
+                    'meta':{
+                            'length': len(attachments)
+                        },
+                    'attachments':[
+                        {
+                            'id': attachment.id,
+                            'title': attachment.title,
+                            'content': attachment.content
+                        }
+                    for attachment in attachments]
+               } 
+            )
