@@ -44,7 +44,7 @@ function init_attachment_searchers() {
                     /* Creating select option element for current attachment. */
                     option = document.createElement('option');
                     option.setAttribute('value', attachment['id']);
-                    option.innerHTML = attachment['title'];
+                    option.innerHTML = attachment['content'];
                     
                     /* Appending the option to the dropdown. */
                     dropdown.appendChild(option);
