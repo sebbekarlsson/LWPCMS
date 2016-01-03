@@ -1,6 +1,12 @@
 # How to set up the dev environment
 > * clone, pull down the repo.
 > * cd into the folder.
+> * Run:
+
+        git submodule init
+        git submodule sync
+        git submodule update
+
 > * cd into lwpcms/static.
 > * Run:
 
