@@ -3,16 +3,18 @@ from lwpcms.api.modules import call_module_event
 from lwpcms.api.constants import hooks
 
 
-def publish_post(title, content, id=None):
+def publish_post(title, content, attachments, id=None):
     if id is not None:
         post = sess.query(Post).filter(Post.id==id).first()
         post.title=title
         post.content=content
+        post.attachments=attachments
     else:
         post = Post(
                 title=title,
                 content=content,
                 type='post',
+                attachments=attachments,
                 author_id=0
                 )
 

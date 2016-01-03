@@ -39,7 +39,7 @@ def query_attachments(query):
             .filter(Post.type=='file')\
             .filter(Post.title.like('%{}%'.format(query)))\
             .all()
-    print(attachments)
+
     return jsonify(
                 {
                     'meta':{

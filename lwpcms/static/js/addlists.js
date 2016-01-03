@@ -12,6 +12,7 @@ function add_addlist_item(addlist, type) {
 
             left_section.addEventListener("click", function(){
                 add_addlist_item(addlist, type);
+                init_attachment_searchers();
             });
 
             var right_section = document.createElement('section');
@@ -19,7 +20,7 @@ function add_addlist_item(addlist, type) {
 
             var input = document.createElement("input");
             input.setAttribute('type', 'text');
-            input.className += 'attachment-search';
+            input.className += 'attachment-search'; 
             right_section.appendChild(input);
 
             var input_hidden = document.createElement("input");

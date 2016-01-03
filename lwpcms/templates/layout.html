@@ -31,6 +31,9 @@
     <footer>
         <script
             type='text/javascript'
+            src='{{ url_for("static", filename="js/functions.js") }}'></script>
+        <script
+            type='text/javascript'
             src='{{ url_for("static", filename="js/addlists.js") }}'></script>
         <script
             type='text/javascript'
@@ -44,6 +47,9 @@
         <script
             type='text/javascript'
             src='{{ url_for("static", filename="js/posts.js") }}'></script>
+        <script
+            type='text/javascript'
+            src='{{ url_for("static", filename="js/attachment_search.js") }}'></script>
 
         {% block lwpcms_footer %}
         {% endblock %}

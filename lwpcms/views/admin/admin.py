@@ -33,6 +33,8 @@ def render_publish(id):
 
     form = PostForm(csrf_enabled=False)
 
+    post = None
+
     if id:
         post = sess.query(Post)\
                 .filter(Post.id==int(id), Post.type=='post')\
@@ -42,14 +44,23 @@ def render_publish(id):
             form.content.data = post.content
 
     if form.validate_on_submit():
+        attachment_ids = request.form.getlist('attachment_id')
+        attachments = []
+
+        for a_id in attachment_ids:
+            attachment = sess.query(Post).filter(Post.id==a_id).first()
+
+            if attachment is not None:
+                attachments.append(attachment)
+
         new_post = publish_post(title=form.title.data, content=form.content.data,
-                id=id) 
+                attachments=attachments, id=id) 
 
         return redirect('/admin/publish/{}'.format(new_post.id))
         
 
     return render_template('admin_publish.html', side_nav_data=side_nav_data,
-            form=form, id=id)
+            form=form, post=post, id=id)
 
 
 @bp.route('/posts')

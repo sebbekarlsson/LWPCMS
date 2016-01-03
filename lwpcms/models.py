@@ -36,10 +36,12 @@ class User(Base, Data):
 class Post(Base, Data):
     __tablename__ = 'posts'
     id = sa.Column(sa.Integer, primary_key=True)
+    parent_id = sa.Column(sa.Integer, sa.ForeignKey('posts.id'))
     title = sa.Column(sa.String(256))
     content = sa.Column(sa.String(1024))
     type = sa.Column(sa.String(256))
     author_id = sa.Column(sa.Integer, sa.ForeignKey('users.id'))
+    attachments = relationship('Post')
 
 
 sess = new_session()

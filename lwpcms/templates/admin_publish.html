@@ -23,14 +23,19 @@
             </section>
             <section>
                 <div class='lwpcms-addlist' type='attachment'>
-                    <!--<div class='lwpcms-addlist-item'>
-                        <section class='lwpcms-addlist-left'>
-                            {{ render_svg('add.svg', 'black') }}
-                        </section>
-                        <section class='lwpcms-inputs lwpcms-addlist-right'>
-                            <input type='text' placeholder='Test'></input>
-                        </section>
-                    </div>-->
+                    {% if post %}
+                        {% for attachment in post.attachments %}
+                            <div class='lwpcms-addlist-item'>
+                                <section class='lwpcms-addlist-left'>
+                                    ADD
+                                </section>
+                                <section class='lwpcms-inputs lwpcms-addlist-right'>
+                                    <input type='text' class='attachment-search' value='{{ attachment.title }}'></input>
+                                    <input type='hidden' name='attachment_id' value='{{ attachment.id }}'></input>
+                                </section>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
                 </div>
             </section>
             <section>
