@@ -163,7 +163,7 @@ def render_files():
 def render_development():
     with open('lwpcms/static/shards/admin/side_nav.json') as file:
         side_nav_data = json.loads(file.read())
-
+    
     return render_template('admin_development.html',
             side_nav_data=side_nav_data)
 

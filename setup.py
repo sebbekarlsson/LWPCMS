@@ -15,6 +15,7 @@ setup(
         'wtforms',
         'PyMySQL',
         'sqlalchemy',
-        'pyyaml'
+        'pyyaml',
+        'loremipsum'
     ]
 )

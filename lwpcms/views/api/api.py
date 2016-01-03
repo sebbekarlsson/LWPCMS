@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template, abort
 from lwpcms.models import sess, Post
+from lwpcms.api.tests import generate_files
 from flask import jsonify
 
 import os
@@ -54,3 +55,11 @@ def query_attachments(query):
                     for attachment in attachments]
                } 
             )
+
+
+@bp.route('/generate_testdata', methods=['POST', 'GET'])
+def generate_testdata():
+
+    generate_files()
+
+    return 'ok', 200
