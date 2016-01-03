@@ -22,6 +22,9 @@
                 {{ render_field(form.content) }}
             </section>
             <section>
+                <dt>
+                    <label>Attachments</label>
+                </td>
                 <div class='lwpcms-addlist' type='attachment'>
                     {% if post %}
                         {% for attachment in post.attachments %}
