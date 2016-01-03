@@ -30,3 +30,6 @@ free to use it right now or why not contribute to the project?
 > <b><i>
 Contribute to the project by implementing the "TODO" stuff on "issues"!</i></b>
 <br>
+
+> ##### Demo
+> [View The Demo](http://demo.lwpcms.com/admin)
