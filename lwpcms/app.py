@@ -8,7 +8,6 @@ from lwpcms.views.setup import bp as setup_bp
 from lwpcms.api.files import is_image
 from lwpcms.api.modules import call_module_event
 
-from .models import initialize_database
 
 
 app = Flask(__name__)
@@ -19,5 +18,3 @@ app.register_blueprint(api_bp)
 
 app.jinja_env.globals.update(is_image=is_image)
 app.jinja_env.globals.update(call_module_event=call_module_event)
-
-initialize_database()

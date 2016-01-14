@@ -16,6 +16,7 @@ setup(
         'PyMySQL',
         'sqlalchemy',
         'pyyaml',
-        'loremipsum'
+        'loremipsum',
+        'pymongo'
     ]
 )

@@ -7,8 +7,10 @@ import json
 from lwpcms.forms import UploadFileForm, PostForm
 from lwpcms.api.files import upload_file
 from lwpcms.api.posts import publish_post
-from lwpcms.models import sess, Post
 from lwpcms.api.modules import call_module_event
+from lwpcms.mongo import db
+from pymongo.cursor import CursorType
+from bson.objectid import ObjectId
 
 
 bp = Blueprint(
@@ -36,19 +38,18 @@ def render_publish(id):
     post = None
 
     if id:
-        post = sess.query(Post)\
-                .filter(Post.id==int(id), Post.type=='post')\
-                .first()
+        post = db.collections.find_one({"_id": ObjectId(id)})
         if post and request.method != 'POST':    
-            form.title.data = post.title
-            form.content.data = post.content
+            form.title.data = post["title"]
+            form.content.data = post["content"]
 
     if form.validate_on_submit():
         attachment_ids = request.form.getlist('attachment_id')
         attachments = []
 
         for a_id in attachment_ids:
-            attachment = sess.query(Post).filter(Post.id==a_id).first()
+            if a_id is not None and len(a_id) > 3:
+                attachment = db.collections.find_one({"_id": ObjectId(a_id)})
 
             if attachment is not None:
                 attachments.append(attachment)
@@ -56,7 +57,7 @@ def render_publish(id):
         new_post = publish_post(title=form.title.data, content=form.content.data,
                 attachments=attachments, id=id) 
 
-        return redirect('/admin/publish/{}'.format(new_post.id))
+        return redirect('/admin/publish/{}'.format(new_post["_id"]))
         
 
     return render_template('admin_publish.html', side_nav_data=side_nav_data,
@@ -68,9 +69,13 @@ def render_posts():
     with open('lwpcms/static/shards/admin/side_nav.json') as file:
         side_nav_data = json.loads(file.read())
 
-    posts = sess.query(Post)\
-            .filter(Post.type=='post')\
-            .order_by(Post.created.desc()).all()
+    posts = list(
+                db.collections.find(
+                        {
+                            "classes": ["post"]
+                        }
+                    )
+            )
 
     return render_template('admin_posts.html', side_nav_data=side_nav_data,
             posts=posts)
@@ -147,10 +152,13 @@ def render_files():
     if form.validate_on_submit():
         upload_file(form.file.data, form.title.data)
 
-    files = sess.query(Post)\
-            .filter(Post.type=='file')\
-            .order_by(Post.created.desc())\
-            .all()
+    files = list(
+                db.collections.find(
+                    {
+                        "classes": ["post", "file"]
+                    }
+                )
+            )
     
     return render_template('admin_files.html',
         side_nav_data=side_nav_data,
