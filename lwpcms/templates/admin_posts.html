@@ -22,10 +22,10 @@
                     <td>{{ post.content }}</td>
                     <td class='lwpcms-table-td'>
                         <section>
-                            <button class='lwpcms-btn' onClick='window.location.href="/admin/publish/{{ post.id }}"'>Edit</button>
+                            <button class='lwpcms-btn' onClick='window.location.href="/admin/publish/{{ post._id }}"'>Edit</button>
                         </section>
                         <section>
-                            <button class='lwpcms-btn' onClick='event.cancelBubble=true; delete_post(this, {{ post.id }});' >Delete</button>
+                            <button class='lwpcms-btn' onClick='event.cancelBubble=true; delete_post(this, "{{ post._id }}");' >Delete</button>
                         </section>
                     </td>
                 </tr>

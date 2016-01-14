@@ -5,7 +5,6 @@ from flask import (
     render_template_string
 )
 from lwpcms.api.themes import get_activated_theme
-from lwpcms.models import sess, Post
 
 
 bp = Blueprint(
