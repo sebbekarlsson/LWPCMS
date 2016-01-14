@@ -15,14 +15,12 @@ bp = Blueprint(
 
 @bp.route('/delete_file/<id>', methods=['POST', 'GET'])
 def delete_file(id):
-    file = sess.query(Post).filter(Post.id==id).first()
+    file = db.collections.find_one({"_id": ObjectId(id)})
     os.remove(
         os.path.dirname(os.path.realpath(__file__))\
-                +'/../../static/upload/{}'.format(file.content)
+                +'/../../static/upload/{}'.format(file["content"])
     )
-    sess.delete(file)
-    sess.commit()
-
+    db.collections.delete_many({"_id": ObjectId(id)})
     return 'ok', 200
 
 
