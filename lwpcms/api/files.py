@@ -1,6 +1,7 @@
 from werkzeug import secure_filename
 
 from lwpcms.mongo import db
+from lwpcms.models import Post
 from bson.objectid import ObjectId
 
 import time
@@ -17,13 +18,14 @@ def upload_file(file, title):
 
         file.save(os.path.join('lwpcms/static/upload', filename))
 
-        post = {
-                "classes": ["post", "file"],
-                "title": title,
-                "content": filename,
-                "attachments": {},
-                "author": {}
-            }
+        post = Post(
+                    classes=["post", "file"],
+                    type='file',
+                    title=title,
+                    content=filename,
+                    attachments={},
+                    author={}
+                ).export()
         
         db.collections.insert_one(post)
 

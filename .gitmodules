@@ -10,3 +10,6 @@
 [submodule "lwpcms/modules/SampleLWPCMSModule_module"]
 	path = lwpcms/modules/SampleLWPCMSModule_module
 	url = https://github.com/sebbekarlsson/SampleLWPCMSModule_module
+[submodule "lwpcms/static/js/ElemenTailor"]
+	path = lwpcms/static/js/ElemenTailor
+	url = https://github.com/sebbekarlsson/ElemenTailor.git

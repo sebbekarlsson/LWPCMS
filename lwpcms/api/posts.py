@@ -1,6 +1,7 @@
 from lwpcms.api.modules import call_module_event
 from lwpcms.api.constants import hooks
 from lwpcms.mongo import db
+from lwpcms.models import Post
 from bson.objectid import ObjectId
 
 
@@ -30,13 +31,14 @@ def publish_post(title, content, attachments, id=None):
             )
         return {"_id": ObjectId(id) }
     else:
-        post = {
-                "classes": ["post"],
-                "title": title,
-                "content": content,
-                "attachments": attachments,
-                "author": {}
-            }
+        post = Post(
+                classes=["post"],
+                type='post',
+                title=title,
+                content=content,
+                attachments=attachments,
+                author={}
+                ).export()
 
         call_module_event(hooks['post_publish'], {'post': post})
         db.collections.insert_one(post)
