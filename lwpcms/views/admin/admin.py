@@ -51,11 +51,15 @@ def render_publish(id):
             if a_id is not None and len(a_id) > 3:
                 attachment = db.collections.find_one({"_id": ObjectId(a_id)})
 
-            if attachment is not None:
-                attachments.append(attachment)
+                if attachment is not None:
+                    attachments.append(attachment)
 
-        new_post = publish_post(title=form.title.data, content=form.content.data,
-                attachments=attachments, id=id) 
+        new_post = publish_post(
+                           title=form.title.data,
+                           content=form.content.data,
+                           attachments=attachments,
+                           id=id
+                       )
 
         return redirect('/admin/publish/{}'.format(new_post["_id"]))
         
