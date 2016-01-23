@@ -9,7 +9,8 @@ from lwpcms.api.files import upload_file
 from lwpcms.api.posts import publish_post
 from lwpcms.api.modules import call_module_event
 from lwpcms.mongo import db
-from pymongo.cursor import CursorType
+
+import pymongo as pymongo
 from bson.objectid import ObjectId
 
 
@@ -78,9 +79,8 @@ def render_posts():
                         {
                             "classes": ["post"]
                         }
-                    )
-            )
-
+                    ).sort('created', pymongo.DESCENDING)
+                )
     return render_template('admin_posts.html', side_nav_data=side_nav_data,
             posts=posts)
 
