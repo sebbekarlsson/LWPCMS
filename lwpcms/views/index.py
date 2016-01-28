@@ -15,8 +15,12 @@ bp = Blueprint(
 )
 
 
+@bp.route('/', defaults={'template_name': 'index.html'})
 @bp.route('/<template_name>')
 def render(template_name):
+    if (template_name is None):
+        template_name = 'index.html'
+
     theme = get_activated_theme()
     
     if theme is not None:
