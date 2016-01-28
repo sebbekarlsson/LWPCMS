@@ -4,6 +4,21 @@ import json
 import importlib
 
 
+def get_modules():
+    modules = []
+
+    avail_modules = glob.glob('lwpcms/modules/*_module')
+    for avail_module in avail_modules:
+        with open('{}/module.json'.format(avail_module)) as file:
+            data = json.loads(file.read())
+            module = data['module']
+            module['path'] = avail_module
+            
+            modules.append(module)
+
+    return modules
+
+
 def get_activated_modules():
     modules = []
 

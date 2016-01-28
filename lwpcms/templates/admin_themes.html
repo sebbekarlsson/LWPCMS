@@ -9,4 +9,39 @@
             This section is used to manage your themes.
         </p>
     </section>
+    <section>
+        <table class='lwpcms-table'>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Version</th>
+                <th>Author</th>
+                <th>Activate</th>
+            </tr>
+            {% for theme in themes %}
+                <tr>
+                    <td>{{ theme['name'] }}</td>
+                    <td>{{ theme['description'] }}</td>
+                    <td>{{ theme['version'] }}</td>
+                    <td>{{ theme['author'] }}</td>
+                    <td>
+                        <form method='POST'>
+                            <input
+                                type='hidden'
+                                name='theme_path'
+                                value='{{ theme["path"] }}'>
+                            {% if theme['activated'] == false %}
+                                <button class='lwpcms-btn'>Activate</button>
+                            {% else %}
+                                <input
+                                    type='submit'
+                                    class='lwpcms-btn'
+                                    value='Deactivate'>
+                            {% endif %}
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </section>
 {% endblock %}
