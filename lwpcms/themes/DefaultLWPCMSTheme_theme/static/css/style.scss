@@ -45,6 +45,15 @@ $warning-color: #e74c3c;
         color: $main-color-light !important;
         padding-left: 4px;
         padding-right: 4px;
+
+        a {
+            transition: none !important;
+        }
+
+        a:hover {
+            color: $main-color-light !important;
+            transition: none !important;
+        }
     }
 
     .left {

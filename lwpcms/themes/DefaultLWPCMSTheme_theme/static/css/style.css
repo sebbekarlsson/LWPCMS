@@ -26,6 +26,11 @@
     color: white !important;
     padding-left: 4px;
     padding-right: 4px; }
+    .nav-bar .brand a {
+      transition: none !important; }
+    .nav-bar .brand a:hover {
+      color: white !important;
+      transition: none !important; }
   .nav-bar .left {
     float: left; }
   .nav-bar .right {
