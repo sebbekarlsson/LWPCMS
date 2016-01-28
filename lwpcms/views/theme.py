@@ -26,7 +26,7 @@ def get_static(folder_name, file_name):
         path = '{}/static/{}/{}'.format(theme['path'], folder_name, file_name)
         mimetype = ''
 
-        if 'css' in folder_name:
+        if 'css' in folder_name or 'css' in file_name:
             mimetype = 'text/css'
 
         elif 'image' in folder_name:
