@@ -13,7 +13,7 @@
     </section>
     <section>
         <ul>
-            {% for post in posts %}
+            {% for post in get_posts({'type': 'post', 'classes': ['post']}) %}
                 <li>{{ post.title }}</li>
             {% endfor %}
         </ul>

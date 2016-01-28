@@ -8,7 +8,7 @@ from lwpcms.views.setup import bp as setup_bp
 
 from lwpcms.api.files import is_image
 from lwpcms.api.modules import call_module_event
-from lwpcms.api.posts import shorten_text
+from lwpcms.api.posts import shorten_text, get_posts
 
 
 app = Flask(__name__)
@@ -21,3 +21,4 @@ app.register_blueprint(theme_bp)
 app.jinja_env.globals.update(is_image=is_image)
 app.jinja_env.globals.update(call_module_event=call_module_event)
 app.jinja_env.globals.update(shorten_text=shorten_text)
+app.jinja_env.globals.update(get_posts=get_posts)

@@ -26,15 +26,6 @@ def render(template_name):
     if theme is not None:
         page_path = 'lwpcms/{}/pages/{}'.format(theme['path'], template_name)
 
-        posts = list(
-                    db.collections.find(
-                        {
-                            'type': 'post',
-                            'classes': ['post']
-                        }
-                    )
-                )
-        
-        return render_template_string(open(page_path).read(), posts=posts)
+        return render_template_string(open(page_path).read())
     else:
         return render_template('index.html')
