@@ -2,6 +2,7 @@ import glob
 import os
 import json
 import ntpath
+import base64
 
 
 def get_activated_theme():
@@ -10,29 +11,10 @@ def get_activated_theme():
         with open('{}/theme.json'.format(avail_theme)) as file:
             data = json.loads(file.read())
             theme = data['theme']
-            theme['path'] = avail_theme
+            theme['path'] = avail_theme.replace('lwpcms/', '')
             
             if 'activated' in theme:
                 if theme['activated']:
                     return theme
 
     return None
-
-def render_stylesheet(name):
-    theme = get_activated_theme()
-        
-    if theme is not None:
-        css_path = '{}/static/css/'.format(theme['path'])
-
-        stylesheets = []
-
-                                                                        
-        for file in list(glob.glob('{}/*.css'.format(css_path))):
-            if ntpath.basename(file) != name:
-                continue
-
-            reader = open(file)
-            style = reader.read()
-            reader.close()
-            
-            return '<style>' + style + '</style>'

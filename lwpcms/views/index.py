@@ -24,7 +24,7 @@ def render(template_name):
     theme = get_activated_theme()
     
     if theme is not None:
-        page_path = '{}/pages/{}'.format(theme['path'], template_name)
+        page_path = 'lwpcms/{}/pages/{}'.format(theme['path'], template_name)
 
         posts = list(
                     db.collections.find(

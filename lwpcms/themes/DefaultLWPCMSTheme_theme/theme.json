@@ -5,7 +5,7 @@
         "description": "This is the default theme for LWPCMS.",
         "license": "none",
         "name": "Default Theme",
-        "path": "lwpcms/themes/DefaultLWPCMSTheme_theme",
+        "path": "themes/DefaultLWPCMSTheme_theme",
         "version": "1.0"
     }
 }
