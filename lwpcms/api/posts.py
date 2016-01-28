@@ -44,3 +44,7 @@ def publish_post(title, content, attachments, id=None):
         db.collections.insert_one(post)
 
     return post
+
+
+def shorten_text(text, max=16):
+    return (text[:max] + '..') if len(text) > max else text
