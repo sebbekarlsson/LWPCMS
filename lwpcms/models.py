@@ -11,7 +11,7 @@ class DBObject(object):
             type=''
         ):
         self.created = time.strftime("%Y:%m:%d:%H:%M:%S")
-        self.updated = ''
+        self.updated = time.strftime("%Y:%m:%d:%H:%M:%S")
         self.classes = classes
         self.type = type
     
