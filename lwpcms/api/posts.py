@@ -46,8 +46,11 @@ def publish_post(title, content, attachments, id=None):
     return post
 
 
-def get_posts(obj):
-    return list(db.collections.find(obj))
+def get_posts(obj, sort=None):
+    if sort is not None:
+        return list(db.collections.find(obj).sort(*sort))
+    else:
+        return list(db.collections.find(obj))
 
 
 def shorten_text(text, max=16):

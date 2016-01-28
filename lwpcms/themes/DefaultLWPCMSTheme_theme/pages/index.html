@@ -16,11 +16,24 @@
             <li><a class='nav-btn' href='/admin'>Admin</a></li>
         </ul>
     </nav>
-    <section>
-        <ul>
-            {% for post in get_posts({'type': 'post', 'classes': ['post']}) %}
-                <li>{{ post.title }}</li>
-            {% endfor %}
-        </ul>
+    <section class='feed card-2'>
+        {% for post in get_posts({'type': 'post', 'classes': ['post']}, ('created', pymongo.DESCENDING)) %}
+            <div class='item card-2 {% if post.attachments|length > 0 %} extended {% endif %}'>
+                {% if post.attachments|length > 0 %}
+                    <section class='section-left'>
+                        <img src='/static/upload/{{ post.attachments[0].content }}'>
+                    </section>
+                    <section>
+                        <h1>{{ post.title }}</h1>
+                        <p>{{ shorten_text(post.content, 700) }}<p>
+                    </section>
+                {% else %}
+                   <section>
+                        <h1>{{ post.title }}</h1>
+                        <p>{{ shorten_text(post.content, 700) }}<p>
+                    </section> 
+                {% endif %}
+            </div>
+        {% endfor %}
     </section>
 {% endblock %}
