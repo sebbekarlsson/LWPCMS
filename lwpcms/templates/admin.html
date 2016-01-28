@@ -6,7 +6,7 @@
     <div id='lwpcms-content-admin'>
         <nav class='lwpcms-side-nav'>
             <ul class='lwpcms-side-nav-side'>
-                {% for button in side_nav_data['buttons'] %}
+                {% for button in sidenav['buttons'] %}
                     <li>
                         <a class='lwpcms-side-nav-point'>
                             <span>{{ render_svg(button['svg'], 'white') }}</span>
@@ -15,7 +15,7 @@
                 {% endfor %}
             </ul> 
             <ul>
-                {% for button in side_nav_data['buttons'] %}
+                {% for button in sidenav['buttons'] %}
                     <li>
                         <a class='lwpcms-side-nav-btn' href='{{ button["href"] }}'>
                             <span>{{ button["label"] }}</span>

@@ -40,6 +40,8 @@ def call_module_event(event, data):
     modules = get_activated_modules()
     results = []
 
+    print(event)
+
     for module in modules:
         obj = importlib.import_module(
                 module['path'].replace('/', '.') + '.module')

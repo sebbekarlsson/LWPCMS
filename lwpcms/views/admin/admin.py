@@ -9,6 +9,7 @@ from lwpcms.api.files import upload_file
 from lwpcms.api.posts import publish_post
 from lwpcms.api.modules import call_module_event, get_modules
 from lwpcms.api.themes import get_themes
+from lwpcms.api.admin import get_sidenav
 from lwpcms.mongo import db
 
 import pymongo as pymongo
@@ -23,17 +24,15 @@ bp = Blueprint(
 
 @bp.route('/')
 def render():
-    with open('lwpcms/static/shards/admin/side_nav.json') as file:
-        side_nav_data = json.loads(file.read())
+    sidenav = get_sidenav()
 
-    return render_template('admin.html', side_nav_data=side_nav_data)
+    return render_template('admin.html', sidenav=sidenav)
 
 
 @bp.route('/publish/<id>', methods=['POST', 'GET']) 
 @bp.route('/publish', defaults={'id': None}, methods=['POST', 'GET'])
 def render_publish(id):
-    with open('lwpcms/static/shards/admin/side_nav.json') as file:
-        side_nav_data = json.loads(file.read())
+    sidenav = get_sidenav()
 
     form = PostForm(csrf_enabled=False)
 
@@ -66,14 +65,13 @@ def render_publish(id):
         return redirect('/admin/publish/{}'.format(new_post["_id"]))
         
 
-    return render_template('admin_publish.html', side_nav_data=side_nav_data,
+    return render_template('admin_publish.html', sidenav=sidenav,
             form=form, post=post, id=id)
 
 
 @bp.route('/posts')
 def render_posts():
-    with open('lwpcms/static/shards/admin/side_nav.json') as file:
-        side_nav_data = json.loads(file.read())
+    sidenav = get_sidenav()
 
     posts = list(
                 db.collections.find(
@@ -82,23 +80,21 @@ def render_posts():
                         }
                     ).sort('created', pymongo.DESCENDING)
                 )
-    return render_template('admin_posts.html', side_nav_data=side_nav_data,
+    return render_template('admin_posts.html', sidenav=sidenav,
             posts=posts)
 
 
 @bp.route('/users')
 def render_users():
-    with open('lwpcms/static/shards/admin/side_nav.json') as file:
-        side_nav_data = json.loads(file.read())
+    sidenav = get_sidenav()
 
-    return render_template('admin_users.html', side_nav_data=side_nav_data)
+    return render_template('admin_users.html', sidenav=sidenav)
 
 
 @bp.route('/modules', methods=['POST', 'GET'])
 def render_modules():
-    with open('lwpcms/static/shards/admin/side_nav.json') as file:
-        side_nav_data = json.loads(file.read())
-
+    sidenav = get_sidenav()
+    
     if request.method == 'POST':
         if 'module_path' in request.form:
             module_path = request.form['module_path']
@@ -128,57 +124,57 @@ def render_modules():
                                 )
                             )
 
+                    return redirect('admin/modules')
+
     modules = get_modules()
 
-    return render_template('admin_modules.html', side_nav_data=side_nav_data, modules=modules)
+    return render_template('admin_modules.html', sidenav=sidenav, modules=modules)
 
 
 @bp.route('/themes', methods=['POST', 'GET'])
 def render_themes():
-    with open('lwpcms/static/shards/admin/side_nav.json') as file:
-        side_nav_data = json.loads(file.read())
+    sidenav = get_sidenav()
 
+    if request.method == 'POST':
+        if 'theme_path' in request.form:
+            theme_path = request.form['theme_path']
 
-        if request.method == 'POST':
-            if 'theme_path' in request.form:
-                theme_path = request.form['theme_path']
-
-                with open('lwpcms/{}/theme.json'.format(theme_path)) as file:
-                    data = json.loads(file.read())
-                    theme = data['theme']
-                    
-                    if 'activated' in theme:
-                        activated = theme['activated']
-                    else:
-                        activated = False
-
+            with open('lwpcms/{}/theme.json'.format(theme_path)) as file:
+                data = json.loads(file.read())
+                theme = data['theme']
                 
-                    if activated:
-                        activated = False
-                    else:
-                        activated = True
+                if 'activated' in theme:
+                    activated = theme['activated']
+                else:
+                    activated = False
 
-                    theme['activated'] = activated
+            
+                if activated:
+                    activated = False
+                else:
+                    activated = True
 
-                    with open('lwpcms/{}/theme.json'.format(theme_path), 'w') as jsonFile:
-                        jsonFile.write(
-                                json.dumps(
-                                    data,
-                                    sort_keys=True,indent=4,
-                                    separators=(',', ': ')
-                                    )
+                theme['activated'] = activated
+
+                with open('lwpcms/{}/theme.json'.format(theme_path), 'w') as jsonFile:
+                    jsonFile.write(
+                            json.dumps(
+                                data,
+                                sort_keys=True,indent=4,
+                                separators=(',', ': ')
                                 )
+                            )
 
+                    return redirect('/admin/themes')
 
-        themes = get_themes()
+    themes = get_themes()
 
-    return render_template('admin_themes.html', side_nav_data=side_nav_data, themes=themes)
+    return render_template('admin_themes.html', sidenav=sidenav, themes=themes)
 
 
 @bp.route('/files', methods=['POST', 'GET'])
 def render_files():
-    with open('lwpcms/static/shards/admin/side_nav.json') as file:
-        side_nav_data = json.loads(file.read())
+    sidenav = get_sidenav()
 
     form = UploadFileForm(csrf_enabled=False)
     if form.validate_on_submit():
@@ -193,7 +189,7 @@ def render_files():
             )
     
     return render_template('admin_files.html',
-        side_nav_data=side_nav_data,
+        sidenav=sidenav,
         form=form,
         files=files
     )
@@ -201,16 +197,14 @@ def render_files():
 
 @bp.route('/development')
 def render_development():
-    with open('lwpcms/static/shards/admin/side_nav.json') as file:
-        side_nav_data = json.loads(file.read())
-    
+    sidenav = get_sidenav()
+
     return render_template('admin_development.html',
-            side_nav_data=side_nav_data)
+            sidenav=sidenav)
 
 
 @bp.route('/settings')
 def render_settings():
-    with open('lwpcms/static/shards/admin/side_nav.json') as file:
-        side_nav_data = json.loads(file.read())
+    sidenav = get_sidenav()
 
-    return render_template('admin_settings.html', side_nav_data=side_nav_data)
+    return render_template('admin_settings.html', sidenav=sidenav)
