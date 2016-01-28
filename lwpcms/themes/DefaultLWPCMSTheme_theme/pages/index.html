@@ -8,9 +8,14 @@
 {% endblock %}
 
 {% block lwpcms_content %}
-    <section>
-        <h2>Default Theme</h2>
-    </section>
+    <nav class='nav-bar'>
+        <ul class='left'>
+            <li class='brand'>Default Theme</li>
+        </ul>
+        <ul class='right'>
+            <li><a class='nav-btn' href='/admin'>Admin</a></li>
+        </ul>
+    </nav>
     <section>
         <ul>
             {% for post in get_posts({'type': 'post', 'classes': ['post']}) %}
