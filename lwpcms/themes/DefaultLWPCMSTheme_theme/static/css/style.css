@@ -5,8 +5,7 @@
   .nav-bar ul, .nav-bar li {
     display: inline-block;
     list-style: none;
-    vertical-align: middle; }
-  .nav-bar ul {
+    vertical-align: middle;
     margin-left: 10px;
     margin-right: 10px; }
   .nav-bar li {
@@ -25,7 +24,7 @@
     font-size: 1.2em;
     color: white !important;
     padding-left: 4px;
-    padding-right: 4px; }
+    padding-right: 24px; }
     .nav-bar .brand a {
       transition: none !important; }
     .nav-bar .brand a:hover {
