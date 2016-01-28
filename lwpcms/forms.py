@@ -29,6 +29,6 @@ class UploadFileForm(Form):
 
 class PostForm(Form):
     title = TextField('Title', [validators.Length(min=4, max=256)])
-    content = TextAreaField('Body', [validators.Length(min=4, max=1024)])
+    content = TextAreaField('Body', [validators.Length(min=4, max=100000)])
     submit = SubmitField('Publish')
     update = SubmitField('Update')

@@ -6,6 +6,7 @@ from flask import (
 )
 from lwpcms.api.themes import get_activated_theme
 from lwpcms.mongo import db
+import glob 
 
 
 bp = Blueprint(
@@ -14,13 +15,13 @@ bp = Blueprint(
 )
 
 
-@bp.route('/')
-def render():
+@bp.route('/<template_name>')
+def render(template_name):
     theme = get_activated_theme()
     
     if theme is not None:
-        path = '{}/root_route/index.html'.format(theme['path'])
-        
+        page_path = '{}/pages/{}'.format(theme['path'], template_name)
+
         posts = list(
                     db.collections.find(
                         {
@@ -29,9 +30,7 @@ def render():
                         }
                     )
                 )
-        print(posts)
         
-
-        return render_template_string(open(path).read(), posts=posts)
+        return render_template_string(open(page_path).read(), posts=posts)
     else:
         return render_template('index.html')

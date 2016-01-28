@@ -1,12 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block lwpcms_head %}
-    <link
-    rel='stylesheet'
-    type='text/css'
-    href='{{
-    url_for("static", filename="css/style.css")
-    }}'>
+    {{render_stylesheet('style.css')}}
 {% endblock %}
 
 {% block lwpcms_content %}

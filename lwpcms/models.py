@@ -33,7 +33,7 @@ class Post(DBObject):
             author={},
             type='',
             classes=[],
-            meta=[]
+            meta={}
         ):
         DBObject.__init__(self, classes, type)
         self.title = title

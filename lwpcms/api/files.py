@@ -24,7 +24,8 @@ def upload_file(file, title):
                     title=title,
                     content=filename,
                     attachments={},
-                    author={}
+                    author={},
+                    meta={'original_filename': file.filename}
                 ).export()
         
         db.collections.insert_one(post)

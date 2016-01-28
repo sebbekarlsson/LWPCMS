@@ -1,6 +1,7 @@
 import glob
 import os
 import json
+import ntpath
 
 
 def get_activated_theme():
@@ -16,3 +17,22 @@ def get_activated_theme():
                     return theme
 
     return None
+
+def render_stylesheet(name):
+    theme = get_activated_theme()
+        
+    if theme is not None:
+        css_path = '{}/static/css/'.format(theme['path'])
+
+        stylesheets = []
+
+                                                                        
+        for file in list(glob.glob('{}/*.css'.format(css_path))):
+            if ntpath.basename(file) != name:
+                continue
+
+            reader = open(file)
+            style = reader.read()
+            reader.close()
+            
+            return '<style>' + style + '</style>'
