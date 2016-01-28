@@ -5,6 +5,7 @@ from flask import (
     render_template_string
 )
 from lwpcms.api.themes import get_activated_theme
+from lwpcms.mongo import db
 
 
 bp = Blueprint(
@@ -20,7 +21,16 @@ def render():
     if theme is not None:
         path = '{}/root_route/index.html'.format(theme['path'])
         
-        posts = sess.query(Post).filter(Post.type=='post').all()
+        posts = list(
+                    db.collections.find(
+                        {
+                            'type': 'post',
+                            'classes': ['post']
+                        }
+                    )
+                )
+        print(posts)
+        
 
         return render_template_string(open(path).read(), posts=posts)
     else:

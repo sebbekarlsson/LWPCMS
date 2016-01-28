@@ -5,7 +5,11 @@ import json
 class DBObject(object):
     """This class defines how objects in the mongoDB should be represented."""
 
-    def __init__(self, classes, type):
+    def __init__(
+            self,
+            classes=[],
+            type=''
+        ):
         self.created = time.strftime("%Y:%m:%d:%H:%M:%S")
         self.updated = ''
         self.classes = classes
@@ -21,9 +25,19 @@ class DBObject(object):
 
 class Post(DBObject):
     
-    def __init__(self, title, content, attachments, author, type, classes):
+    def __init__(
+            self,
+            title='',
+            content='',
+            attachments=[],
+            author={},
+            type='',
+            classes=[],
+            meta=[]
+        ):
         DBObject.__init__(self, classes, type)
         self.title = title
         self.content = content
         self.attachments = attachments
         self.author = author
+        self.meta = meta
