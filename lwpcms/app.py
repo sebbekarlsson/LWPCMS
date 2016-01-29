@@ -8,7 +8,7 @@ from lwpcms.views.setup import bp as setup_bp
 
 from lwpcms.api.files import is_image
 from lwpcms.api.modules import call_module_event
-from lwpcms.api.posts import shorten_text, get_posts
+from lwpcms.api.posts import shorten_text, get_posts, get_option, set_option
 from lwpcms.api.themes import get_activated_theme
 
 import pymongo
@@ -26,4 +26,6 @@ app.jinja_env.globals.update(call_module_event=call_module_event)
 app.jinja_env.globals.update(shorten_text=shorten_text)
 app.jinja_env.globals.update(get_posts=get_posts)
 app.jinja_env.globals.update(get_activated_theme=get_activated_theme)
+app.jinja_env.globals.update(set_option=set_option)
+app.jinja_env.globals.update(get_option=get_option)
 app.jinja_env.globals.update(pymongo=pymongo)
