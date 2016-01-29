@@ -87,7 +87,7 @@ section {
 .lwpcms-table-td {
   display: flex; }
 
-.lwpcms-button, .lwpcms-focused-card input[type='submit'] {
+.lwpcms-button {
   background-color: white;
   outline: none;
   border: none;
@@ -99,7 +99,7 @@ section {
   padding-left: 4px;
   padding-right: 4px;
   transition: .2s; }
-  .lwpcms-button:hover, .lwpcms-focused-card input[type='submit']:hover {
+  .lwpcms-button:hover {
     background-color: white;
     cursor: pointer;
     transition: .2s; }
