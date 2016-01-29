@@ -12,7 +12,6 @@ from flask.ext.wtf import Form
 
 class SetupForm(Form):
     site_name = TextField('Site Name', [validators.Length(min=4, max=35)])
-    db_name = TextField('Database Name', [validators.Length(min=4, max=25)])
     password = PasswordField('New Password', [
         validators.Required(),
         validators.EqualTo('password_confirm', message='Passwords must match')

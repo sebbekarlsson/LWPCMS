@@ -2,10 +2,12 @@ from flask import (
     Blueprint,
     render_template,
     abort, url_for,
-    render_template_string
+    render_template_string,
+    redirect
 )
 from lwpcms.api.themes import get_activated_theme
 from lwpcms.mongo import db
+from lwpcms.api.posts import set_option, get_option
 import glob 
 
 
@@ -18,6 +20,11 @@ bp = Blueprint(
 @bp.route('/', defaults={'template_name': 'index.html'})
 @bp.route('/<template_name>')
 def render(template_name):
+
+    if not get_option('initialized'):
+        return redirect('/setup')
+
+
     if (template_name is None):
         template_name = 'index.html'
 

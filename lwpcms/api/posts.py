@@ -53,5 +53,35 @@ def get_posts(obj, sort=None):
         return list(db.collections.find(obj))
 
 
+def get_option(name):
+    option = list(
+            db.collections.find(
+                    {
+                        'title': name,
+                        'type': 'option',
+                        'classes': ['option']
+                    }
+                )
+            )
+
+    if len(option) > 0:
+        return option[0]
+    else:
+        return None
+
+
+def set_option(name, value):
+    return db.collections.update_one(
+            {
+                'title': name,
+                'type': 'option',
+                'classes': ['option']
+            },
+            {
+                '$set': {'content': value}
+            },
+            True
+        )
+
 def shorten_text(text, max=16):
     return (text[:max] + '..') if len(text) > max else text
