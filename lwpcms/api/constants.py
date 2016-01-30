@@ -4,4 +4,5 @@ hooks = {
     'layout_head': 2,
     'layout_body': 3,
     'layout_footer': 4,
-    'admin_sidenav': 5}
+    'admin_sidenav': 5,
+    'site_request': 6}

@@ -8,6 +8,8 @@ from flask import (
 from lwpcms.api.themes import get_activated_theme
 from lwpcms.mongo import db
 from lwpcms.api.posts import set_option, get_option
+from lwpcms.api.modules import call_module_event
+from lwpcms.api.constants import hooks
 import glob
 import os
 import os.path
@@ -23,6 +25,8 @@ bp = Blueprint(
 @bp.route('/', defaults={'template_name': 'index.html'})
 @bp.route('/<template_name>')
 def render(template_name):
+
+    package = {}
 
     if not get_option('initialized'):
         return redirect('/setup')
@@ -48,6 +52,8 @@ def render(template_name):
             if not os.path.islink(linked_file):
                 os.symlink(filename, linked_file)
 
-        return render_template_string(open(page_path).read())
+        call_module_event(hooks['site_request'], {'package': package})
+
+        return render_template_string(open(page_path).read(), package=package)
     else:
         return render_template('index.html')
