@@ -11,6 +11,7 @@ from lwpcms.api.files import is_image
 from lwpcms.api.modules import call_module_event
 from lwpcms.api.posts import shorten_text, get_posts, get_option, set_option
 from lwpcms.api.themes import get_activated_theme
+from lwpcms.api.site import is_site_demo
 
 import pymongo
 
@@ -30,6 +31,7 @@ app.jinja_env.globals.update(get_posts=get_posts)
 app.jinja_env.globals.update(get_activated_theme=get_activated_theme)
 app.jinja_env.globals.update(set_option=set_option)
 app.jinja_env.globals.update(get_option=get_option)
+app.jinja_env.globals.update(is_site_demo=is_site_demo)
 app.jinja_env.globals.update(pymongo=pymongo)
 
 app.secret_key = 'super secret key'
