@@ -1,27 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <title>{{ get_option('site_name').content }}</title>
-        <meta name="author" content="Sebastian Roberts">
-        <link href="/theme/static/css/style.css" rel="stylesheet" type="text/css" media="all">
-    </head>
-    <body>
-        <div class="topbar">
-            <div class="fill">
-                <div class="container">
-                    <a class="brand" href="/">{{ get_option('site_name').content }}</a>
-                    <ul class="nav">
-                        <li><a href='/admin'>Admin</a></li>
-                    </ul>
-                </div>
+{% extends 'layout.html' %}
+
+{% block lwpcms_head %}
+    {{ super() }}
+    <link rel='stylesheet' type='text/css' href='/theme/static/css/style.css'>
+{% endblock %}
+
+{% block lwpcms_content %}
+    <div class="topbar">
+        <div class="fill">
+            <div class="container">
+                <a class="brand" href="/">{{ get_option('site_name').content }}</a>
+                <ul class="nav">
+                    <li><a href='/admin'>Admin</a></li>
+                </ul>
             </div>
         </div>
-        <div class="container">
-            <div class="content">
-                {% block theme_posts %}
-                {% endblock %} 
-            </div>
+    </div>
+    <div class="container">
+        <div class="content">
+            {% block theme_posts %}
+            {% endblock %} 
         </div>
-    </body>
-</html>
+    </div>
+{% endblock %}
