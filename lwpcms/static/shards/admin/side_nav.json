@@ -44,7 +44,11 @@
             "label": "Settings",
             "svg": "settings.svg",
             "href": "/admin/settings"
+        },
+        {
+            "label": "Logout",
+            "svg": "glassdoor.svg",
+            "href": "/logout"
         }
-
     ]
 }

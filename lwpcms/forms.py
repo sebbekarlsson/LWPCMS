@@ -12,12 +12,21 @@ from flask.ext.wtf import Form
 
 class SetupForm(Form):
     site_name = TextField('Site Name', [validators.Length(min=4, max=35)])
+    user_name = TextField('User Name', [validators.Length(min=4, max=35)])
     password = PasswordField('Choose Password', [
         validators.Required(),
         validators.EqualTo('password_confirm', message='Passwords must match')
     ])
     password_confirm = PasswordField('Repeat Password')
     submit = SubmitField('Create')
+
+
+class LoginForm(Form):
+    user_name = TextField('User Name', [validators.Length(min=4, max=35)])
+    password = PasswordField('Password', [
+        validators.Required()
+    ])
+    submit = SubmitField('Login')
 
 
 class UploadFileForm(Form):

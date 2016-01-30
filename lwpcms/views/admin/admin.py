@@ -10,6 +10,7 @@ from lwpcms.api.posts import publish_post
 from lwpcms.api.modules import call_module_event, get_modules
 from lwpcms.api.themes import get_themes
 from lwpcms.api.admin import get_sidenav
+from lwpcms.api.user import login_required
 from lwpcms.mongo import db
 
 import pymongo as pymongo
@@ -23,6 +24,7 @@ bp = Blueprint(
 )
 
 @bp.route('/')
+@login_required
 def render():
     sidenav = get_sidenav()
 
@@ -31,6 +33,7 @@ def render():
 
 @bp.route('/publish/<id>', methods=['POST', 'GET']) 
 @bp.route('/publish', defaults={'id': None}, methods=['POST', 'GET'])
+@login_required
 def render_publish(id):
     sidenav = get_sidenav()
 
@@ -70,6 +73,7 @@ def render_publish(id):
 
 
 @bp.route('/posts')
+@login_required
 def render_posts():
     sidenav = get_sidenav()
 
@@ -85,13 +89,24 @@ def render_posts():
 
 
 @bp.route('/users')
+@login_required
 def render_users():
     sidenav = get_sidenav()
 
-    return render_template('admin_users.html', sidenav=sidenav)
+    users = list(
+                db.collections.find(
+                    {
+                        'type': 'user',
+                        'classes': ['user']
+                    }
+                )
+            )
+
+    return render_template('admin_users.html', sidenav=sidenav, users=users)
 
 
 @bp.route('/modules', methods=['POST', 'GET'])
+@login_required
 def render_modules():
     sidenav = get_sidenav()
     
@@ -132,6 +147,7 @@ def render_modules():
 
 
 @bp.route('/themes', methods=['POST', 'GET'])
+@login_required
 def render_themes():
     sidenav = get_sidenav()
 
@@ -173,6 +189,7 @@ def render_themes():
 
 
 @bp.route('/files', methods=['POST', 'GET'])
+@login_required
 def render_files():
     sidenav = get_sidenav()
 
@@ -196,6 +213,7 @@ def render_files():
 
 
 @bp.route('/development')
+@login_required
 def render_development():
     sidenav = get_sidenav()
 
@@ -204,6 +222,7 @@ def render_development():
 
 
 @bp.route('/settings')
+@login_required
 def render_settings():
     sidenav = get_sidenav()
 

@@ -8,17 +8,20 @@
             <form method="POST" class='lwpcms-form'>
                 <section>
                     <h1>Hello</h1>
-                    <p>Let's setup your site!</p>
+                    <p>Login to your site!</p>
                 </section>
                 <section>
-                    {{ render_field(form.site_name) }}
                     {{ render_field(form.user_name) }}
                     {{ render_field(form.password) }}
-                    {{ render_field(form.password_confirm) }} 
                 </section>
                 <section>
                     {{ render_field(form.submit) }}
                 </section>
+                {% if msg %}
+                    <section>
+                        <p>{{ msg }}</p>
+                    </section>
+                {% endif %}
             </form>
         </div>
     </section>

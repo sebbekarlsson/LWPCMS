@@ -2,6 +2,7 @@ from flask import Blueprint, render_template, abort, request, redirect
 
 from lwpcms.forms import SetupForm
 from lwpcms.api.posts import set_option, get_option
+from lwpcms.api.user import register_user
 
 
 bp = Blueprint(
@@ -18,10 +19,16 @@ def render():
 
     if form.validate_on_submit():
         site_name = form.site_name.data
+        user_name = form.user_name.data
         password = form.password.data
 
         set_option('site_name', site_name)
-        set_option('site_password', password)
+
+        register_user(
+                    name=user_name,
+                    password=password
+                )
+
         set_option('initialized', 'True')
 
         return redirect('/')
