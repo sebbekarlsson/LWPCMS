@@ -39,8 +39,8 @@ def render(template_name):
         abs_templates_path = os.path.abspath('lwpcms/templates')
         page_path = '{}/{}'.format(pages_path, template_name)
 
-        if not os.path.exists('lwpcms/templates/theme'):
-            os.makedirs('lwpcms/templates/theme')
+        if not os.path.exists('{}/theme'.format(abs_templates_path)):
+            os.makedirs('{}/theme'.format(abs_templates_path))
 
         for filename in glob.iglob('{}/*.html'.format(abs_pages_path)):
             linked_file = '{}/theme/{}'.format(abs_templates_path, ntpath.basename(filename))
