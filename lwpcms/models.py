@@ -14,6 +14,7 @@ class DBObject(object):
         self.updated = time.strftime("%Y:%m:%d:%H:%M:%S")
         self.classes = classes
         self.type = type
+        self.structure = self.__class__.__name__
     
 
     def export(self):

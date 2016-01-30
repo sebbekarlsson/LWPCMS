@@ -60,6 +60,8 @@ def render(template_name):
 
         call_module_event(hooks['site_request'], {'package': package})
 
+        print(package)
+
         return render_template_string(open(page_path).read(), package=package)
     else:
         return render_template('index.html')

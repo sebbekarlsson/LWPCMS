@@ -13,6 +13,8 @@ from lwpcms.api.posts import shorten_text, get_posts, get_option, set_option
 from lwpcms.api.themes import get_activated_theme
 from lwpcms.api.site import is_site_demo
 
+from bson.objectid import ObjectId
+
 import pymongo
 
 
@@ -33,5 +35,6 @@ app.jinja_env.globals.update(set_option=set_option)
 app.jinja_env.globals.update(get_option=get_option)
 app.jinja_env.globals.update(is_site_demo=is_site_demo)
 app.jinja_env.globals.update(pymongo=pymongo)
+app.jinja_env.globals.update(ObjectId=ObjectId)
 
 app.secret_key = 'super secret key'

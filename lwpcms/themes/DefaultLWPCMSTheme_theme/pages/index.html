@@ -1,22 +1,40 @@
 {% extends 'theme/theme.html' %}
 
-{% block theme_content %}
+{% block theme_posts %}
     {% for post in get_posts({'type': 'post', 'classes': ['post']}, ('created', pymongo.DESCENDING)) %}
-        <div class='item card-2 {% if post.attachments|length > 0 %} extended {% endif %}'>
-            {% if post.attachments|length > 0 %}
-                <section class='section-left'>
-                    <img src='/static/upload/{{ post.attachments[0].content }}'>
-                </section>
-                <section>
-                    <h1>{{ post.title }}</h1>
-                    <p>{{ shorten_text(post.content, 700) }}<p>
-                </section>
-            {% else %}
-               <section>
-                    <h1>{{ post.title }}</h1>
-                    <p>{{ shorten_text(post.content, 700) }}<p>
-                </section> 
-            {% endif %}
+        <div class='post'>
+            <div class="page-header">
+                <h1>{{ shorten_text(post.title, 128) }}</h1>
+            </div>
+            <div class="row">
+                <div class="span10">
+                    {% if post.attachments|length > 0 %}
+                        {% if is_image(post.attachments[0].content) %}
+                            <img src='static/upload/{{ post.attachments[0].content }}'>
+                        {% endif %}
+                    {% endif %}
+                    <p>
+                        {{ shorten_text(post.content, 700) }}
+                    </p>
+                    <hr>
+                    <div class="pagination">
+                        <ul>
+                            <li class="prev"><a href="/post.html?id={{ post._id }}">Read More</a></li>
+                        </ul>
+                    </div>
+                    <hr>
+                </div>
+                <div class="span4">
+                    <h4>Published</h4>
+                    <div class="date"><span>2015-02-21</span></div>
+                    <h4>Tags</h4>
+                    <ul class="tag_box">
+                        <li>Not implemented yet</li>
+                        <li>Not implemented yet</li>
+                        <li>Not implemented yet</li>
+                    </ul>
+                </div>
+            </div>
         </div>
     {% endfor %}
 {% endblock %}

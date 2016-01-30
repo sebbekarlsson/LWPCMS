@@ -1,0 +1,39 @@
+{% extends 'theme/theme.html' %}
+{% set post = get_posts({'_id': ObjectId(package['get_request'].get('id'))})[0] %}
+
+{% block theme_posts %}
+<div class='post'>
+    <div class="page-header">
+        <h1>{{ post.title }}</h1>
+    </div>
+    <div class="row">
+        <div class="span10">
+            {% if post.attachments|length > 0 %}
+                {% if is_image(post.attachments[0].content) %}
+                    <img src='static/upload/{{ post.attachments[0].content }}'>
+                {% endif %}
+            {% endif %}
+            <p>
+                {{ post.content }}
+            </p>
+            <hr>
+            <div class="pagination">
+                <ul>
+                    <li class="prev"><a href="/">Go Back</a></li>
+                </ul>
+            </div>
+            <hr>
+        </div>
+        <div class="span4">
+            <h4>Published</h4>
+            <div class="date"><span>{{ post.created }}</span></div>
+            <h4>Tags</h4>
+            <ul class="tag_box">
+                <li>Not implemented yet</li>
+                <li>Not implemented yet</li>
+                <li>Not implemented yet</li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}
