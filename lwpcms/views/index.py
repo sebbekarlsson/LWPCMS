@@ -3,7 +3,8 @@ from flask import (
     render_template,
     abort, url_for,
     render_template_string,
-    redirect
+    redirect,
+    request
 )
 from lwpcms.api.themes import get_activated_theme
 from lwpcms.mongo import db
@@ -22,17 +23,22 @@ bp = Blueprint(
 )
 
 
-@bp.route('/', defaults={'template_name': 'index.html'})
-@bp.route('/<template_name>')
+@bp.route('/', defaults={'template_name': 'index.html'}, methods=['POST', 'GET'])
+@bp.route('/<template_name>', methods=['POST', 'GET'])
 def render(template_name):
 
-    package = {}
+    package = {
+            'get_request': request.args,
+            'post_request': request.form,
+            'body_request': request.get_data(),
+            'unknown_request': request.stream.read()
+            }
 
     if not get_option('initialized'):
         return redirect('/setup')
 
 
-    if (template_name is None):
+    if template_name is None:
         template_name = 'index.html'
 
     theme = get_activated_theme()
