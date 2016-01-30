@@ -45,7 +45,7 @@ def render(template_name):
         for filename in glob.iglob('{}/*.html'.format(abs_pages_path)):
             linked_file = '{}/theme/{}'.format(abs_templates_path, ntpath.basename(filename))
 
-            if not os.path.isfile(linked_file):
+            if not os.path.exists(linked_file):
                 os.symlink(filename, linked_file)
 
         return render_template_string(open(page_path).read())
