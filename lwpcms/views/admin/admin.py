@@ -16,6 +16,9 @@ from lwpcms.mongo import db
 import pymongo as pymongo
 from bson.objectid import ObjectId
 
+import os
+import shutil
+
 
 bp = Blueprint(
     __name__, __name__,
@@ -180,6 +183,11 @@ def render_themes():
                                 separators=(',', ': ')
                                 )
                             )
+
+                    abs_templates_path = os.path.abspath('lwpcms/templates')
+                    
+                    if os.path.isdir('{}/theme'.format(abs_templates_path)):
+                        shutil.rmtree('{}/theme'.format(abs_templates_path))
 
                     return redirect('/admin/themes')
 

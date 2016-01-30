@@ -1,0 +1,24 @@
+{% extends 'layout.html' %}
+
+{% block lwpcms_head %}
+    <link
+        rel='stylesheet'
+        type='text/css'
+        href='/theme/static/css/style.css'>
+{% endblock %}
+
+{% block lwpcms_content %}
+    <nav class='nav-bar'>
+        <ul class='left'>
+            <li class='brand'><a class='nav-btn' href='/'>{{ get_activated_theme()['name'] }}</a></li>
+        </ul>
+        <ul class='right'>
+            <li><a class='nav-btn' href='about.html'>About</a></li>
+            <li><a class='nav-btn' href='/admin'>Admin</a></li>
+        </ul>
+    </nav>
+    <section class='feed card-2'>
+        {% block theme_content %}
+        {% endblock %}
+    </section>
+{% endblock %}

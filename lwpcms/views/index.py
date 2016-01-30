@@ -8,7 +8,10 @@ from flask import (
 from lwpcms.api.themes import get_activated_theme
 from lwpcms.mongo import db
 from lwpcms.api.posts import set_option, get_option
-import glob 
+import glob
+import os
+import os.path
+import ntpath
 
 
 bp = Blueprint(
@@ -31,7 +34,19 @@ def render(template_name):
     theme = get_activated_theme()
     
     if theme is not None:
-        page_path = 'lwpcms/{}/pages/{}'.format(theme['path'], template_name)
+        pages_path = 'lwpcms/{}/pages'.format(theme['path'])
+        abs_pages_path = os.path.abspath(pages_path)
+        abs_templates_path = os.path.abspath('lwpcms/templates')
+        page_path = '{}/{}'.format(pages_path, template_name)
+
+        if not os.path.exists('lwpcms/templates/theme'):
+            os.makedirs('lwpcms/templates/theme')
+
+        for filename in glob.iglob('{}/*.html'.format(abs_pages_path)):
+            linked_file = '{}/theme/{}'.format(abs_templates_path, ntpath.basename(filename))
+
+            if not os.path.isfile(linked_file):
+                os.symlink(filename, linked_file)
 
         return render_template_string(open(page_path).read())
     else:

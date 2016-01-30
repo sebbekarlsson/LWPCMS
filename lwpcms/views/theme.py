@@ -35,3 +35,16 @@ def get_static(folder_name, file_name):
         return send_file(path, mimetype=mimetype)
     else:
         return 'No activated theme', 400
+
+
+@bp.route('/pages/<file_name>')
+def get_page(file_name):
+    theme = get_activated_theme()
+    
+    if theme is not None:
+        path = '{}/pages/{}'.format(theme['path'], file_name)
+        mimetype = 'text/raw'
+
+        return send_file(path, mimetype=mimetype)
+    else:
+        return 'No activated theme', 400
