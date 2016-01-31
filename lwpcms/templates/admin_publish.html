@@ -25,20 +25,7 @@
                 <dt>
                     <label>Attachments</label>
                 </td>
-                <div class='lwpcms-addlist' type='attachment'>
-                    {% if post %}
-                        {% for attachment in post.attachments %}
-                            <div class='lwpcms-addlist-item'>
-                                <section class='lwpcms-addlist-left'>
-                                    ADD
-                                </section>
-                                <section class='lwpcms-inputs lwpcms-addlist-right'>
-                                    <input type='text' class='attachment-search' value='{{ attachment.content }}'></input>
-                                    <input type='hidden' name='attachment_id' value='{{ attachment._id }}'></input>
-                                </section>
-                            </div>
-                        {% endfor %}
-                    {% endif %}
+                <div class='lwpcms-addlist' type='lwpcms-file'>
                 </div>
             </section>
             <section>

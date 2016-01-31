@@ -39,10 +39,19 @@
             src='{{
                 url_for("static", filename="js/ElemenTailor/elementailor.js")
             }}'></script>
-
+        <script
+            type='text/javascript'
+            src='{{ url_for("static", filename="js/svg_color.js") }}'></script>
         <script
             type='text/javascript'
             src='{{ url_for("static", filename="js/functions.js") }}'></script>
+        <script
+            type='text/javascript'
+            src='{{ url_for("static", filename="js/input_types.js") }}'></script>
+        <script
+            type='text/javascript'
+            src='{{ url_for("static", filename="js/window_manager.js") }}'></script>
+
 
         {% block lwpcms_head %}
         {% endblock %}
@@ -70,17 +79,14 @@
             src='{{ url_for("static", filename="js/tables.js") }}'></script>
         <script
             type='text/javascript'
-            src='{{ url_for("static", filename="js/svg_color.js") }}'></script>
-        <script
-            type='text/javascript'
             src='{{ url_for("static", filename="js/files.js") }}'></script>
         <script
             type='text/javascript'
             src='{{ url_for("static", filename="js/posts.js") }}'></script>
         <script
             type='text/javascript'
-            src='{{ url_for("static", filename="js/attachment_search.js") }}'></script>
-
+            src='{{ url_for("static", filename="js/eof.js") }}'></script>
+        
         {% block lwpcms_footer %}
         {% endblock %}
 

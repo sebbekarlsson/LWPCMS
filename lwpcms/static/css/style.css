@@ -211,7 +211,7 @@ section {
           cursor: crosshair;
           transition: .2s; }
 
-.lwpcms-btn {
+.lwpcms-btn, input[type='lwpcms-file'] {
   display: inline-block;
   background-color: white;
   outline-width: 1px;
@@ -227,33 +227,66 @@ section {
   vertical-align: middle;
   border: none;
   transition: .2s; }
-  .lwpcms-btn:hover {
+  .lwpcms-btn:hover, input[type='lwpcms-file']:hover {
     cursor: pointer;
     background-color: #3498db;
     color: white;
     transition: .2s; }
 
-.lwpcms-addlist, .lwpcms-addlist-item {
-  width: 100%; }
-
-.lwpcms-addlist-item {
+#lwpcms-window-manager {
   display: flex;
-  border-bottom-style: solid;
-  border-bottom-width: 1px;
-  border-bottom-color: lightgray; }
-  .lwpcms-addlist-item .lwpcms-addlist-left {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 32px;
-    outline-color: lightgray;
-    outline-style: solid;
-    outline-width: 1px; }
-  .lwpcms-addlist-item .lwpcms-addlist-right {
-    width: 100%; }
-  .lwpcms-addlist-item input, .lwpcms-addlist-item textarea {
-    width: 100% !important;
-    border-bottom: none !important;
-    outline: none; }
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  pointer-events: none; }
+
+#lwpcms-backdrop {
+  background-color: rgba(0, 0, 0, 0.8);
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  z-index: -30;
+  pointer-events: all; }
+
+.lwpcms-backdrop-window {
+  position: relative;
+  background-color: white;
+  width: 30%;
+  min-height: 250px;
+  z-index: 25; }
+  .lwpcms-backdrop-window .lwpcms-backdrop-window-top {
+    height: 48px;
+    width: 100%;
+    background-color: #3498db; }
+    .lwpcms-backdrop-window .lwpcms-backdrop-window-top ul, .lwpcms-backdrop-window .lwpcms-backdrop-window-top li {
+      display: inline-block;
+      list-style: none;
+      margin-left: 10px;
+      margin-right: 10px; }
+      .lwpcms-backdrop-window .lwpcms-backdrop-window-top ul label, .lwpcms-backdrop-window .lwpcms-backdrop-window-top li label {
+        line-height: 48px;
+        color: white;
+        position: relative; }
+        .lwpcms-backdrop-window .lwpcms-backdrop-window-top ul label svg, .lwpcms-backdrop-window .lwpcms-backdrop-window-top ul label object, .lwpcms-backdrop-window .lwpcms-backdrop-window-top li label svg, .lwpcms-backdrop-window .lwpcms-backdrop-window-top li label object {
+          height: 100%;
+          display: inline-block;
+          line-height: 48px;
+          padding-top: 12px;
+          position: relative; }
+          .lwpcms-backdrop-window .lwpcms-backdrop-window-top ul label svg:hover, .lwpcms-backdrop-window .lwpcms-backdrop-window-top ul label object:hover, .lwpcms-backdrop-window .lwpcms-backdrop-window-top li label svg:hover, .lwpcms-backdrop-window .lwpcms-backdrop-window-top li label object:hover {
+            cursor: pointer; }
+
+.left {
+  float: left; }
+
+.right {
+  float: right; }
 
 /*# sourceMappingURL=style.css.map */
