@@ -18,7 +18,7 @@ function apply_inputs (input) {
                                 'option',
                                 {
                                     value: attachments[i].id,
-                                    innerHTML: attachments[i].title
+                                    innerHTML: attachments[i].original
                                 }
                             )
                         );
@@ -40,24 +40,50 @@ function apply_inputs (input) {
                                 }
                             ),
                             function(e, c) {
-                                input.parentNode.appendChild(
-                                    ElemenTailor.create(
-                                        'label',
+                                
+                                var remove_button = ElemenTailor.create(
+                                        'button',
                                         {
-                                            innerHTML: c.options[c.selectedIndex].value
+                                            class: 'lwpcms-btn',
+                                            innerHTML: 'Remove'
                                         }
-                                    )
-                                );
-                                input.parentNode.appendChild(
-                                    ElemenTailor.create(
-                                        'input',
-                                        {
-                                            type: 'hidden',
-                                            name: 'attachment_id',
-                                            value: c.options[c.selectedIndex].value
-                                        }
-                                    )
-                                );
+                                    );
+
+                                remove_button.addEventListener('click', function(e) {
+                                    e.preventDefault();
+
+                                    ElemenTailor.delete(this.parentNode.parentNode.parentNode.parentNode);
+                                });
+
+                                var span = ElemenTailor.create(
+                                            'span',
+                                            {
+                                                childs: [
+                                                    ElemenTailor.create('ul', {childs: [
+                                                        ElemenTailor.create('li', {childs:[
+                                                        ElemenTailor.create(
+                                                            'label',
+                                                            {
+                                                                innerHTML: c.options[c.selectedIndex].innerHTML
+                                                            }
+                                                        )]}),
+                                                        ElemenTailor.create('li', {childs:[
+                                                            remove_button 
+                                                        ]}),
+                                                        ElemenTailor.create(
+                                                            'input',
+                                                            {
+                                                                type: 'hidden',
+                                                                name: 'attachment_id',
+                                                                value: c.options[c.selectedIndex].value
+                                                            }
+                                                        )
+                                                    ]})
+                                                ]
+                                            }
+                                        );
+
+                                input.parentNode.appendChild(span);
                                 ElemenTailor.delete(input);
                             }
                         );

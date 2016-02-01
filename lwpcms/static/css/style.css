@@ -284,6 +284,27 @@ section {
           .lwpcms-backdrop-window .lwpcms-backdrop-window-top ul label svg:hover, .lwpcms-backdrop-window .lwpcms-backdrop-window-top ul label object:hover, .lwpcms-backdrop-window .lwpcms-backdrop-window-top li label svg:hover, .lwpcms-backdrop-window .lwpcms-backdrop-window-top li label object:hover {
             cursor: pointer; }
 
+.lwpcms-addlist-item {
+  display: flex;
+  padding: 12px; }
+  .lwpcms-addlist-item span ul, .lwpcms-addlist-item span li {
+    display: inline-block;
+    list-style: none;
+    margin-left: 10px;
+    margin-right: 10px; }
+    .lwpcms-addlist-item span ul label, .lwpcms-addlist-item span ul li, .lwpcms-addlist-item span li label, .lwpcms-addlist-item span li li {
+      line-height: 48px;
+      color: #3498db;
+      position: relative; }
+      .lwpcms-addlist-item span ul label svg, .lwpcms-addlist-item span ul label object, .lwpcms-addlist-item span ul li svg, .lwpcms-addlist-item span ul li object, .lwpcms-addlist-item span li label svg, .lwpcms-addlist-item span li label object, .lwpcms-addlist-item span li li svg, .lwpcms-addlist-item span li li object {
+        height: 100%;
+        display: inline-block;
+        line-height: 48px;
+        padding-top: 12px;
+        position: relative; }
+        .lwpcms-addlist-item span ul label svg:hover, .lwpcms-addlist-item span ul label object:hover, .lwpcms-addlist-item span ul li svg:hover, .lwpcms-addlist-item span ul li object:hover, .lwpcms-addlist-item span li label svg:hover, .lwpcms-addlist-item span li label object:hover, .lwpcms-addlist-item span li li svg:hover, .lwpcms-addlist-item span li li object:hover {
+          cursor: pointer; }
+
 .left {
   float: left; }
 

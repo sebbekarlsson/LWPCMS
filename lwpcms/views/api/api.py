@@ -61,7 +61,8 @@ def query_attachments(query, page):
                         {
                             'id': str(attachment["_id"]),
                             'title': attachment["title"],
-                            'content': attachment["content"]
+                            'content': attachment["content"],
+                            'original': attachment['meta']['original_filename']
                         }
                     for attachment in attachments]
                } 

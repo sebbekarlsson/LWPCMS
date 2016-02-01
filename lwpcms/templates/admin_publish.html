@@ -26,6 +26,21 @@
                     <label>Attachments</label>
                 </td>
                 <div class='lwpcms-addlist' type='lwpcms-file'>
+                    {% if post %}
+                        <div class="lwpcms-addlist-items">
+                        {% for attachment in post.attachments %}
+                            <div class="lwpcms-addlist-item" childs="[object HTMLInputElement]">
+                               <span childs="[object HTMLUListElement]">
+                                 <ul childs="[object HTMLLIElement],[object HTMLLIElement],[object HTMLInputElement]">
+                                    <li childs="[object HTMLLabelElement]"><label>{{ attachment.meta.original_filename }}</label></li>
+                                    <li childs="[object HTMLButtonElement]"><button class="lwpcms-btn" innerhtml="Remove">Remove</button></li>
+                                    <input type="hidden" name="attachment_id" value="{{ attachment._id }}">
+                                 </ul>
+                              </span>
+                           </div>
+                       {% endfor %}
+                        </div>
+                    {% endif %}
                 </div>
             </section>
             <section>

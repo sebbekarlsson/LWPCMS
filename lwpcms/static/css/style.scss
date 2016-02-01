@@ -376,6 +376,38 @@ input[type='lwpcms-file'] {
     }
 }
 
+.lwpcms-addlist-item {
+    display: flex;
+    padding: 12px;
+
+    span {
+        ul, li {
+            display: inline-block;
+            list-style: none;
+            margin-left: 10px;
+            margin-right: 10px;
+
+            label, li {
+                line-height: 48px;
+                color: $main-color-lighter;
+                position: relative;
+
+                svg, object {
+                   height: 100%;
+                   display: inline-block;
+                   line-height: 48px;
+                   padding-top: 12px;
+                   position: relative;
+
+                   &:hover {
+                       cursor: pointer;
+                   }
+                }
+            }
+        }
+    }
+}
+
 .left {
     float: left;
 }
