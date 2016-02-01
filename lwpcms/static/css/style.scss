@@ -317,7 +317,7 @@ input[type='lwpcms-file'] {
     display: flex;
     justify-content: center;
     align-items: center;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -333,7 +333,7 @@ input[type='lwpcms-file'] {
     left: 0;
     opacity: 0;
     z-index: -30;
-    pointer-events: all;
+    pointer-events: none;
 }
 
 .lwpcms-backdrop-window {

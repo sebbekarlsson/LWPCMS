@@ -20,6 +20,7 @@ backdrop.addEventListener('click', function (e) {
         ElemenTailor.delete(windows[i]);
     }
 
+    this.style.pointerEvents = 'none';
     this.style.opacity = 0;
     this.style.zIndex = -30;
 });
@@ -123,7 +124,8 @@ function lwpcms_window(waiter, title, content, action) {
 
     window_manager_element.appendChild(w);
     color_svgs();
-   
+
+    backdrop.style.pointerEvents = 'all';
     backdrop.style.zIndex = 20; 
     backdrop.style.opacity = 1;
 }
