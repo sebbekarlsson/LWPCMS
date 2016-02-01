@@ -342,6 +342,7 @@ input[type='lwpcms-file'] {
     width: 30%;
     min-height: 250px;
     z-index: 25;
+    pointer-events: all;
 
     .lwpcms-backdrop-window-top {
         height: 48px;
