@@ -30,18 +30,27 @@ def delete_post(id):
     return 'ok', 200
 
 
-@bp.route('/query_attachments/<query>', methods=['POST', 'GET'])
-def query_attachments(query):
-    attachments = list(
-                db.collections.find(
-                    {
-                        "classes": ["post", "file"],
-                        "title": {"$regex": u"[a-zA-Z]*{}[a-zA-Z]*".format(query)}
-                    }
-                )
-            )
+@bp.route('/query_attachments/<query>', defaults={'page': 1})
+@bp.route('/query_attachments/<query>/<page>', methods=['POST', 'GET'])
+def query_attachments(query, page):
 
-    print(attachments)
+    if query != '*':
+        attachments = list(
+                    db.collections.find(
+                        {
+                            "classes": ["post", "file"],
+                            "title": {"$regex": u"[a-zA-Z]*{}[a-zA-Z]*".format(query)}
+                        }
+                    )
+                )
+    else:
+        attachments = list(
+                    db.collections.find(
+                        {
+                            "classes": ["post", "file"]
+                        }
+                    )
+                )
 
     return jsonify(
                 {

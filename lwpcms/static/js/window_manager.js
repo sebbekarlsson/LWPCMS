@@ -24,7 +24,15 @@ backdrop.addEventListener('click', function (e) {
     this.style.zIndex = -30;
 });
 
-function lwpcms_window(waiter, title) {
+function lwpcms_window(waiter, title, content, action) {
+    var button = ElemenTailor.create(
+        'button',
+        {
+            class: 'lwpcms-btn',
+            innerHTML: 'OK'
+        }
+    );
+
     w = ElemenTailor.create(
         'div',
         {
@@ -80,7 +88,23 @@ function lwpcms_window(waiter, title) {
                                         )
                                     ]
                                 }
-                            )
+                            ) 
+                        ]
+                    }
+                ),
+                ElemenTailor.create(
+                    'section',
+                    {
+                        childs: [
+                            content
+                        ]
+                    }
+                ),
+                ElemenTailor.create(
+                    'section',
+                    {
+                        childs: [
+                            button
                         ]
                     }
                 )
@@ -90,7 +114,11 @@ function lwpcms_window(waiter, title) {
 
 
     w.addEventListener('DOMNodeRemoved', function(e) {
-        waiter.setAttribute('window-response', w.innerHTML);
+        waiter.setAttribute('window-response', w.getAttribute('value'));
+    });
+
+    button.addEventListener('click', function(e) {
+        action(e, content);
     });
 
     window_manager_element.appendChild(w);
