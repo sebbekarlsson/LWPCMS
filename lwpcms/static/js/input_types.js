@@ -39,7 +39,7 @@ function apply_inputs (input) {
                                     childs: options
                                 }
                             ),
-                            function(e, c) {
+                            function(e, c, w) {
                                 
                                 var remove_button = ElemenTailor.create(
                                         'button',
@@ -85,6 +85,8 @@ function apply_inputs (input) {
 
                                 input.parentNode.appendChild(span);
                                 ElemenTailor.delete(input);
+
+                                close_lwpcms_windows();
                             }
                         );
                     });

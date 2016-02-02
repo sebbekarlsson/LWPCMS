@@ -25,6 +25,21 @@ backdrop.addEventListener('click', function (e) {
     this.style.zIndex = -30;
 });
 
+
+function close_lwpcms_windows() {
+    var backdrop = document.getElementById('lwpcms-backdrop');
+    var windows = document.querySelectorAll('.lwpcms-backdrop-window');
+
+    for (var i = 0; i < windows.length; i++) {
+        ElemenTailor.delete(windows[i]);
+    }
+
+    backdrop.style.pointerEvents = 'none';
+    backdrop.style.opacity = 0;
+    backdrop.style.zIndex = -30; 
+}
+
+
 function lwpcms_window(waiter, title, content, action) {
     var button = ElemenTailor.create(
         'button',
@@ -119,7 +134,7 @@ function lwpcms_window(waiter, title, content, action) {
     });
 
     button.addEventListener('click', function(e) {
-        action(e, content);
+        action(e, content, w);
     });
 
     window_manager_element.appendChild(w);
