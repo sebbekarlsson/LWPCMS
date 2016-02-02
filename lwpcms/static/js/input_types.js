@@ -9,19 +9,45 @@ function apply_inputs (input) {
             case 'lwpcms-file':
                     
                     var attachments = query_attachments('*')['attachments'];
-                    console.log(attachments);
-                    var options = [];
+                    var gallery_items = [];
 
                     for (var i = 0; i < attachments.length; i++) {
-                        options.push(
-                            ElemenTailor.create(
-                                'option',
-                                {
-                                    value: attachments[i].id,
-                                    innerHTML: attachments[i].original
-                                }
-                            )
+                        var gallery_item = ElemenTailor.create(
+                            'div',
+                            {
+                                attachment_id: attachments[i].id,
+                                attachment_original: attachments[i].original,
+                                attachment_title: attachments[i].title,
+                                attachment_file: attachments[i].content,
+                                class: 'lwpcms-gallery-item',
+                                childs:[
+                                    ElemenTailor.create(
+                                        'p',
+                                        {
+                                            innerHTML: attachments[i].title
+                                        }
+                                    ),
+                                    ElemenTailor.create(
+                                        'img',
+                                        {
+                                            src: `/static/upload/${attachments[i].content}`
+                                        }
+                                    )
+                                ]
+                            }
                         );
+                        
+                        gallery_item.addEventListener('click', function (e) {
+                            var other_items = this.parentNode.querySelectorAll('.lwpcms-gallery-item');
+
+                            for(var i = 0; i < other_items.length; i++) {
+                                other_items[i].removeAttribute('selected');
+                            }
+
+                            this.setAttribute('selected', true);
+                        });
+
+                        gallery_items.push(gallery_item);
                     }
                     
                     input.value = 'Choose File';
@@ -34,13 +60,15 @@ function apply_inputs (input) {
                             this,
                             'Choose File',
                             ElemenTailor.create(
-                                'select',
+                                'div',
                                 {
-                                    childs: options
+                                    class: 'lwpcms-gallery',
+                                    childs: gallery_items
                                 }
                             ),
                             function(e, c, w) {
-                                
+                                var attachment = c.querySelector('.lwpcms-gallery-item[selected="true"]');
+
                                 var remove_button = ElemenTailor.create(
                                         'button',
                                         {
@@ -64,7 +92,7 @@ function apply_inputs (input) {
                                                         ElemenTailor.create(
                                                             'label',
                                                             {
-                                                                innerHTML: c.options[c.selectedIndex].innerHTML
+                                                                innerHTML: attachment.getAttribute('attachment_original')
                                                             }
                                                         )]}),
                                                         ElemenTailor.create('li', {childs:[
@@ -75,7 +103,7 @@ function apply_inputs (input) {
                                                             {
                                                                 type: 'hidden',
                                                                 name: 'attachment_id',
-                                                                value: c.options[c.selectedIndex].value
+                                                                value: attachment.getAttribute('attachment_id')
                                                             }
                                                         )
                                                     ]})

@@ -259,7 +259,9 @@ section {
   position: relative;
   background-color: white;
   width: 30%;
+  max-height: 500px;
   min-height: 250px;
+  overflow: scroll;
   z-index: 25;
   pointer-events: all; }
   .lwpcms-backdrop-window .lwpcms-backdrop-window-top {
@@ -304,6 +306,11 @@ section {
         position: relative; }
         .lwpcms-addlist-item span ul label svg:hover, .lwpcms-addlist-item span ul label object:hover, .lwpcms-addlist-item span ul li svg:hover, .lwpcms-addlist-item span ul li object:hover, .lwpcms-addlist-item span li label svg:hover, .lwpcms-addlist-item span li label object:hover, .lwpcms-addlist-item span li li svg:hover, .lwpcms-addlist-item span li li object:hover {
           cursor: pointer; }
+
+*[selected='true'] {
+  outline-color: #3498db !important;
+  outline-width: 4px !important;
+  outline-style: solid; }
 
 .left {
   float: left; }
