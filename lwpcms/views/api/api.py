@@ -67,3 +67,22 @@ def query_attachments(query, page):
                     for attachment in attachments]
                } 
             )
+
+
+@bp.route('/remove_attachment/<post_id>/<attach_id>', methods=['POST', 'GET'])
+def remove_attachment(post_id, attach_id):
+    db.collections.update_one(
+                {
+                    '_id': ObjectId(post_id)
+                },
+                {
+                    '$pull': {
+                        'attachments': {
+                             '_id': ObjectId(attach_id)
+                         }
+                    }
+                }
+            )
+    return jsonify({
+            'status': 200
+        }), 200
