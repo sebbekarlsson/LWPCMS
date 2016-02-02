@@ -30,18 +30,27 @@ def delete_post(id):
     return 'ok', 200
 
 
-@bp.route('/query_attachments/<query>', methods=['POST', 'GET'])
-def query_attachments(query):
-    attachments = list(
-                db.collections.find(
-                    {
-                        "classes": ["post", "file"],
-                        "title": {"$regex": u"[a-zA-Z]*{}[a-zA-Z]*".format(query)}
-                    }
-                )
-            )
+@bp.route('/query_attachments/<query>', defaults={'page': 1})
+@bp.route('/query_attachments/<query>/<page>', methods=['POST', 'GET'])
+def query_attachments(query, page):
 
-    print(attachments)
+    if query != '*':
+        attachments = list(
+                    db.collections.find(
+                        {
+                            "classes": ["post", "file"],
+                            "title": {"$regex": u"[a-zA-Z]*{}[a-zA-Z]*".format(query)}
+                        }
+                    )
+                )
+    else:
+        attachments = list(
+                    db.collections.find(
+                        {
+                            "classes": ["post", "file"]
+                        }
+                    )
+                )
 
     return jsonify(
                 {
@@ -52,8 +61,28 @@ def query_attachments(query):
                         {
                             'id': str(attachment["_id"]),
                             'title': attachment["title"],
-                            'content': attachment["content"]
+                            'content': attachment["content"],
+                            'original': attachment['meta']['original_filename']
                         }
                     for attachment in attachments]
                } 
             )
+
+
+@bp.route('/remove_attachment/<post_id>/<attach_id>', methods=['POST', 'GET'])
+def remove_attachment(post_id, attach_id):
+    db.collections.update_one(
+                {
+                    '_id': ObjectId(post_id)
+                },
+                {
+                    '$pull': {
+                        'attachments': {
+                             '_id': ObjectId(attach_id)
+                         }
+                    }
+                }
+            )
+    return jsonify({
+            'status': 200
+        }), 200
