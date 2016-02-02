@@ -30,9 +30,12 @@ def delete_post(id):
     return 'ok', 200
 
 
-@bp.route('/query_attachments/<query>', defaults={'page': 1})
+@bp.route('/query_attachments/<query>', defaults={'page': 0})
 @bp.route('/query_attachments/<query>/<page>', methods=['POST', 'GET'])
 def query_attachments(query, page):
+
+    page = int(page)
+    limit = 100
 
     if query != '*':
         attachments = list(
@@ -41,7 +44,7 @@ def query_attachments(query, page):
                             "classes": ["post", "file"],
                             "title": {"$regex": u"[a-zA-Z]*{}[a-zA-Z]*".format(query)}
                         }
-                    )
+                    ).skip(page * limit).limit(limit)
                 )
     else:
         attachments = list(
@@ -49,7 +52,7 @@ def query_attachments(query, page):
                         {
                             "classes": ["post", "file"]
                         }
-                    )
+                    ).skip(page * limit).limit(limit)
                 )
 
     return jsonify(
