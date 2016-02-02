@@ -340,7 +340,9 @@ input[type='lwpcms-file'] {
     position: relative;
     background-color: $main-color-light;
     width: 30%;
+    max-height: 500px;
     min-height: 250px;
+    overflow: scroll;
     z-index: 25;
     pointer-events: all;
 
@@ -406,6 +408,12 @@ input[type='lwpcms-file'] {
             }
         }
     }
+}
+
+*[selected='true'] {
+    outline-color: $main-color-lighter !important;
+    outline-width: 4px !important;
+    outline-style: solid;
 }
 
 .left {
