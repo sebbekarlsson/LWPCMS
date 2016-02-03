@@ -210,7 +210,7 @@ def render_files():
                     {
                         "classes": ["post", "file"]
                     }
-                )
+                ).sort('created', pymongo.DESCENDING)
             )
     
     return render_template('admin_files.html',

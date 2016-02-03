@@ -3,6 +3,7 @@ from flask import jsonify
 
 from lwpcms.mongo import db
 from bson.objectid import ObjectId
+import pymongo
 
 import os
 
@@ -44,7 +45,7 @@ def query_attachments(query, page):
                             "classes": ["post", "file"],
                             "title": {"$regex": u"[a-zA-Z]*{}[a-zA-Z]*".format(query)}
                         }
-                    ).skip(page * limit).limit(limit)
+                    ).skip(page * limit).limit(limit).sort('created', pymongo.DESCENDING)
                 )
     else:
         attachments = list(
@@ -52,7 +53,7 @@ def query_attachments(query, page):
                         {
                             "classes": ["post", "file"]
                         }
-                    ).skip(page * limit).limit(limit)
+                    ).skip(page * limit).limit(limit).sort('created', pymongo.DESCENDING)
                 )
 
     return jsonify(

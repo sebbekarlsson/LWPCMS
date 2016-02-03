@@ -30,31 +30,31 @@ html, body {
     color: $sec-color-strong;
     width: 16%;
     min-width: 286px;
-    
+
     ul, li {
         list-style: none;
         width: 100%;
 
         .lwpcms-side-nav-btn {
-             width: 100%;
-             height: 48px;
-             line-height: 48px;
-             text-decoration: none;
-             color: $sec-color-strong;
-             display: block;
-             transition: .2s;
-             font-size: 1rem;
+            width: 100%;
+            height: 48px;
+            line-height: 48px;
+            text-decoration: none;
+            color: $sec-color-strong;
+            display: block;
+            transition: .2s;
+            font-size: 1rem;
 
-             span {
-                 padding-left: 8px;
-             }
+            span {
+                padding-left: 8px;
+            }
 
-             &:hover {
-                 background-color: $main-color-lighter;
-                 color: $main-color-light;
-                 cursor: pointer;
-                 transition: .2s;
-             }
+            &:hover {
+                background-color: $main-color-lighter;
+                color: $main-color-light;
+                cursor: pointer;
+                transition: .2s;
+            }
         }
     }
 
@@ -268,17 +268,17 @@ section {
                 width: 16px;
                 height: 16px;
                 outline-color: $main-color;
-           }
-           
-           .warning {
-               transition: .2s;
+            }
 
-               &:hover {
-                   background-color: $warning-color;
-                   cursor: crosshair;
-                   transition: .2s;
-               }
-           }  
+            .warning {
+                transition: .2s;
+
+                &:hover {
+                    background-color: $warning-color;
+                    cursor: crosshair;
+                    transition: .2s;
+                }
+            }  
 
         }
     }
@@ -339,12 +339,24 @@ input[type='lwpcms-file'] {
 .lwpcms-backdrop-window {
     position: relative;
     background-color: $main-color-light;
-    width: 30%;
-    max-height: 500px;
+    width: 600px;
     min-height: 250px;
-    overflow: scroll;
     z-index: 25;
     pointer-events: all;
+
+    section:first-of-type {
+        width: 100%;
+        max-height: 300px;
+        overflow: scroll;
+        padding: 0 !important;
+    }
+
+    .lwpcms-gallery {
+        .lwpcms-gallery-item {
+            width: 120px !important;
+            height: 120px !important;
+        }
+    }
 
     .lwpcms-backdrop-window-top {
         height: 48px;
@@ -363,15 +375,15 @@ input[type='lwpcms-file'] {
                 position: relative;
 
                 svg, object {
-                   height: 100%;
-                   display: inline-block;
-                   line-height: 48px;
-                   padding-top: 12px;
-                   position: relative;
+                    height: 100%;
+                    display: inline-block;
+                    line-height: 48px;
+                    padding-top: 12px;
+                    position: relative;
 
-                   &:hover {
-                       cursor: pointer;
-                   }
+                    &:hover {
+                        cursor: pointer;
+                    }
                 }
             }
         }
@@ -395,15 +407,15 @@ input[type='lwpcms-file'] {
                 position: relative;
 
                 svg, object {
-                   height: 100%;
-                   display: inline-block;
-                   line-height: 48px;
-                   padding-top: 12px;
-                   position: relative;
+                    height: 100%;
+                    display: inline-block;
+                    line-height: 48px;
+                    padding-top: 12px;
+                    position: relative;
 
-                   &:hover {
-                       cursor: pointer;
-                   }
+                    &:hover {
+                        cursor: pointer;
+                    }
                 }
             }
         }

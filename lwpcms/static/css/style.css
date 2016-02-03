@@ -258,12 +258,18 @@ section {
 .lwpcms-backdrop-window {
   position: relative;
   background-color: white;
-  width: 30%;
-  max-height: 500px;
+  width: 600px;
   min-height: 250px;
-  overflow: scroll;
   z-index: 25;
   pointer-events: all; }
+  .lwpcms-backdrop-window section:first-of-type {
+    width: 100%;
+    max-height: 300px;
+    overflow: scroll;
+    padding: 0 !important; }
+  .lwpcms-backdrop-window .lwpcms-gallery .lwpcms-gallery-item {
+    width: 120px !important;
+    height: 120px !important; }
   .lwpcms-backdrop-window .lwpcms-backdrop-window-top {
     height: 48px;
     width: 100%;

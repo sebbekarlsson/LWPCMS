@@ -21,3 +21,5 @@ for(var i = 0; i < attachment_remove_buttons.length; i++) {
         }
     });
 }
+
+landline_call();
