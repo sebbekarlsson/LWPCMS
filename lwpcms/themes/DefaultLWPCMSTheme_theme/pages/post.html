@@ -1,5 +1,5 @@
 {% extends 'theme/theme.html' %}
-{% set post = get_posts({'_id': ObjectId(package['get_request'].get('id'))})[0] %}
+{% set post = get_posts({'_id': ObjectId(request.args.get('id'))})[0] %}
 
 {% block theme_posts %}
 <div class='post'>

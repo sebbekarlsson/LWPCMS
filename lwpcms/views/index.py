@@ -1,11 +1,11 @@
 from flask import (
-    Blueprint,
-    render_template,
-    abort, url_for,
-    render_template_string,
-    redirect,
-    request
-)
+        Blueprint,
+        render_template,
+        abort, url_for,
+        render_template_string,
+        redirect,
+        request
+        )
 from lwpcms.api.themes import get_activated_theme
 from lwpcms.mongo import db
 from lwpcms.api.posts import set_option, get_option
@@ -18,9 +18,9 @@ import ntpath
 
 
 bp = Blueprint(
-    __name__, __name__,
-    template_folder='templates'
-)
+        __name__, __name__,
+        template_folder='templates'
+        )
 
 
 @bp.route('/', defaults={'template_name': 'index.html'}, methods=['POST', 'GET'])
@@ -28,10 +28,10 @@ bp = Blueprint(
 def render(template_name):
 
     package = {
-            'get_request': request.args,
-            'post_request': request.form,
-            'body_request': request.get_data(),
-            'unknown_request': request.stream.read()
+            'request_get': request.args,
+            'request_post': request.form,
+            'request_body': request.get_data(),
+            'request_unknown': request.stream.read()
             }
 
     if not get_option('initialized'):
@@ -42,7 +42,7 @@ def render(template_name):
         template_name = 'index.html'
 
     theme = get_activated_theme()
-    
+
     if theme is not None:
         pages_path = 'lwpcms/{}/pages'.format(theme['path'])
         abs_pages_path = os.path.abspath(pages_path)
@@ -59,8 +59,6 @@ def render(template_name):
                 os.symlink(filename, linked_file)
 
         call_module_event(hooks['site_request'], {'package': package})
-
-        print(package)
 
         return render_template_string(open(page_path).read(), package=package)
     else:
