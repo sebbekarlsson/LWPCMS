@@ -29,21 +29,21 @@
                     <label>Attachments</label>
                 </td>
                 <div class='lwpcms-addlist' type='lwpcms-file'>
-                    <!--{% if post %}
-                        <div class="lwpcms-addlist-items">
+                    {% if post %}
+                        <div class="lwpcms-addlist-items lwpcms-gallery">
                         {% for attachment in post.attachments %}
-                            <div class="lwpcms-addlist-item" childs="[object HTMLInputElement]">
-                               <span childs="[object HTMLUListElement]">
-                                 <ul childs="[object HTMLLIElement],[object HTMLLIElement],[object HTMLInputElement]">
-                                    <li childs="[object HTMLLabelElement]"><label>{{ attachment.meta.original_filename }}</label></li>
-                                    <li childs="[object HTMLButtonElement]"><button class="lwpcms-btn remove-attachment" >Remove</button></li>
+                            <div class="lwpcms-gallery-item" childs="[object HTMLInputElement]">
+                                    <div class='lwpcms-gallery-item-bar'>
+                                        <button class='lwpcms-gallery-item-bar-btn remove-attachment warning'>X</button>
+                                    </div>
+                                    <p>{{ attachment.meta.original_filename }}</p>
+                                    <img src='/static/upload/{{attachment.content}}'>
                                     <input type="hidden" name="attachment_id" value="{{ attachment._id }}">
                                  </ul>
-                              </span>
                             </div>
                        {% endfor %}
                         </div>
-                    {% endif %}-->
+                    {% endif %}
                 </div>
             </section>
             <section>

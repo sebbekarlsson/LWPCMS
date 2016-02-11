@@ -17,7 +17,7 @@ for(var i = 0; i < attachment_remove_buttons.length; i++) {
 
         var data = remove_attachment(post_id, attach_id);
         if (data['status'] == 200) {
-            ElemenTailor.delete(this.parentNode.parentNode.parentNode.parentNode);
+            ElemenTailor.delete(this.parentNode.parentNode);
         }
     });
 }
