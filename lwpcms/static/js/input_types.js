@@ -68,51 +68,62 @@ function apply_inputs (input) {
                             ),
                             function(e, c, w) {
                                 var attachment = c.querySelector('.lwpcms-gallery-item[selected="true"]');
-
+                                var img_src = attachment.getElementsByTagName('img')[0].getAttribute('src');
+                                
                                 var remove_button = ElemenTailor.create(
-                                        'button',
-                                        {
-                                            class: 'lwpcms-btn',
-                                            innerHTML: 'Remove'
-                                        }
-                                    );
+                                    'button',
+                                    {
+                                        innerHTML: 'X',
+                                        class: 'lwpcms-gallery-item-bar-btn warning'
+                                    }
+                                );
+
+                                var item_bar = ElemenTailor.create('div', {
+                                    class: 'lwpcms-gallery-item-bar',
+                                    childs: [
+                                        remove_button 
+                                    ]
+                                });
 
                                 remove_button.addEventListener('click', function(e) {
                                     e.preventDefault();
 
-                                    ElemenTailor.delete(this.parentNode.parentNode.parentNode.parentNode);
+                                    ElemenTailor.delete(this.parentNode.parentNode);
                                 });
 
-                                var span = ElemenTailor.create(
-                                            'span',
-                                            {
-                                                childs: [
-                                                    ElemenTailor.create('ul', {childs: [
-                                                        ElemenTailor.create('li', {childs:[
-                                                        ElemenTailor.create(
-                                                            'label',
-                                                            {
-                                                                innerHTML: attachment.getAttribute('attachment_original')
-                                                            }
-                                                        )]}),
-                                                        ElemenTailor.create('li', {childs:[
-                                                            remove_button 
-                                                        ]}),
-                                                        ElemenTailor.create(
-                                                            'input',
-                                                            {
-                                                                type: 'hidden',
-                                                                name: 'attachment_id',
-                                                                value: attachment.getAttribute('attachment_id')
-                                                            }
-                                                        )
-                                                    ]})
-                                                ]
-                                            }
-                                        );
 
-                                input.parentNode.appendChild(span);
-                                ElemenTailor.delete(input);
+                                var gallery_item = ElemenTailor.create(
+                                    'div',
+                                    {
+                                        class: 'lwpcms-gallery-item',
+                                        childs:[
+                                            item_bar,
+                                            ElemenTailor.create(
+                                                'p',
+                                                {
+                                                    innerHTML: attachment.getAttribute('attachment_original')
+                                                }
+                                            ),
+                                            ElemenTailor.create(
+                                                'img',
+                                                {
+                                                    src: img_src
+                                                }
+                                            ),
+                                            ElemenTailor.create(
+                                                'input',
+                                                {
+                                                    type: 'hidden',
+                                                    name: 'attachment_id',
+                                                    value: attachment.getAttribute('attachment_id')
+                                                }
+                                            )
+                                        ]
+                                    }
+                                );
+
+                                input.parentNode.parentNode.appendChild(gallery_item);
+                                ElemenTailor.delete(input.parentNode);
 
                                 close_lwpcms_windows();
                             }

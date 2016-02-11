@@ -41,7 +41,7 @@ for (var i = 0; i < addlists.length; i++) {
     });
 
     var section_items = ElemenTailor.create('section',
-            {class: 'lwpcms-addlist-items'});
+            {class: 'lwpcms-addlist-items lwpcms-gallery'});
 
     addlist.appendChild(section_items);
     addlist.appendChild(section_options);
