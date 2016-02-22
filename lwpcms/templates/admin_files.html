@@ -37,7 +37,7 @@
                         <button onClick='event.cancelBubble=true; delete_file(this, "{{ file._id }}");' class='lwpcms-gallery-item-bar-btn warning'>X</button>
                     </div>
                     <p>
-                        {{ file.title }}
+                        {{ file.title | escape }}
                     </p>
                     {% if is_image(file.content) %}
                         <img 
@@ -49,7 +49,7 @@
                     {% endif %}
                     <br>
                     <p>
-                        {{ file.content }}
+                        {{ file.content | escape }}
                     </p>
                 </div>
             {% endfor %}
