@@ -12,6 +12,7 @@
     <section>
         <table class='lwpcms-table'>
             <tr>
+                <th>Logo</th>
                 <th>Name</th>
                 <th>Description</th>
                 <th>Version</th>
@@ -20,6 +21,7 @@
             </tr>
             {% for theme in themes %}
                 <tr>
+                    <td><img src="/theme/name/{{theme['name']}}/theme.png"></td>
                     <td>{{ theme['name'] }}</td>
                     <td>{{ theme['description'] }}</td>
                     <td>{{ theme['version'] }}</td>

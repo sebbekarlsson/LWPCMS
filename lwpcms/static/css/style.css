@@ -80,6 +80,8 @@ section {
       border-bottom-color: #3498db;
       border-bottom-style: solid;
       border-bottom-width: 2px; }
+      .lwpcms-table tr td img {
+        max-width: 48px; }
     .lwpcms-table tr th {
       background-color: white;
       color: #3498db; }

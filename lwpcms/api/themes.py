@@ -5,7 +5,7 @@ import ntpath
 import base64
 
 
-def get_themes():
+def get_themes(name=None):
     avail_themes = glob.glob('lwpcms/themes/*_theme')
     
     themes = []
@@ -16,6 +16,10 @@ def get_themes():
             theme = data['theme']
             theme['path'] = avail_theme.replace('lwpcms/', '')
             themes.append(theme)
+
+            if name is not None:
+                if theme['name'] == name:
+                    return theme
 
     return themes
 
