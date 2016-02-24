@@ -18,8 +18,8 @@
             </tr>
             {% for user in users %}
                 <tr>
-                    <td>{{ shorten_text(user.title, 32) }}</td>
-                    <td>{{ shorten_text(user.meta.password, 32) }}</td>
+                    <td>{{ shorten_text(user.nick_name, 32) }}</td>
+                    <td>{{ shorten_text(user.password, 32) }}</td>
                     <td class='lwpcms-table-td'>
                         <section>
                             <button class='lwpcms-btn' onClick='window.location.href="/admin/publish/{{ user._id }}"'>Edit</button>
