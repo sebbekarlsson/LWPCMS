@@ -3,6 +3,8 @@ import os
 import json
 import ntpath
 import base64
+import urllib.request
+import tarfile
 
 
 def get_themes(name=None):
@@ -37,3 +39,26 @@ def get_activated_theme():
                     return theme
 
     return None
+
+
+
+def install_theme(url):
+    if 'tar.gz' not in url:
+        return False
+
+    response = urllib.request.urlopen(url)
+    data = response.read()
+    fname = os.path.basename(url)
+    fname_path = 'lwpcms/themes/{}'.format(fname)
+
+    with open(fname_path, 'wb') as the_file:
+        the_file.write(data)
+
+    tar = tarfile.open(fname_path, "r:gz")
+    tar.extractall(path='lwpcms/themes/.')
+    tar.close()
+
+    for fl in glob.glob('lwpcms/themes/*.gz'):
+        os.remove(fl)
+
+    return True
