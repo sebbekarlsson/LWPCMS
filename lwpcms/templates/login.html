@@ -20,7 +20,7 @@
                 {% if is_site_demo() %}
                     {%
                         set users = get_posts(
-                            {'type': 'user', 'classes': ['user']}
+                            {'structure': 'User'}
                         )
                     %}
                     <section>
@@ -35,8 +35,8 @@
                                 <th>Password</th>
                             </tr>
                             <tr>
-                                <td>{{ users[0].title }}</td>
-                                <td>{{ users[0].meta.password }}</td>
+                                <td>{{ users[0].nick_name }}</td>
+                                <td>{{ users[0].password }}</td>
                             </tr>
                         </table>
                     </section>

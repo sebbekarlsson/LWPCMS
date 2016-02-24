@@ -1,7 +1,7 @@
 from flask import session, redirect
 from lwpcms.mongo import db
 from bson.objectid import ObjectId
-from lwpcms.models import Post
+from lwpcms.models import User
 from functools import wraps
 
 
@@ -12,19 +12,15 @@ def get_current_user():
         return db.collections.find_one(
             {
                 '_id': ObjectId(session['user_id']),
-                'type': 'user'
+                'structure': 'User'
             }
         )
 
 
 def register_user(name, password):
-    user = Post(
-                title=name,
-                type='user',
-                classes=['user'],
-                meta={
-                        'password': password
-                    }
+    user = User(
+                nick_name=name,
+                password=password
             ).export()
 
     return db.collections.insert_one(user)
@@ -33,15 +29,16 @@ def register_user(name, password):
 def login_user(name, password):
     user = db.collections.find_one(
             {
-                'title': name,
-                'type': 'user'
+                'nick_name': name,
+                'structure': 'User'
             }
         )
 
     if user is None:
         return False
     else:
-        real_password = user['meta']['password']
+        real_password = user['password']
+        print('real:' + real_password)
 
         if password == real_password:
             session['user_id'] = str(user['_id'])
