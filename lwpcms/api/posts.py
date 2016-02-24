@@ -1,7 +1,7 @@
 from lwpcms.api.modules import call_module_event
 from lwpcms.api.constants import hooks
 from lwpcms.mongo import db
-from lwpcms.models import Post
+from lwpcms.models import Post, Option
 from bson.objectid import ObjectId
 
 
@@ -57,9 +57,8 @@ def get_option(name):
     option = list(
             db.collections.find(
                     {
-                        'title': name,
-                        'type': 'option',
-                        'classes': ['option']
+                        'key': name,
+                        'structure': 'Option'
                     }
                 )
             )
@@ -73,12 +72,11 @@ def get_option(name):
 def set_option(name, value):
     return db.collections.update_one(
             {
-                'title': name,
-                'type': 'option',
-                'classes': ['option']
+                'key': name,
+                'structure': 'Option'
             },
             {
-                '$set': {'content': value}
+                '$set': {'value': value}
             },
             True
         )
