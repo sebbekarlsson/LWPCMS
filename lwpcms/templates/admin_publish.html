@@ -6,13 +6,6 @@
 
 {% block admin_content %}
     <section>
-        <h2>Publish</h2>
-        <p>
-            Welcome to the publisher section.
-            This section is used to create content.
-        </p>
-    </section>
-    <section>
         <form method='POST' class='lwpcms-form' enctype="multipart/form-data">
             {% if post %}
                 <input type='hidden' name='post_id' value='{{ post._id }}'>

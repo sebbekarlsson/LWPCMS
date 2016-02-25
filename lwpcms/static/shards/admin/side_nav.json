@@ -36,11 +36,6 @@
             "href": "/admin/files"
         },
         {
-            "label": "Development",
-            "svg": "dev.svg",
-            "href": "/admin/development"
-        },
-        {
             "label": "Settings",
             "svg": "settings.svg",
             "href": "/admin/settings"

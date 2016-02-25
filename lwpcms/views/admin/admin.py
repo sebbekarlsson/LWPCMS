@@ -219,15 +219,6 @@ def render_files():
     )
 
 
-@bp.route('/development')
-@login_required
-def render_development():
-    sidenav = get_sidenav()
-
-    return render_template('admin_development.html',
-            sidenav=sidenav)
-
-
 @bp.route('/settings')
 @login_required
 def render_settings():
