@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>
-            {% if get_option('site_name') %}
-                {{ get_option('site_name')['content'] }}
-            {% else %}
-                LWPCMS
-            {% endif %}
-        </title>
-        <!-- META -->
+        {% if get_option('site_name') %}
+            {% set title = get_option('site_name').value %}
+        {% else %}
+            {% set title = 'LWPCMS' %}
+        {% endif %}
+
+        <title>{{ title }}</title>
+        
         <meta
             charset='utf-8'>
         <meta
@@ -18,21 +18,19 @@
             name="generator"
             content="https://github.com/sebbekarlsson/LWPCMS.git">
         <meta
+            name="title"
+            content="{{ title }}">
+        <meta
             name="keywords"
             content="LWPCMS">
         <meta
             name="description"
             content="Lightweight Python Content Management System">
-        <!-- END META -->
-
+        
         <link
             rel='stylesheet'
             type='text/css'
             href='{{ url_for("static", filename="css/style.css") }}'>
-        <link 
-            href='https://fonts.googleapis.com/css?family=Open+Sans'
-            rel='stylesheet'
-            type='text/css'>
 
         <script
             type='text/javascript'

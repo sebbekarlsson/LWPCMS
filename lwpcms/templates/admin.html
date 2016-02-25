@@ -1,6 +1,14 @@
 {% extends 'layout.html' %}
 {% from '_svg.html' import render_svg %}
 
+{% block lwpcms_head %}
+    {{ super() }}
+
+    <link 
+    href='https://fonts.googleapis.com/css?family=Open+Sans'
+    rel='stylesheet'
+    type='text/css'>
+{% endblock %}
 
 {% block lwpcms_content %}
     <div id='lwpcms-content-admin'>
