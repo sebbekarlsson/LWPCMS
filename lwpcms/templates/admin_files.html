@@ -35,7 +35,7 @@
                     {% if is_image(file.content) %}
                         <img 
                         src='{{
-                        url_for("static", filename="upload/"+file.content)
+                        url_for("static", filename="upload/"+file_thumbnail(file.content, 128))
                         }}'>
                     {% else %}
                         {{ render_svg('drive_file.svg', 'black') }}

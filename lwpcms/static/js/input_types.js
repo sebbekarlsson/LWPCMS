@@ -12,6 +12,10 @@ function apply_inputs (input) {
                     var gallery_items = [];
 
                     for (var i = 0; i < attachments.length; i++) {
+                        var ext = attachments[i].content.split('.')[1];
+                        var fname = attachments[i].content.split('.')[0];
+                        var attach_thumb = fname + '_128x128.' + ext;
+
                         var gallery_item = ElemenTailor.create(
                             'div',
                             {
@@ -30,7 +34,7 @@ function apply_inputs (input) {
                                     ElemenTailor.create(
                                         'img',
                                         {
-                                            src: `/static/upload/${attachments[i].content}`
+                                            src: `/static/upload/${attach_thumb}`
                                         }
                                     )
                                 ]

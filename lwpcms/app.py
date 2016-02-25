@@ -7,7 +7,7 @@ from lwpcms.views.api.api import bp as api_bp
 from lwpcms.views.setup import bp as setup_bp
 from lwpcms.views.login import bp as login_bp
 
-from lwpcms.api.files import is_image
+from lwpcms.api.files import is_image, file_thumbnail
 from lwpcms.api.modules import call_module_event
 from lwpcms.api.posts import shorten_text, get_posts, get_option, set_option
 from lwpcms.api.themes import get_activated_theme
@@ -27,6 +27,7 @@ app.register_blueprint(theme_bp)
 app.register_blueprint(login_bp)
 
 app.jinja_env.globals.update(is_image=is_image)
+app.jinja_env.globals.update(file_thumbnail=file_thumbnail)
 app.jinja_env.globals.update(call_module_event=call_module_event)
 app.jinja_env.globals.update(shorten_text=shorten_text)
 app.jinja_env.globals.update(get_posts=get_posts)

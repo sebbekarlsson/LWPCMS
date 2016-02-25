@@ -17,6 +17,7 @@ setup(
         'sqlalchemy',
         'pyyaml',
         'loremipsum',
-        'pymongo'
+        'pymongo',
+        'pillow'
     ]
 )

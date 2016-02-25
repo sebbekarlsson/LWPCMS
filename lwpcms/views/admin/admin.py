@@ -211,7 +211,6 @@ def render_files():
                     }
                 ).sort('created', pymongo.DESCENDING)
             )
-    
     return render_template('admin_files.html',
         sidenav=sidenav,
         form=form,
