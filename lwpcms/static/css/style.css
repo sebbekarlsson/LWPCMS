@@ -170,7 +170,8 @@ section {
       outline-style: solid;
       cursor: pointer;
       background-color: #3498db;
-      transition: .2s; }
+      transition: .2s;
+      color: white; }
     .lwpcms-gallery .lwpcms-gallery-item img, .lwpcms-gallery .lwpcms-gallery-item object {
       display: block;
       width: 60%;
@@ -269,9 +270,11 @@ section {
     max-height: 300px;
     overflow: scroll;
     padding: 0 !important; }
-  .lwpcms-backdrop-window .lwpcms-gallery .lwpcms-gallery-item {
-    width: 120px !important;
-    height: 120px !important; }
+  .lwpcms-backdrop-window .lwpcms-gallery {
+    justify-content: center !important; }
+    .lwpcms-backdrop-window .lwpcms-gallery .lwpcms-gallery-item {
+      width: 100px !important;
+      height: 100px !important; }
   .lwpcms-backdrop-window .lwpcms-backdrop-window-top {
     height: 48px;
     width: 100%;

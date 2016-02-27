@@ -230,6 +230,7 @@ section {
             cursor: pointer;
             background-color: $main-color-lighter;
             transition: .2s;
+            color: white;
         }
 
         img, object {
@@ -356,9 +357,11 @@ input[type='lwpcms-file'] {
     }
 
     .lwpcms-gallery {
+        justify-content: center !important;
+
         .lwpcms-gallery-item {
-            width: 120px !important;
-            height: 120px !important;
+            width: 100px !important;
+            height: 100px !important;
         }
     }
 
