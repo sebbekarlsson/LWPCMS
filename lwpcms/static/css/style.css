@@ -29,15 +29,13 @@ html, body {
       text-decoration: none;
       color: black;
       display: block;
-      transition: .2s;
       font-size: 1rem; }
       .lwpcms-side-nav ul .lwpcms-side-nav-btn span, .lwpcms-side-nav li .lwpcms-side-nav-btn span {
         padding-left: 8px; }
       .lwpcms-side-nav ul .lwpcms-side-nav-btn:hover, .lwpcms-side-nav li .lwpcms-side-nav-btn:hover {
         background-color: #3498db;
         color: white;
-        cursor: pointer;
-        transition: .2s; }
+        cursor: pointer; }
   .lwpcms-side-nav .lwpcms-side-nav-side {
     width: 20%;
     min-width: 52px;
@@ -100,7 +98,8 @@ section {
   min-width: 92px;
   padding-left: 4px;
   padding-right: 4px;
-  transition: .2s; }
+  transition: .2s;
+  text-decoration: none; }
   .lwpcms-button:hover {
     background-color: white;
     cursor: pointer;
@@ -229,7 +228,8 @@ section {
   text-align: center;
   vertical-align: middle;
   border: none;
-  transition: .2s; }
+  transition: .2s;
+  text-decoration: none; }
   .lwpcms-btn:hover, input[type='lwpcms-file']:hover {
     cursor: pointer;
     background-color: #3498db;

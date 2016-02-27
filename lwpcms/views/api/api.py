@@ -5,6 +5,8 @@ from lwpcms.mongo import db
 from bson.objectid import ObjectId
 import pymongo
 
+from lwpcms.api.files import file_thumbnail
+
 import os
 
 
@@ -17,10 +19,20 @@ bp = Blueprint(
 @bp.route('/delete_file/<id>', methods=['POST', 'GET'])
 def delete_file(id):
     file = db.collections.find_one({"_id": ObjectId(id)})
+    print(file['content'])
     os.remove(
         os.path.dirname(os.path.realpath(__file__))\
                 +'/../../static/upload/{}'.format(file["content"])
     )
+
+    for size in [64, 32, 128]:
+        os.remove(
+            os.path.dirname(os.path.realpath(__file__))\
+                +'/../../static/upload/{}'.format(
+                    file_thumbnail(file["content"], size)
+                    )
+        )
+
     db.collections.delete_many({"_id": ObjectId(id)})
     return 'ok', 200
 

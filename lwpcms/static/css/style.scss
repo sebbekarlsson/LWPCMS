@@ -42,7 +42,6 @@ html, body {
             text-decoration: none;
             color: $sec-color-strong;
             display: block;
-            transition: .2s;
             font-size: 1rem;
 
             span {
@@ -53,7 +52,6 @@ html, body {
                 background-color: $main-color-lighter;
                 color: $main-color-light;
                 cursor: pointer;
-                transition: .2s;
             }
         }
     }
@@ -145,6 +143,7 @@ section {
     padding-left: 4px;
     padding-right: 4px;
     transition: .2s;
+    text-decoration: none;
 
     &:hover {
         background-color: $main-color-light;
@@ -305,6 +304,7 @@ section {
     vertical-align: middle;
     border: none;
     transition: .2s;
+    text-decoration: none;
 
     &:hover {
         cursor: pointer;
