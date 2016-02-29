@@ -3,6 +3,7 @@ from lwpcms.api.constants import hooks
 from lwpcms.mongo import db
 from lwpcms.models import Post, Option
 from bson.objectid import ObjectId
+import re
 
 
 def publish_post(title, content, attachments, published=True, id=None):
@@ -85,3 +86,21 @@ def set_option(name, value):
 
 def shorten_text(text, max=16):
     return (text[:max] + '..') if len(text) > max else text
+
+
+def render_content(content):
+    urls = re.findall('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+',
+            content)
+
+    for url in urls:
+        if 'youtube' in url:
+            embed = url.replace('watch?v=', 'embed/')
+            content = content.replace(
+            url,
+            '''
+            <iframe width="420" height="315"
+                src="{url}">
+            </iframe><br>
+            '''.format(url=embed))
+
+    return content

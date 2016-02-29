@@ -9,7 +9,7 @@ from lwpcms.views.login import bp as login_bp
 
 from lwpcms.api.files import is_image, file_thumbnail
 from lwpcms.api.modules import call_module_event
-from lwpcms.api.posts import shorten_text, get_posts, get_option, set_option
+from lwpcms.api.posts import shorten_text, get_posts, get_option, set_option, render_content
 from lwpcms.api.themes import get_activated_theme
 from lwpcms.api.site import is_site_demo
 
@@ -35,6 +35,7 @@ app.jinja_env.globals.update(get_activated_theme=get_activated_theme)
 app.jinja_env.globals.update(set_option=set_option)
 app.jinja_env.globals.update(get_option=get_option)
 app.jinja_env.globals.update(is_site_demo=is_site_demo)
+app.jinja_env.globals.update(render_content=render_content)
 app.jinja_env.globals.update(pymongo=pymongo)
 app.jinja_env.globals.update(ObjectId=ObjectId)
 

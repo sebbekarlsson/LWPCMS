@@ -15,7 +15,7 @@
                         {% endif %}
                     {% endif %}
                     <p>
-                        {{ post.content | escape }}
+                        {{ render_content(post.content) }}
                     </p>
                     <hr>
                     <div class="pagination">
