@@ -21,8 +21,10 @@ def render():
         site_name = form.site_name.data
         user_name = form.user_name.data
         password = form.password.data
+        demo = form.demo.data
 
         set_option('site_name', site_name)
+        set_option('site_demo', demo)
 
         register_user(
                     name=user_name,

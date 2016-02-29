@@ -18,6 +18,7 @@ class SetupForm(Form):
         validators.EqualTo('password_confirm', message='Passwords must match')
     ])
     password_confirm = PasswordField('Repeat Password')
+    demo = BooleanField('Demo')
     submit = SubmitField('Create')
 
 
