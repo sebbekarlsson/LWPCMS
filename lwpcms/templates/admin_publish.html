@@ -23,6 +23,7 @@
                     {% if post %}
                         {% if post.tags | length > 0 %}
                             tags='{{ ",".join(post.tags) }}'
+                            placeholder='{{ ",".join(post.tags) }}'
                         {% endif %}
                     {% endif %}
                 name='post_tags'>
