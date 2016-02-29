@@ -41,3 +41,10 @@ class PostForm(Form):
     content = TextAreaField('Body', [validators.Length(min=4, max=100000)])
     submit = SubmitField('Publish')
     update = SubmitField('Update')
+
+
+class SettingsForm(Form):
+    demo = SetupForm.demo
+    site_name = SetupForm.site_name
+    site_description = TextAreaField('Site Description', [validators.Length(min=4, max=100000)])
+    submit = SubmitField('Save')

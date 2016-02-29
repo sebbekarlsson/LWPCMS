@@ -7,6 +7,18 @@
             {% set title = 'LWPCMS' %}
         {% endif %}
 
+        {% if get_option('site_tags') %}
+            {% set tags = get_option('site_tags').value %}
+        {% else %}
+            {% set tags = 'LWPCMS,CMS' %}
+        {% endif %}
+
+        {% if get_option('site_description') %}
+            {% set description = get_option('site_description').value %}
+        {% else %}
+            {% set description = 'Lightweight Python Content Management System' %}
+        {% endif %}
+
         <title>{{ title }}</title>
         
         <meta
@@ -22,10 +34,10 @@
             content="{{ title }}">
         <meta
             name="keywords"
-            content="LWPCMS">
+            content="{{ tags }}">
         <meta
             name="description"
-            content="Lightweight Python Content Management System">
+            content="{{ description }}">
         
         <link
             rel='stylesheet'

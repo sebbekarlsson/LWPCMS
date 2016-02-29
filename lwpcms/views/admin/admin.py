@@ -4,9 +4,9 @@ import glob
 
 import json
 
-from lwpcms.forms import UploadFileForm, PostForm
+from lwpcms.forms import UploadFileForm, PostForm, SettingsForm
 from lwpcms.api.files import upload_file
-from lwpcms.api.posts import publish_post
+from lwpcms.api.posts import publish_post, get_option, set_option
 from lwpcms.api.modules import call_module_event, get_modules
 from lwpcms.api.themes import get_themes
 from lwpcms.api.admin import get_sidenav
@@ -218,9 +218,39 @@ def render_files():
     )
 
 
-@bp.route('/settings')
+@bp.route('/settings', methods=['POST', 'GET'])
 @login_required
 def render_settings():
     sidenav = get_sidenav()
 
-    return render_template('admin_settings.html', sidenav=sidenav)
+    form = SettingsForm(csrf_enabled=False)
+    if form.validate_on_submit():
+        set_option('site_demo', form.demo.data)
+        set_option('site_name', form.site_name.data)
+        set_option('site_description', form.site_description.data)
+        site_tags = ','.join(request.form.getlist('lwpcms_tag'))
+        set_option('site_tags', site_tags)
+    
+    is_demo = get_option('site_demo')
+    if is_demo:
+        is_demo = is_demo['value']
+
+    site_name = get_option('site_name')
+    if site_name:
+        site_name = site_name['value']
+
+    site_description = get_option('site_description')
+    if site_description:
+        site_description = site_description['value']
+
+    site_tags = get_option('site_tags')
+    if site_tags:
+        site_tags = site_tags['value']
+    else:
+        site_tags = ''
+
+    form.demo.data = is_demo
+    form.site_name.data = site_name
+    form.site_description.data = site_description
+
+    return render_template('admin_settings.html', sidenav=sidenav, site_tags=site_tags, form=form)

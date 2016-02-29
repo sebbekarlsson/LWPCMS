@@ -1,8 +1,5 @@
-var inputs = document.querySelectorAll('input');
-
-
 function apply_inputs (input) {
-    if (input != null) {
+    if (input != undefined) {
        var type = input.getAttribute('type');
         
         switch (type) {
@@ -134,28 +131,83 @@ function apply_inputs (input) {
                         );
                     });
 
-                    break;
+            break;
         }
 
         return true;
-    }
+    } else {
+        var inputs = document.querySelectorAll('input');
 
-    for (var i=0; i< inputs.length; i++) {
-        input = inputs[i];
-        var type = input.getAttribute('type');
-        
-        switch (type) {
-            case 'lwpcms-file':
-                    input.value = 'Choose File';
-                    input.setAttribute('readonly', true);
+        for (var i=0; i< inputs.length; i++) {
+            input = inputs[i];
+            var type = input.getAttribute('type');
+            
+            switch (type) {
+                case 'lwpcms-file':
+                        input.value = 'Choose File';
+                        input.setAttribute('readonly', true);
+                        
+                        input.addEventListener('click', function(e) {
+                            e.preventDefault();
+
+                            lwpcms_window(this, 'Choose File');
+                        });
+
+                break;
+
+                case 'tags':
+                    var tags_section = input.parentNode.querySelector('lwpcms-tags-section');
+
+                    if (tags_section == null) {
+                        var tags_section = ElemenTailor.create('section', {
+                            class: 'lwpcms-tags-section'
+                        });
+                        input.parentNode.appendChild(tags_section);
+                    }
                     
-                    input.addEventListener('click', function(e) {
-                        e.preventDefault();
+                    if (input.getAttribute('tags') != null)
+                    var tags = input.getAttribute('tags').split(',');
 
-                        lwpcms_window(this, 'Choose File');
+                    if(tags) {
+                        for (var ii = 0; ii < tags.length; ii++) {
+
+                            if (tags[ii] != '') {
+                                var tag_element = ElemenTailor.create('input', {
+                                    name: 'lwpcms_tag',
+                                    class: 'lwpcms-tags-section-tag',
+                                    value: tags[ii].replace(' ', '')
+                                });
+
+                                tag_element.addEventListener('click', function (e) {
+                                    ElemenTailor.delete(this);
+                                });
+
+                                tags_section.appendChild(tag_element);
+                            }
+                        }
+                    }
+
+                    input.addEventListener('keyup', function(e) {
+                        if (e.keyCode == 32) {
+                            var text = this.value;
+                            var new_tag = text.split(',')[text.split(',').length-2].replace(' ', '');
+
+                            var tag_element = ElemenTailor.create('input', {
+                                name: 'lwpcms_tag',
+                                class: 'lwpcms-tags-section-tag',
+                                value: new_tag
+                            });
+
+                            tag_element.addEventListener('click', function (e) {
+                                ElemenTailor.delete(this);
+                            });
+
+                            tags_section.appendChild(tag_element);
+                        }
                     });
 
-                    break;
+                break;
+            }
         }
     }
 
