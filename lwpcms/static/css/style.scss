@@ -449,7 +449,8 @@ input[type='lwpcms-file'] {
         width: auto !important;
 
         &:hover {
-            cursor: pointer;
+            cursor: crosshair;
+            background-color: $warning-color;
         }
     }
 }

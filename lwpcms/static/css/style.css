@@ -335,7 +335,8 @@ section {
   outline: none;
   width: auto !important; }
   .lwpcms-tags-section .lwpcms-tags-section-tag:hover {
-    cursor: pointer; }
+    cursor: crosshair;
+    background-color: #e74c3c; }
 
 .left {
   float: left; }
