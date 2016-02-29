@@ -7,6 +7,8 @@
                 <section>
                     {{ render_field(form.site_name) }}
                     {{ render_field(form.site_description) }}
+                </section>
+                <section>
                     <label for='site_tags'>Site Tags</label>
                     <input type='tags' id='site_tags' tags='{{ site_tags }}' name='site_tags'>
                 </section>
