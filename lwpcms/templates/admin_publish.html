@@ -40,6 +40,9 @@
                 </div>
             </section>
             <section>
+                {{ render_field(form.published) }}
+            </section>
+            <section>
                 {% if not id %}
                     {{ render_field(form.submit) }}
                 {% else %}

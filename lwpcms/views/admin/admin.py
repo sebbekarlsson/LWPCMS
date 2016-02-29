@@ -49,6 +49,7 @@ def render_publish(id):
         if post and request.method != 'POST':    
             form.title.data = post["title"]
             form.content.data = post["content"]
+            form.published.data = post['published']
 
     if form.validate_on_submit():
         attachment_ids = request.form.getlist('attachment_id')
@@ -65,6 +66,7 @@ def render_publish(id):
                            title=form.title.data,
                            content=form.content.data,
                            attachments=attachments,
+                           published=form.published.data,
                            id=id
                        )
 

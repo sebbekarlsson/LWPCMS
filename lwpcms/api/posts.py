@@ -5,7 +5,7 @@ from lwpcms.models import Post, Option
 from bson.objectid import ObjectId
 
 
-def publish_post(title, content, attachments, id=None):
+def publish_post(title, content, attachments, published=True, id=None):
     if id is not None:
         post = db.collections.update_one(
                 {
@@ -14,7 +14,8 @@ def publish_post(title, content, attachments, id=None):
                 {
                     "$set": {
                         "title": title,
-                        "content": content
+                        "content": content,
+                        "published": published
                     }
                 }
             )
@@ -37,7 +38,8 @@ def publish_post(title, content, attachments, id=None):
                 title=title,
                 content=content,
                 attachments=attachments,
-                author={}
+                author={},
+                published=published
                 ).export()
 
         call_module_event(hooks['post_publish'], {'post': post})

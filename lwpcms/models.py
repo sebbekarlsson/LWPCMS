@@ -35,6 +35,7 @@ class Post(DBObject):
             attachments=[],
             author={},
             tags=[],
+            published='',
             classes=[],
             type='',
             meta={}
@@ -45,6 +46,7 @@ class Post(DBObject):
         self.attachments = attachments
         self.author = author
         self.tags = tags
+        self.published = published
 
 
 class User(DBObject):

@@ -1,7 +1,7 @@
 {% extends 'theme/theme.html' %}
 
 {% block theme_posts %}
-    {% for post in get_posts({'type': 'post', 'classes': ['post']}, ('created', pymongo.DESCENDING)) %}
+    {% for post in get_posts({'type': 'post', 'structure': 'Post', 'published': true}, ('created', pymongo.DESCENDING)) %}
         <div class='post'>
             <div class="page-header">
                 <h1>{{ shorten_text(post.title, 128) | escape }}</h1>
