@@ -53,6 +53,7 @@ def render_publish(id):
 
     if form.validate_on_submit():
         attachment_ids = request.form.getlist('attachment_id')
+        tags = request.form.getlist('lwpcms_tag')
         attachments = []
 
         for a_id in attachment_ids:
@@ -67,12 +68,12 @@ def render_publish(id):
                            content=form.content.data,
                            attachments=attachments,
                            published=form.published.data,
+                           tags=tags,
                            id=id
                        )
 
         return redirect('/admin/publish/{}'.format(new_post["_id"]))
-        
-
+       
     return render_template('admin_publish.html', sidenav=sidenav,
             form=form, post=post, id=id)
 

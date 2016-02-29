@@ -6,7 +6,7 @@ from bson.objectid import ObjectId
 import re
 
 
-def publish_post(title, content, attachments, published=True, id=None):
+def publish_post(title, content, attachments, published=True, tags=[], id=None):
     if id is not None:
         post = db.collections.update_one(
                 {
@@ -16,7 +16,8 @@ def publish_post(title, content, attachments, published=True, id=None):
                     "$set": {
                         "title": title,
                         "content": content,
-                        "published": published
+                        "published": published,
+                        "tags": tags
                     }
                 }
             )
@@ -39,6 +40,7 @@ def publish_post(title, content, attachments, published=True, id=None):
                 title=title,
                 content=content,
                 attachments=attachments,
+                tags=tags,
                 author={},
                 published=published
                 ).export()

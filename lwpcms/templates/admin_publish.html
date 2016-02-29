@@ -18,6 +18,16 @@
                 {{ render_field(form.content) }}
             </section>
             <section>
+                <label for='post_tags'>Site Tags</label>
+                <input type='tags' id='post_tags'
+                    {% if post %}
+                        {% if post.tags | length > 0 %}
+                            tags='{{ ",".join(post.tags) }}'
+                        {% endif %}
+                    {% endif %}
+                name='post_tags'>
+            </section>
+            <section>
                 <dt>
                     <label>Attachments</label>
                 </td>
