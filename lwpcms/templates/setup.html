@@ -1,6 +1,12 @@
 {% extends 'layout.html' %}
 {% from "_formhelpers.html" import render_field %}
+{% from "_lwpcmshelpers.html" import lwpcms_render_font %}
 
+{% block lwpcms_head %}
+    {{ super() }}
+
+    {{ lwpcms_render_font() }}
+{% endblock %}
 
 {% block lwpcms_content %}
     <section class='lwpcms-content-center'>

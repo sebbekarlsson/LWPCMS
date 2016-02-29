@@ -7,7 +7,6 @@ config_name = 'config.json'
 parser = argparse.ArgumentParser()
 
 parser.add_argument('--database_name')
-parser.add_argument('--set_demo')
 parser.add_argument('--run')
 args = parser.parse_args()
 
@@ -27,9 +26,6 @@ else:
     data = {
             'database_name': database_name
            }
-
-    if args.set_demo:
-        data['demo'] = True
 
     print(data)
     print('Finished installing.')
