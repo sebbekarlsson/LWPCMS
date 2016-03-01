@@ -95,13 +95,12 @@ def render_content(content):
             content)
 
     for url in urls:
-        if 'youtube' in url:
+        if  any(x in url for x in ['youtube', 'watch']):
             embed = url.replace('watch?v=', 'embed/')
             content = content.replace(
             url,
             '''
-            <iframe width="420" height="315"
-                src="{url}">
+            <iframe width="420" height="315" src="{url}">
             </iframe><br>
             '''.format(url=embed))
 
