@@ -105,4 +105,6 @@ def render_content(content):
             </iframe><br>
             '''.format(url=embed))
 
+    content = content.replace('\n', '<br>')
+
     return content
