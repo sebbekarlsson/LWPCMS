@@ -73,6 +73,9 @@ def render_publish(id):
                        )
 
         return redirect('/admin/publish/{}'.format(new_post["_id"]))
+
+    if post is None:
+        form.published.data = True
        
     return render_template('admin_publish.html', sidenav=sidenav,
             form=form, post=post, id=id)
