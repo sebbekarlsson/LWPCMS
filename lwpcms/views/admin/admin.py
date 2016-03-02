@@ -81,20 +81,25 @@ def render_publish(id):
             form=form, post=post, id=id)
 
 
-@bp.route('/posts')
+@bp.route('/posts', defaults={'page': 0})
+@bp.route('/posts/<page>')
 @login_required
-def render_posts():
+def render_posts(page):
     sidenav = get_sidenav()
 
+    page = int(page)
+    limit = 128
+
+    query ={
+        "classes": ["post"]
+    }
     posts = list(
-                db.collections.find(
-                        {
-                            "classes": ["post"]
-                        }
-                    ).sort('created', pymongo.DESCENDING)
+                db.collections.find(query).sort('created', pymongo.DESCENDING)\
+                        .skip(page * limit).limit(limit)
                 )
+    page_count = int(db.collections.count(query) / limit)
     return render_template('admin_posts.html', sidenav=sidenav,
-            posts=posts)
+            posts=posts, page_count=page_count)
 
 
 @bp.route('/users')

@@ -6,26 +6,46 @@
         <a href='/admin/publish' class='lwpcms-btn'>Add New</a>
     </section>
     <section>
-        <table class='lwpcms-table'>
-            <tr>
-                <th>Title</th>
-                <th>Content</th>
-                <th>Action</th>
-            </tr>
-            {% for post in posts %}
+        {% if page_count > 0 %}
+            <section>
+                <nav class='lwpcms-pager'>
+                    {% for i in range(0, page_count) %}
+                        <a class='lwpcms-pager-btn' href="/admin/posts/{{ i }}">{{ i }}</a>
+                    {% endfor %}
+                </nav>
+            </section>
+        {% endif %}
+        <section>
+            <table class='lwpcms-table'>
                 <tr>
-                    <td>{{ shorten_text(post.title, 32) }}</td>
-                    <td>{{ shorten_text(post.content, 32) }}</td>
-                    <td class='lwpcms-table-td'>
-                        <section>
-                            <button class='lwpcms-btn' onClick='window.location.href="/admin/publish/{{ post._id }}"'>Edit</button>
-                        </section>
-                        <section>
-                            <button class='lwpcms-btn' onClick='event.cancelBubble=true; delete_post(this, "{{ post._id }}");' >Delete</button>
-                        </section>
-                    </td>
+                    <th>Title</th>
+                    <th>Content</th>
+                    <th>Action</th>
                 </tr>
-            {% endfor %}
-        </table>
+                {% for post in posts %}
+                    <tr>
+                        <td>{{ shorten_text(post.title, 32) }}</td>
+                        <td>{{ shorten_text(post.content, 32) }}</td>
+                        <td class='lwpcms-table-td'>
+                            <section>
+                                <button class='lwpcms-btn' onClick='window.location.href="/admin/publish/{{ post._id }}"'>Edit</button>
+                            </section>
+                            <section>
+                                <button class='lwpcms-btn' onClick='event.cancelBubble=true; delete_post(this, "{{ post._id }}");' >Delete</button>
+                            </section>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </section>
+        {% if page_count > 0 %}
+            <section>
+                <nav class='lwpcms-pager'>
+                    {% for i in range(0, page_count) %}
+                        <a class='lwpcms-pager-btn' href="/admin/posts/{{ i }}">{{ i }}</a>
+                    {% endfor %}
+                </nav>
+            </section>
+        {% endif %}
     </section>
 {% endblock %}
