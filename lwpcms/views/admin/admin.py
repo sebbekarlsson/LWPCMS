@@ -201,26 +201,32 @@ def render_themes():
     return render_template('admin_themes.html', sidenav=sidenav, themes=themes)
 
 
-@bp.route('/files', methods=['POST', 'GET'])
+@bp.route('/files', defaults={'page': 0})
+@bp.route('/files/<page>', methods=['POST', 'GET'])
 @login_required
-def render_files():
+def render_files(page):
     sidenav = get_sidenav()
 
     form = UploadFileForm(csrf_enabled=False)
     if form.validate_on_submit():
         upload_file(form.file.data, form.title.data)
 
+    page = int(page)
+    limit = 128
+    
+    query = {
+        "classes": ["post", "file"]
+    }
     files = list(
-                db.collections.find(
-                    {
-                        "classes": ["post", "file"]
-                    }
-                ).sort('created', pymongo.DESCENDING)
+                db.collections.find(query).sort('created', pymongo.DESCENDING).skip(page * limit)\
+                        .limit(limit)
             )
+    page_count = int(db.collections.count(query) / limit)
     return render_template('admin_files.html',
         sidenav=sidenav,
         form=form,
-        files=files
+        files=files,
+        page_count=page_count
     )
 
 

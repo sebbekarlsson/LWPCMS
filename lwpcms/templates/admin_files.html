@@ -19,33 +19,53 @@
         </form>
     </section>
     <section>
-        <div class='lwpcms-gallery'>
-            {% for file in files %}
-                <div
-                    onClick='window.location.href="{{
-                        url_for("static", filename="upload/"+file.content)
-                    }}";'
-                    class='lwpcms-gallery-item'>
-                    <div class='lwpcms-gallery-item-bar'>
-                        <button onClick='event.cancelBubble=true; delete_file(this, "{{ file._id }}");' class='lwpcms-gallery-item-bar-btn warning'>X</button>
+        {% if page_count > 0 %}
+            <section>
+                <nav class='lwpcms-pager'>
+                    {% for i in range(0, page_count) %}
+                        <a class='lwpcms-pager-btn' href="/admin/files/{{ i }}">{{ i }}</a>
+                    {% endfor %}
+                </nav>
+            </section>
+        {% endif %}
+        <section>
+            <div class='lwpcms-gallery'>
+                {% for file in files %}
+                    <div
+                        onClick='window.location.href="{{
+                            url_for("static", filename="upload/"+file.content)
+                        }}";'
+                        class='lwpcms-gallery-item'>
+                        <div class='lwpcms-gallery-item-bar'>
+                            <button onClick='event.cancelBubble=true; delete_file(this, "{{ file._id }}");' class='lwpcms-gallery-item-bar-btn warning'>X</button>
+                        </div>
+                        <p>
+                            {{ file.title | escape }}
+                        </p>
+                        {% if is_image(file.content) %}
+                            <img 
+                            src='{{
+                            url_for("static", filename="upload/"+file_thumbnail(file.content, 128))
+                            }}'>
+                        {% else %}
+                            {{ render_svg('drive_file.svg', 'black') }}
+                        {% endif %}
+                        <br>
+                        <p>
+                            {{ file.content | escape }}
+                        </p>
                     </div>
-                    <p>
-                        {{ file.title | escape }}
-                    </p>
-                    {% if is_image(file.content) %}
-                        <img 
-                        src='{{
-                        url_for("static", filename="upload/"+file_thumbnail(file.content, 128))
-                        }}'>
-                    {% else %}
-                        {{ render_svg('drive_file.svg', 'black') }}
-                    {% endif %}
-                    <br>
-                    <p>
-                        {{ file.content | escape }}
-                    </p>
-                </div>
-            {% endfor %}
-        </div>
+                {% endfor %}
+            </div>
+        </section>
+        {% if page_count > 0 %}
+            <section>
+                <nav class='lwpcms-pager'>
+                    {% for i in range(0, page_count) %}
+                        <a class='lwpcms-pager-btn' href="/admin/files/{{ i }}">{{ i }}</a>
+                    {% endfor %}
+                </nav>
+            </section>
+        {% endif %}
     </section>
 {% endblock %}
