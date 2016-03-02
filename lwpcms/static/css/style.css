@@ -117,7 +117,7 @@ section {
   border-color: #bdc3c7;
   color: #3498db; }
 
-.lwpcms-inputs input[type='text'], .lwpcms-inputs input[type='password'], .lwpcms-inputs input[type='email'], .lwpcms-inputs input[type='tags'], .lwpcms-form input[type='text'], .lwpcms-form input[type='password'], .lwpcms-form input[type='email'], .lwpcms-form input[type='tags'] {
+.lwpcms-inputs input[type='text'], .lwpcms-inputs input[type='password'], .lwpcms-inputs input[type='email'], .lwpcms-inputs input[type='tags'], .lwpcms-inputs input[type='number'], .lwpcms-form input[type='text'], .lwpcms-form input[type='password'], .lwpcms-form input[type='email'], .lwpcms-form input[type='tags'], .lwpcms-form input[type='number'] {
   display: block;
   height: 32px;
   line-height: 32px;
@@ -130,6 +130,8 @@ section {
   border-bottom-color: lightgray;
   font-size: 100%;
   width: 100%; }
+.lwpcms-inputs input[type='number'], .lwpcms-form input[type='number'] {
+  width: 128px !important; }
 .lwpcms-inputs textarea, .lwpcms-form textarea {
   display: block;
   width: 100%;

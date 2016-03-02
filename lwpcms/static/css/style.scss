@@ -168,7 +168,7 @@ section {
 }
 
 .lwpcms-inputs, .lwpcms-form {
-    input[type='text'], input[type='password'], input[type='email'], input[type='tags'] {
+    input[type='text'], input[type='password'], input[type='email'], input[type='tags'], input[type='number'] {
         display: block;
         height: 32px;
         line-height: 32px;
@@ -181,6 +181,10 @@ section {
         border-bottom-color: lightgray;
         font-size: 100%;
         width: 100%;
+    }
+
+    input[type='number'] {
+        width: 128px !important;
     }
 
     textarea {

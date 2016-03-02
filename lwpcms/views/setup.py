@@ -25,6 +25,8 @@ def render():
 
         set_option('site_name', site_name)
         set_option('site_demo', demo)
+        set_option('site_filespage_limit', 128)
+        set_option('site_postspage_limit', 128)
 
         register_user(
                     name=user_name,

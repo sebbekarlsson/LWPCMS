@@ -5,7 +5,8 @@ from wtforms import (
     PasswordField,
     validators,
     SubmitField,
-    FileField
+    FileField,
+    IntegerField
 )
 from flask.ext.wtf import Form
 
@@ -48,4 +49,6 @@ class SettingsForm(Form):
     demo = SetupForm.demo
     site_name = SetupForm.site_name
     site_description = TextAreaField('Site Description', [validators.Length(min=4, max=100000)])
+    site_filespage_limit = IntegerField('Page-size limit on files page')
+    site_postspage_limit = IntegerField('Page-size limit on posts page')
     submit = SubmitField('Save')

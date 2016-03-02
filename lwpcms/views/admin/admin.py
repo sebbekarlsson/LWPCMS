@@ -247,27 +247,34 @@ def render_settings():
         set_option('site_description', form.site_description.data)
         site_tags = ','.join(request.form.getlist('lwpcms_tag'))
         set_option('site_tags', site_tags)
+        set_option('site_filespage_limit', form.site_filespage_limit.data)
+        set_option('site_postspage_limit', form.site_postspage_limit.data)
     
     is_demo = get_option('site_demo')
     if is_demo:
-        is_demo = is_demo['value']
+        form.demo.data = is_demo['value']
 
     site_name = get_option('site_name')
     if site_name:
-        site_name = site_name['value']
+        form.site_name.data = site_name['value']
 
     site_description = get_option('site_description')
     if site_description:
-        site_description = site_description['value']
+        form.site_description.data = site_description['value']
 
     site_tags = get_option('site_tags')
     if site_tags:
         site_tags = site_tags['value']
     else:
         site_tags = ''
+    
+    site_filespage_limit = get_option('site_filespage_limit')
+    if site_filespage_limit:
+        form.site_filespage_limit.data = site_filespage_limit['value']
 
-    form.demo.data = is_demo
-    form.site_name.data = site_name
-    form.site_description.data = site_description
+    site_postspage_limit = get_option('site_postspage_limit')
+    if site_postspage_limit:
+        form.site_postspage_limit.data = site_postspage_limit['value']
 
+    
     return render_template('admin_settings.html', sidenav=sidenav, site_tags=site_tags, form=form)
