@@ -88,7 +88,7 @@ def render_posts(page):
     sidenav = get_sidenav()
 
     page = int(page)
-    limit = 128
+    limit = int(get_option('site_postspage_limit')['value'])
 
     query ={
         "classes": ["post"]
@@ -206,7 +206,7 @@ def render_themes():
     return render_template('admin_themes.html', sidenav=sidenav, themes=themes)
 
 
-@bp.route('/files', defaults={'page': 0})
+@bp.route('/files', defaults={'page': 0}, methods=['POST', 'GET'])
 @bp.route('/files/<page>', methods=['POST', 'GET'])
 @login_required
 def render_files(page):
@@ -217,7 +217,7 @@ def render_files(page):
         upload_file(form.file.data, form.title.data)
 
     page = int(page)
-    limit = 128
+    limit = int(get_option('site_filespage_limit')['value'])
     
     query = {
         "classes": ["post", "file"]
