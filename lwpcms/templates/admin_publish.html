@@ -42,7 +42,7 @@
                                     </div>
                                     <p>{{ attachment.meta.original_filename }}</p>
                                     <img src='/static/upload/{{attachment.content}}'>
-                                    <input type="hidden" name="attachment_id" value="{{ attachment._id }}">
+                                    <input type="hidden" name="file_id" value="{{ attachment._id }}">
                                  </ul>
                             </div>
                        {% endfor %}

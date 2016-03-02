@@ -52,16 +52,16 @@ def render_publish(id):
             form.published.data = post['published']
 
     if form.validate_on_submit():
-        attachment_ids = request.form.getlist('attachment_id')
+        file_ids = request.form.getlist('file_id')
         tags = request.form.getlist('lwpcms_tag')
         attachments = []
 
-        for a_id in attachment_ids:
+        for a_id in file_ids:
             if a_id is not None and len(a_id) > 3:
-                attachment = db.collections.find_one({"_id": ObjectId(a_id)})
+                file = db.collections.find_one({"_id": ObjectId(a_id)})
 
-                if attachment is not None:
-                    attachments.append(attachment)
+                if file is not None:
+                    attachments.append(file)
 
         new_post = publish_post(
                            title=form.title.data,

@@ -111,6 +111,7 @@ function lwpcms_window(waiter, title, content, action) {
                 ElemenTailor.create(
                     'section',
                     {
+                        class: 'lwpcms-bakdrop-window-content',
                         childs: [
                             content
                         ]

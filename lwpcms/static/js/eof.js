@@ -12,7 +12,7 @@ for(var i = 0; i < attachment_remove_buttons.length; i++) {
     remove_button.addEventListener('click', function(e) {
         e.preventDefault();
 
-        var attach_id = this.parentNode.parentNode.querySelector('input[name="attachment_id"]').value;
+        var attach_id = this.parentNode.parentNode.querySelector('input[name="file_id"]').value;
         var post_id = document.querySelector('input[name="post_id"]').value;
 
         var data = remove_attachment(post_id, attach_id);

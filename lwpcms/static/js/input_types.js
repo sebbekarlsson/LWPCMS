@@ -1,3 +1,90 @@
+function create_gallery_items(files) {
+    var gallery_items = [];
+
+    for (var i = 0; i < files.length; i++) {
+        var ext = files[i].content.split('.')[1];
+        var fname = files[i].content.split('.')[0];
+        var file_thumb = fname + '_128x128.' + ext;
+
+        var gallery_item = ElemenTailor.create(
+            'div',
+            {
+                file_id: files[i].id,
+                file_original: files[i].original,
+                file_title: files[i].title,
+                file_file: files[i].content,
+                class: 'lwpcms-gallery-item',
+                childs:[
+                    ElemenTailor.create(
+                        'p',
+                        {
+                            innerHTML: files[i].title
+                        }
+                    ),
+                    ElemenTailor.create(
+                        'img',
+                        {
+                            src: '/static/upload/' + file_thumb
+                        }
+                    )
+                ]
+            }
+        );
+        
+        gallery_item.addEventListener('click', function (e) {
+            var other_items = this.parentNode.querySelectorAll('.lwpcms-gallery-item');
+
+            for(var i = 0; i < other_items.length; i++) {
+                other_items[i].removeAttribute('selected');
+            }
+
+            this.setAttribute('selected', true);
+        });
+
+        gallery_items.push(gallery_item);
+    }
+    
+    return gallery_items;
+}
+
+
+function create_pager(filecount, per_page) {
+    var pager_buttons = [];
+    for (var i = 0; i < filecount/per_page; i++) {
+        var pager_btn = ElemenTailor.create('a', {
+            innerHTML: i,
+            value: i,
+            class: 'lwpcms-pager-btn'
+        });
+
+        pager_btn.addEventListener('click', function (e) {
+            var this_parent = this.parentNode.parentNode;
+            var gallery = this_parent.querySelector('#fetched_files');
+            var value = this.getAttribute('value');
+
+            var files = query_files('*', value, per_page)['files'];
+            var gallery_items = create_gallery_items(files);
+
+            gallery.innerHTML = '';
+
+            for (var i = 0; i < gallery_items.length; i++) {
+                item = gallery_items[i];
+                gallery.appendChild(item);
+            }
+
+        });
+
+        pager_buttons.push(pager_btn);
+    }
+    var pagers_holder = ElemenTailor.create('nav', {
+        class: 'lwpcms-pager',
+        childs: pager_buttons
+    });
+
+    return pagers_holder;
+}
+
+
 function apply_inputs (input) {
     if (input != undefined) {
        var type = input.getAttribute('type');
@@ -5,51 +92,21 @@ function apply_inputs (input) {
         switch (type) {
             case 'lwpcms-file':
                     
-                    var attachments = query_attachments('*')['attachments'];
-                    var gallery_items = [];
+                    var filecount = query_files('*', -1, -1)['files'].length;
+                    var per_page = 64;
 
-                    for (var i = 0; i < attachments.length; i++) {
-                        var ext = attachments[i].content.split('.')[1];
-                        var fname = attachments[i].content.split('.')[0];
-                        var attach_thumb = fname + '_128x128.' + ext;
+                    var files = query_files('*', 0, per_page)['files'];
+                    var gallery_items = create_gallery_items(files);
 
-                        var gallery_item = ElemenTailor.create(
-                            'div',
-                            {
-                                attachment_id: attachments[i].id,
-                                attachment_original: attachments[i].original,
-                                attachment_title: attachments[i].title,
-                                attachment_file: attachments[i].content,
-                                class: 'lwpcms-gallery-item',
-                                childs:[
-                                    ElemenTailor.create(
-                                        'p',
-                                        {
-                                            innerHTML: attachments[i].title
-                                        }
-                                    ),
-                                    ElemenTailor.create(
-                                        'img',
-                                        {
-                                            src: `/static/upload/${attach_thumb}`
-                                        }
-                                    )
-                                ]
-                            }
-                        );
-                        
-                        gallery_item.addEventListener('click', function (e) {
-                            var other_items = this.parentNode.querySelectorAll('.lwpcms-gallery-item');
-
-                            for(var i = 0; i < other_items.length; i++) {
-                                other_items[i].removeAttribute('selected');
-                            }
-
-                            this.setAttribute('selected', true);
-                        });
-
-                        gallery_items.push(gallery_item);
+                   
+                    if (filecount >= per_page) { 
+                        pagers_holder_1 = create_pager(filecount, per_page);
+                        pagers_holder_2 = create_pager(filecount, per_page);
+                    } else {
+                        pagers_holder_1 = ElemenTailor.create('span');
+                        pagers_holder_2 = ElemenTailor.create('span');
                     }
+                       
                     
                     input.value = 'Choose File';
                     input.setAttribute('readonly', true);
@@ -60,16 +117,25 @@ function apply_inputs (input) {
                         lwpcms_window(
                             this,
                             'Choose File',
-                            ElemenTailor.create(
-                                'div',
+                            ElemenTailor.create('section', 
                                 {
-                                    class: 'lwpcms-gallery',
-                                    childs: gallery_items
+                                        childs:[
+                                            pagers_holder_1,
+                                            ElemenTailor.create(
+                                                'div',
+                                                {
+                                                    class: 'lwpcms-gallery',
+                                                    id: 'fetched_files',
+                                                    childs: gallery_items
+                                                }
+                                            ),
+                                            pagers_holder_2
+                                        ]
                                 }
                             ),
                             function(e, c, w) {
-                                var attachment = c.querySelector('.lwpcms-gallery-item[selected="true"]');
-                                var img_src = attachment.getElementsByTagName('img')[0].getAttribute('src');
+                                var file = c.querySelector('.lwpcms-gallery-item[selected="true"]');
+                                var img_src = file.getElementsByTagName('img')[0].getAttribute('src');
                                 
                                 var remove_button = ElemenTailor.create(
                                     'button',
@@ -102,7 +168,7 @@ function apply_inputs (input) {
                                             ElemenTailor.create(
                                                 'p',
                                                 {
-                                                    innerHTML: attachment.getAttribute('attachment_original')
+                                                    innerHTML: file.getAttribute('file_original')
                                                 }
                                             ),
                                             ElemenTailor.create(
@@ -115,8 +181,8 @@ function apply_inputs (input) {
                                                 'input',
                                                 {
                                                     type: 'hidden',
-                                                    name: 'attachment_id',
-                                                    value: attachment.getAttribute('attachment_id')
+                                                    name: 'file_id',
+                                                    value: file.getAttribute('file_id')
                                                 }
                                             )
                                         ]

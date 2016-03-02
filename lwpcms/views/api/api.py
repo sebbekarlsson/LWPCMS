@@ -43,44 +43,52 @@ def delete_post(id):
     return 'ok', 200
 
 
-@bp.route('/query_attachments/<query>', defaults={'page': 0})
-@bp.route('/query_attachments/<query>/<page>', methods=['POST', 'GET'])
-def query_attachments(query, page):
+@bp.route('/query_files/<query>', defaults={'page': 0, 'limit': 100})
+@bp.route('/query_files/<query>/<page>/<limit>', methods=['POST', 'GET'])
+def query_files(query, page, limit):
 
     page = int(page)
-    limit = 100
+    limit = int(limit)
 
     if query != '*':
-        attachments = list(
-                    db.collections.find(
+        obj = db.collections.find(
                         {
                             "classes": ["post", "file"],
                             "title": {"$regex": u"[a-zA-Z]*{}[a-zA-Z]*".format(query)}
                         }
-                    ).skip(page * limit).limit(limit).sort('created', pymongo.DESCENDING)
+                    ).sort('created', pymongo.DESCENDING)
+        if page != -1 and limit != -1:
+            obj.skip(page * limit).limit(limit)
+
+        files = list(
+                    obj
                 )
     else:
-        attachments = list(
-                    db.collections.find(
+        obj = db.collections.find(
                         {
                             "classes": ["post", "file"]
                         }
-                    ).skip(page * limit).limit(limit).sort('created', pymongo.DESCENDING)
+                    ).sort('created', pymongo.DESCENDING)
+        if page != -1 and limit != -1:
+            obj.skip(page * limit).limit(limit)
+
+        files = list(
+                obj
                 )
 
     return jsonify(
                 {
                     'meta':{
-                            'length': len(attachments)
+                            'length': len(files)
                         },
-                    'attachments':[
+                    'files':[
                         {
-                            'id': str(attachment["_id"]),
-                            'title': attachment["title"],
-                            'content': attachment["content"],
-                            'original': attachment['meta']['original_filename']
+                            'id': str(file["_id"]),
+                            'title': file["title"],
+                            'content': file["content"],
+                            'original': file['meta']['original_filename']
                         }
-                    for attachment in attachments]
+                    for file in files]
                } 
             )
 

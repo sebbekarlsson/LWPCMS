@@ -1,9 +1,9 @@
 /*
  * This will be converted to a more convincing httprequest library later.
 */
-function query_attachments(query) {
+function query_files(query, page, limit) {
     var http = new XMLHttpRequest();
-    var url = "/api/query_attachments/" + query;
+    var url = "/api/query_files/" + query + '/' + page + '/' + limit;
 
     http.open("GET", url, false);
     http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
