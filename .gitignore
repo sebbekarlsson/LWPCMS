@@ -7,3 +7,5 @@ build
 *.sqlite
 upload
 config.json
+*.tar.gz
+*.tar

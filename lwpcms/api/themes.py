@@ -57,5 +57,7 @@ def install_theme(url):
 
     for fl in glob.glob('lwpcms/themes/*.tar'):
         os.remove(fl)
+    
+    os.remove(fname_path)
 
     return True
