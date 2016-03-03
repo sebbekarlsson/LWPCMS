@@ -105,6 +105,13 @@ function apply_inputs (input) {
                     } else {
                         pagers_holder_1 = ElemenTailor.create('span');
                         pagers_holder_2 = ElemenTailor.create('span');
+
+                        if (filecount == 0) {
+                            pagers_holder_1 = ElemenTailor.create('p', {
+                                innerHTML: 'No files has been uploaded.\
+                                    Click <a href="/admin/files">here</a> to upload files.' 
+                            });
+                        }
                     }
                        
                     
