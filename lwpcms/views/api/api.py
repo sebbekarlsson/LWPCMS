@@ -1,11 +1,12 @@
-from flask import Blueprint, render_template, abort
+from flask import Blueprint, render_template, abort, request, send_file
 from flask import jsonify
 
 from lwpcms.mongo import db
 from bson.objectid import ObjectId
 import pymongo
 
-from lwpcms.api.files import file_thumbnail
+from lwpcms.api.files import file_thumbnail, make_tarfile
+from lwpcms.api.themes import get_themes
 
 import os
 
@@ -110,3 +111,31 @@ def remove_attachment(post_id, attach_id):
     return jsonify({
             'status': 200
         }), 200
+
+
+@bp.route('/themes', methods=['POST', 'GET'])
+def themes():
+    all_themes = get_themes()
+
+    for theme in all_themes:
+        if not os.path.exists('lwpcms/themes/tar'):
+            os.mkdir('lwpcms/themes/tar')
+        
+        tarname = 'lwpcms/themes/tar/{}.tar.gz'.format(theme['name'])
+
+        if not os.path.exists(tarname):
+            make_tarfile(tarname, 'lwpcms/' + theme['path'])
+
+        theme['url'] = request.url_root + 'api/themes/download/{}'.format(theme['name'])
+
+
+    print(request.url_root)
+    return jsonify({'themes': all_themes})
+
+
+@bp.route('/themes/download/<theme_name>', methods=['POST', 'GET'])
+def themes_download(theme_name):
+    theme = get_themes(theme_name)
+
+    print(theme)
+    return send_file('themes/tar/' + theme['name'] + '.tar.gz')

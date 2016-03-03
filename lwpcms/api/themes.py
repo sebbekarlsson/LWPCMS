@@ -43,9 +43,6 @@ def get_activated_theme():
 
 
 def install_theme(url):
-    if 'tar.gz' not in url:
-        return False
-
     response = urllib.request.urlopen(url)
     data = response.read()
     fname = os.path.basename(url)
@@ -58,7 +55,7 @@ def install_theme(url):
     tar.extractall(path='lwpcms/themes/.')
     tar.close()
 
-    for fl in glob.glob('lwpcms/themes/*.gz'):
+    for fl in glob.glob('lwpcms/themes/*.tar'):
         os.remove(fl)
 
     return True
