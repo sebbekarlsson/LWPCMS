@@ -4,6 +4,7 @@ from lwpcms.views.index import bp as index_bp
 from lwpcms.views.admin.admin import bp as admin_bp
 from lwpcms.views.theme import bp as theme_bp
 from lwpcms.views.api.api import bp as api_bp
+from lwpcms.views.api.api_query import bp as api_query_bp
 from lwpcms.views.setup import bp as setup_bp
 from lwpcms.views.login import bp as login_bp
 
@@ -23,6 +24,7 @@ app.register_blueprint(setup_bp)
 app.register_blueprint(index_bp)
 app.register_blueprint(admin_bp)
 app.register_blueprint(api_bp)
+app.register_blueprint(api_query_bp)
 app.register_blueprint(theme_bp)
 app.register_blueprint(login_bp)
 
