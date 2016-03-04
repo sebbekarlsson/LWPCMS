@@ -11,8 +11,8 @@ class DBObject(object):
             type='',
             meta={}
             ):
-        self.created = time.strftime("%Y:%m:%d:%H:%M:%S")
-        self.updated = time.strftime("%Y:%m:%d:%H:%M:%S")
+        self.created = time.strftime("%Y/%B/%d")
+        self.updated = time.strftime("%Y/%B/%d")
         self.classes = classes
         self.type = type
         self.meta = meta
