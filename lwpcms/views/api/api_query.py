@@ -36,6 +36,13 @@ def return_query():
         if 'limit' in filter:
             query.limit(filter['limit'])
 
+        if 'sort' in filter:
+            sort_map = {
+                    'ascending': pymongo.ASCENDING,
+                    'descending': pymongo.DESCENDING
+                    }
+            query.sort(filter['sort']['key'], sort_map[filter['sort']['value']])
+
     results = list(query)
     for result in results:
         result['_id'] = str(result['_id'])
