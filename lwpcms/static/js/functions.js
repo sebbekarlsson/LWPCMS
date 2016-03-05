@@ -16,6 +16,21 @@ function query_files(query, page, limit) {
 /*
  * This will be converted to a more convincing httprequest library later.
 */
+function query_data(query) {
+    var http = new XMLHttpRequest();
+    var url = "/api/query";
+
+    http.open("POST", url, false);
+    http.setRequestHeader("Content-type", "application/json");
+    http.send(JSON.stringify(query));
+
+    return JSON.parse(http.responseText);
+}
+
+
+/*
+ * This will be converted to a more convincing httprequest library later.
+*/
 function remove_attachment(post_id, attach_id) {
     var http = new XMLHttpRequest();
     var url = `/api/remove_attachment/${post_id}/${attach_id}`;
