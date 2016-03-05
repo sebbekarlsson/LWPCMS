@@ -63,7 +63,7 @@ def get_option(name):
             db.collections.find(
                     {
                         'key': name,
-                        'structure': 'Option'
+                        'structure': '#Option'
                     }
                 )
             )
@@ -78,7 +78,7 @@ def set_option(name, value):
     return db.collections.update_one(
             {
                 'key': name,
-                'structure': 'Option'
+                'structure': '#Option'
             },
             {
                 '$set': {'value': value}

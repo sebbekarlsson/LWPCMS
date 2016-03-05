@@ -16,7 +16,7 @@ class DBObject(object):
         self.classes = classes
         self.type = type
         self.meta = meta
-        self.structure = self.__class__.__name__
+        self.structure = '{}{}'.format('#', self.__class__.__name__)
 
 
     def export(self):

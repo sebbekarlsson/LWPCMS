@@ -110,7 +110,7 @@ def render_users():
     users = list(
                 db.collections.find(
                     {
-                        'structure': 'User',
+                        'structure': '#User',
                     }
                 )
             )

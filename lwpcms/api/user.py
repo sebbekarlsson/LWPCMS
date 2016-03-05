@@ -12,7 +12,7 @@ def get_current_user():
         return db.collections.find_one(
             {
                 '_id': ObjectId(session['user_id']),
-                'structure': 'User'
+                'structure': '#User'
             }
         )
 
@@ -30,7 +30,7 @@ def login_user(name, password):
     user = db.collections.find_one(
             {
                 'nick_name': name,
-                'structure': 'User'
+                'structure': '#User'
             }
         )
 
