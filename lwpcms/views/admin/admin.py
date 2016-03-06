@@ -214,7 +214,10 @@ def render_files(page):
 
     form = UploadFileForm(csrf_enabled=False)
     if form.validate_on_submit():
-        upload_file(form.file.data)
+        files = request.files.getlist('file')
+        
+        for file in files:
+            upload_file(file)
 
     page = int(page)
     limit = int(get_option('site_filespage_limit')['value'])
