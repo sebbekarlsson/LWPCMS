@@ -299,8 +299,6 @@ section {
           line-height: 48px;
           padding-top: 12px;
           position: relative; }
-          .lwpcms-backdrop-window .lwpcms-backdrop-window-top ul label svg:hover, .lwpcms-backdrop-window .lwpcms-backdrop-window-top ul label object:hover, .lwpcms-backdrop-window .lwpcms-backdrop-window-top li label svg:hover, .lwpcms-backdrop-window .lwpcms-backdrop-window-top li label object:hover {
-            cursor: pointer; }
 
 .lwpcms-pager {
   width: 100%;
@@ -357,6 +355,14 @@ section {
   .lwpcms-tags-section .lwpcms-tags-section-tag:hover {
     cursor: crosshair;
     background-color: #e74c3c; }
+
+object, svg {
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  pointer-events: none !important; }
+
+.clickable:hover {
+  cursor: pointer; }
 
 .left {
   float: left; }

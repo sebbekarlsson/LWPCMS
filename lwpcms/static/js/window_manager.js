@@ -49,6 +49,33 @@ function lwpcms_window(waiter, title, content, action) {
         }
     );
 
+    var close_button = ElemenTailor.create(
+        'label',
+        {
+            style: 'z-index: 35;\
+                   position: absolute;\
+                   top: 0;\
+                   right: 8px;\
+                   pointer-events: auto !important;\
+                   ',
+            class: 'clickable',
+            childs: [
+                ElemenTailor.create(
+                    'object',
+                    {
+                        fill: 'white',
+                        data: '/static/image/close.svg',
+                        onerror: 'this.onerror=null' 
+                    }
+                )
+            ]
+        }
+    );
+
+    close_button.addEventListener('click', function(e) {
+        close_lwpcms_windows();
+    });
+
     w = ElemenTailor.create(
         'div',
         {
@@ -84,21 +111,7 @@ function lwpcms_window(waiter, title, content, action) {
                                             'li',
                                             {
                                                 childs: [
-                                                    ElemenTailor.create(
-                                                        'label',
-                                                        {
-                                                            childs: [
-                                                                ElemenTailor.create(
-                                                                    'object',
-                                                                    {
-                                                                        fill: 'white',
-                                                                        data: '/static/image/close.svg',
-                                                                        onerror: 'this.onerror=null' 
-                                                                    }
-                                                                )
-                                                            ]
-                                                        }
-                                                    )
+                                                    close_button
                                                 ]
                                             }
                                         )
@@ -135,7 +148,7 @@ function lwpcms_window(waiter, title, content, action) {
     });
 
     button.addEventListener('click', function(e) {
-        action(e, content, w);
+        if (action(e, content, w) == false) { close_lwpcms_windows(); }
     });
 
     window_manager_element.appendChild(w);

@@ -142,6 +142,9 @@ function apply_inputs (input) {
                             ),
                             function(e, c, w) {
                                 var file = c.querySelector('.lwpcms-gallery-item[selected="true"]');
+                                if (file == null) {
+                                    return false;
+                                }
                                 var img_src = file.getElementsByTagName('img')[0].getAttribute('src');
                                 
                                 var remove_button = ElemenTailor.create(
