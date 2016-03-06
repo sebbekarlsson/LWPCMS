@@ -33,7 +33,6 @@ class LoginForm(Form):
 
 class UploadFileForm(Form):
     file = FileField('File')
-    title = TextField('Title', [validators.Length(min=4, max=256)])
     submit = SubmitField('Upload')
 
 

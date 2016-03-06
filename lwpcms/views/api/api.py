@@ -20,17 +20,16 @@ bp = Blueprint(
 @bp.route('/delete_file/<id>', methods=['POST', 'GET'])
 def delete_file(id):
     file = db.collections.find_one({"_id": ObjectId(id)})
-    print(file['content'])
     os.remove(
         os.path.dirname(os.path.realpath(__file__))\
-                +'/../../static/upload/{}'.format(file["content"])
+                +'/../../static/upload/{}'.format(file["filename"])
     )
 
     for size in [64, 32, 128]:
         os.remove(
             os.path.dirname(os.path.realpath(__file__))\
                 +'/../../static/upload/{}'.format(
-                    file_thumbnail(file["content"], size)
+                    file_thumbnail(file["filename"], size)
                     )
         )
 
@@ -54,8 +53,8 @@ def query_files(query, page, limit):
     if query != '*':
         obj = db.collections.find(
                         {
-                            "classes": ["post", "file"],
-                            "title": {"$regex": u"[a-zA-Z]*{}[a-zA-Z]*".format(query)}
+                            "structure": "#File",
+                            "filename": {"$regex": u"[a-zA-Z]*{}[a-zA-Z]*".format(query)}
                         }
                     ).sort('created', pymongo.DESCENDING)
         if page != -1 and limit != -1:
@@ -67,7 +66,7 @@ def query_files(query, page, limit):
     else:
         obj = db.collections.find(
                         {
-                            "classes": ["post", "file"]
+                            "structure": "#File"
                         }
                     ).sort('created', pymongo.DESCENDING)
         if page != -1 and limit != -1:
@@ -85,9 +84,7 @@ def query_files(query, page, limit):
                     'files':[
                         {
                             'id': str(file["_id"]),
-                            'title': file["title"],
-                            'content': file["content"],
-                            'original': file['meta']['original_filename']
+                            'filename': file["filename"],
                         }
                     for file in files]
                } 

@@ -2,23 +2,21 @@ function create_gallery_items(files) {
     var gallery_items = [];
 
     for (var i = 0; i < files.length; i++) {
-        var ext = files[i].content.split('.')[1];
-        var fname = files[i].content.split('.')[0];
+        var ext = files[i].filename.split('.')[1];
+        var fname = files[i].filename.split('.')[0];
         var file_thumb = fname + '_128x128.' + ext;
 
         var gallery_item = ElemenTailor.create(
             'div',
             {
                 file_id: files[i].id,
-                file_original: files[i].original,
-                file_title: files[i].title,
-                file_file: files[i].content,
+                file_title: files[i].filename,
                 class: 'lwpcms-gallery-item',
                 childs:[
                     ElemenTailor.create(
                         'p',
                         {
-                            innerHTML: files[i].title
+                            innerHTML: files[i].filename
                         }
                     ),
                     ElemenTailor.create(

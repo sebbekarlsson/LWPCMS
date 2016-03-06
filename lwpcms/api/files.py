@@ -1,7 +1,7 @@
 from werkzeug import secure_filename
 
 from lwpcms.mongo import db
-from lwpcms.models import Post
+from lwpcms.models import Post, File
 from bson.objectid import ObjectId
 
 import time
@@ -51,7 +51,7 @@ def generate_thumnails(file):
       img.save("{}_{}{}".format(fname, '{}x{}'.format(*size), '.' + ext))
 
 
-def upload_file(file, title):
+def upload_file(file):
     if file:        
         filename = secure_filename(
             time.strftime("%H:%M:%S")\
@@ -65,17 +65,9 @@ def upload_file(file, title):
         if is_image(saved_file):
             generate_thumnails(saved_file)
 
-        post = Post(
-                    classes=["post", "file"],
-                    type='file',
-                    title=title,
-                    content=filename,
-                    attachments={},
-                    author={},
-                    meta={'original_filename': file.filename}
-                ).export()
+        db_file = File(filename=filename).export()
         
-        db.collections.insert_one(post)
+        db.collections.insert_one(db_file)
 
         return True
     else:

@@ -10,7 +10,6 @@
                 <h3>Upload File</h3>
             </section>
             <section>
-                {{ render_field(form.title) }}
                 {{ render_field(form.file) }}
             </section>
             <section>
@@ -33,27 +32,23 @@
                 {% for file in files %}
                     <div
                         onClick='window.location.href="{{
-                            url_for("static", filename="upload/"+file.content)
+                            url_for("static", filename="upload/"+file.filename)
                         }}";'
                         class='lwpcms-gallery-item'>
                         <div class='lwpcms-gallery-item-bar'>
                             <button onClick='event.cancelBubble=true; delete_file(this, "{{ file._id }}");' class='lwpcms-gallery-item-bar-btn warning'>X</button>
                         </div>
                         <p>
-                            {{ file.title | escape }}
+                            {{ file.filename | escape }}
                         </p>
-                        {% if is_image(file.content) %}
+                        {% if is_image(file.filename) %}
                             <img 
                             src='{{
-                            url_for("static", filename="upload/"+file_thumbnail(file.content, 128))
+                            url_for("static", filename="upload/"+file_thumbnail(file.filename, 128))
                             }}'>
                         {% else %}
                             {{ render_svg('drive_file.svg', 'black') }}
                         {% endif %}
-                        <br>
-                        <p>
-                            {{ file.content | escape }}
-                        </p>
                     </div>
                 {% endfor %}
             </div>

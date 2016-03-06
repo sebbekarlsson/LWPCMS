@@ -214,13 +214,13 @@ def render_files(page):
 
     form = UploadFileForm(csrf_enabled=False)
     if form.validate_on_submit():
-        upload_file(form.file.data, form.title.data)
+        upload_file(form.file.data)
 
     page = int(page)
     limit = int(get_option('site_filespage_limit')['value'])
     
     query = {
-        "classes": ["post", "file"]
+            'structure': '#File'
     }
     files = list(
                 db.collections.find(query).sort('created', pymongo.DESCENDING).skip(page * limit)\

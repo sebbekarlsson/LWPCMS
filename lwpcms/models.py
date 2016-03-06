@@ -81,3 +81,16 @@ class Option(DBObject):
         DBObject.__init__(self, classes, type, meta)
         self.key = key
         self.value = value
+
+
+class File(DBObject):
+
+    def __init__(
+            self,
+            filename='',
+            classes=[],
+            type='',
+            meta={}
+            ):
+        DBObject.__init__(self, classes, type, meta)
+        self.filename = filename
