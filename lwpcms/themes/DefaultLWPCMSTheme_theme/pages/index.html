@@ -9,8 +9,8 @@
             <div class="row">
                 <div class="span10">
                     {% if post.attachments|length > 0 %}
-                        {% if is_image(post.attachments[0].content) %}
-                            <img src='static/upload/{{ post.attachments[0].content }}'>
+                        {% if is_image(post.attachments[0].filename) %}
+                            <img src='static/upload/{{ post.attachments[0].filename }}'>
                         {% endif %}
                     {% endif %}
                     <p>

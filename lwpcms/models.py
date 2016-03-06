@@ -36,11 +36,10 @@ class Post(DBObject):
             author={},
             tags=[],
             published='',
-            classes=[],
-            type='',
-            meta={}
+            *args,
+            **kwargs
             ):
-        DBObject.__init__(self, classes, type, meta)
+        DBObject.__init__(self, *args, **kwargs)
         self.title = title
         self.content = content
         self.attachments = attachments
@@ -57,11 +56,10 @@ class User(DBObject):
             first_name='',
             last_name='',
             password='',
-            classes=[],
-            type='',
-            meta={}
+            *args,
+            **kwargs
             ):
-        DBObject.__init__(self, classes, type, meta)
+        DBObject.__init__(self, *args, **kwargs)
         self.nick_name = nick_name
         self.first_name = first_name
         self.last_name = last_name
@@ -74,11 +72,10 @@ class Option(DBObject):
             self,
             key='',
             value='',
-            classes=[],
-            type='',
-            meta={}
+            *args,
+            **kwargs
             ):
-        DBObject.__init__(self, classes, type, meta)
+        DBObject.__init__(self, *args, **kwargs)
         self.key = key
         self.value = value
 
@@ -88,9 +85,8 @@ class File(DBObject):
     def __init__(
             self,
             filename='',
-            classes=[],
-            type='',
-            meta={}
+            *args,
+            **kwargs
             ):
-        DBObject.__init__(self, classes, type, meta)
+        DBObject.__init__(self, *args, **kwargs)
         self.filename = filename

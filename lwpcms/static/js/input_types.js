@@ -176,7 +176,7 @@ function apply_inputs (input) {
                                             ElemenTailor.create(
                                                 'p',
                                                 {
-                                                    innerHTML: file.getAttribute('file_original')
+                                                    innerHTML: file.getAttribute('file_title')
                                                 }
                                             ),
                                             ElemenTailor.create(
