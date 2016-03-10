@@ -116,16 +116,7 @@ def themes():
     all_themes = get_themes()
 
     for theme in all_themes:
-        if not os.path.exists('lwpcms/themes/tar'):
-            os.mkdir('lwpcms/themes/tar')
-        
-        tarname = 'lwpcms/themes/tar/{}.tar.gz'.format(theme['name'])
-
-        if not os.path.exists(tarname):
-            make_tarfile(tarname, 'lwpcms/' + theme['path'])
-
         theme['url'] = request.url_root + 'api/themes/download/{}'.format(theme['name'])
-
 
     print(request.url_root)
     return jsonify({'themes': all_themes})
@@ -134,6 +125,12 @@ def themes():
 @bp.route('/themes/download/<theme_name>', methods=['POST', 'GET'])
 def themes_download(theme_name):
     theme = get_themes(theme_name)
+    tarname = 'lwpcms/themes/tar/{}.tar.gz'.format(theme['name'])
 
-    print(theme)
+    if not os.path.exists('lwpcms/themes/tar'):
+        os.mkdir('lwpcms/themes/tar')
+
+    if not os.path.exists(tarname):
+        make_tarfile(tarname, 'lwpcms/' + theme['path'])
+
     return send_file('themes/tar/' + theme['name'] + '.tar.gz')
