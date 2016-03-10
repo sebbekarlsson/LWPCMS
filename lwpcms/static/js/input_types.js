@@ -253,6 +253,8 @@ function apply_inputs (input) {
                                 });
 
                                 tag_element.addEventListener('click', function (e) {
+                                    var input = this.parentNode.parentNode.querySelector('*[type="tags"]');
+                                    input.value = input.value.replace(this.value + ',', '');
                                     ElemenTailor.delete(this);
                                 });
 

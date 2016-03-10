@@ -4,23 +4,27 @@
 
 {% block admin_content %}
     <form method="POST" class='lwpcms-form'>
+        <section>
+            {% for option in options %}
+                <input type='hidden' name='avail_options' value='{{ option.key }}'>
                 <section>
-                    {{ render_field(form.site_name) }}
-                    {{ render_field(form.site_description) }}
+                    <label for='{{ option.key }}'>{{ option.key }}</label><br>
+                    {% if option.type == 'textarea' %}
+                        <textarea id='{{ option.key }}' name='{{ option.key }}'>{{ option.value }}</textarea>
+                    {% elif option.type == 'text' %}
+                        <input type='text' id='{{ option.key }}' name='{{ option.key }}' value='{{ option.value }}'>
+                    {% elif option.type == 'integer' %}
+                        <input type='number' id='{{ option.key }}' name='{{ option.key }}' value='{{ option.value }}'>
+                    {% elif option.type == 'tags' %}
+                        <input type='tags' id='{{ option.key }}' tags='{{ option.value }}' placeholder='{{ option.value }}' name='{{ option.key }}' value='{{ option.value }}'>
+                    {% elif option.type == 'boolean' %}
+                        <input type='checkbox' id='{{ option.key }}' name='{{ option.key }}' {% if option.value == 'True' or option.value == true %} checked {% endif %}>
+                    {% endif %}
                 </section>
-                <section>
-                    <label for='site_tags'>Site Tags</label>
-                    <input type='tags' id='site_tags' tags='{{ site_tags }}' placeholder='{{ site_tags }}' name='site_tags'>
-                </section>
-                <section>
-                    {{ render_field(form.site_filespage_limit) }}
-                    {{ render_field(form.site_postspage_limit) }}
-                </section>
-                <section>
-                    {{ render_field(form.demo) }}
-                </section>
-                <section>
-                    {{ render_field(form.submit) }}
-                </section>
-            </form>
+            {% endfor %}
+        </section>
+        <section>
+            <input type='submit' class='lwpcms-btn' value='Save'>
+        </section>
+    </form>
 {% endblock %}

@@ -74,14 +74,22 @@ def get_option(name):
         return None
 
 
-def set_option(name, value):
+def set_option(name, value, type='text'):
+    old = db.collections.find_one({
+            'key': name,
+            'structure': '#Option'
+        })
+
+    if old is not None:
+        type = old['type']
+
     return db.collections.update_one(
             {
                 'key': name,
                 'structure': '#Option'
             },
             {
-                '$set': {'value': value}
+                '$set': {'value': value, 'type': type}
             },
             True
         )
