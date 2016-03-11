@@ -35,7 +35,7 @@ def render():
                     password=password
                 )
 
-        set_option('initialized', 'True', type='boolean')
+        set_option('initialized', 'True', type='boolean', editable=False)
 
         return redirect('/')
 

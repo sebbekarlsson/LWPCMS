@@ -74,7 +74,7 @@ def get_option(name):
         return None
 
 
-def set_option(name, value, type='text'):
+def set_option(name, value, type='text', editable=True):
     old = db.collections.find_one({
             'key': name,
             'structure': '#Option'
@@ -89,7 +89,7 @@ def set_option(name, value, type='text'):
                 'structure': '#Option'
             },
             {
-                '$set': {'value': value, 'type': type}
+                '$set': {'value': value, 'type': type, 'editable': editable}
             },
             True
         )

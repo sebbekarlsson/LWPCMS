@@ -254,6 +254,9 @@ def render_settings():
                 value = True
             else:
                 value == False
+            
+            if type(value) is str:
+                value = value.replace(', ', ',')
 
             set_option(key, value)
 

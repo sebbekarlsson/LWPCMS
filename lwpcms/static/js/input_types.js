@@ -245,7 +245,7 @@ function apply_inputs (input) {
                     if(tags) {
                         for (var ii = 0; ii < tags.length; ii++) {
 
-                            if (tags[ii] != '') {
+                            if (tags[ii] != '' && tags[ii] != null) {
                                 var tag_element = ElemenTailor.create('input', {
                                     name: 'lwpcms_tag',
                                     class: 'lwpcms-tags-section-tag',

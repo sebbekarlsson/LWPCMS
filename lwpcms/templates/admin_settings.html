@@ -5,7 +5,7 @@
 {% block admin_content %}
     <form method="POST" class='lwpcms-form'>
         <section>
-            {% for option in options %}
+            {% for option in options if option.editable == 'True' or option.editable == true %}
                 <input type='hidden' name='avail_options' value='{{ option.key }}'>
                 <section>
                     <label for='{{ option.key }}'>{{ option.key }}</label><br>
