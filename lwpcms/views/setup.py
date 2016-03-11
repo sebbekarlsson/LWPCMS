@@ -24,16 +24,18 @@ def render():
         demo = form.demo.data
 
         set_option('site_name', site_name)
-        set_option('site_demo', demo)
-        set_option('site_filespage_limit', 128)
-        set_option('site_postspage_limit', 128)
+        set_option('site_demo', demo, type='boolean')
+        set_option('site_filespage_limit', 128, type='integer')
+        set_option('site_postspage_limit', 128, type='integer')
+        set_option('site_description', 'Your Description', type='textarea')
+        set_option('site_tags', 'cms,site,website,blog', type='tags')
 
         register_user(
                     name=user_name,
                     password=password
                 )
 
-        set_option('initialized', 'True')
+        set_option('initialized', 'True', type='boolean', editable=False)
 
         return redirect('/')
 

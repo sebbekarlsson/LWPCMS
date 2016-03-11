@@ -72,12 +72,14 @@ class Option(DBObject):
             self,
             key='',
             value='',
+            editable=True,
             *args,
             **kwargs
             ):
         DBObject.__init__(self, *args, **kwargs)
         self.key = key
         self.value = value
+        self.editable = editable
 
 
 class File(DBObject):

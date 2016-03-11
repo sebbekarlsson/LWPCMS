@@ -245,7 +245,7 @@ function apply_inputs (input) {
                     if(tags) {
                         for (var ii = 0; ii < tags.length; ii++) {
 
-                            if (tags[ii] != '') {
+                            if (tags[ii] != '' && tags[ii] != null) {
                                 var tag_element = ElemenTailor.create('input', {
                                     name: 'lwpcms_tag',
                                     class: 'lwpcms-tags-section-tag',
@@ -253,6 +253,8 @@ function apply_inputs (input) {
                                 });
 
                                 tag_element.addEventListener('click', function (e) {
+                                    var input = this.parentNode.parentNode.querySelector('*[type="tags"]');
+                                    input.value = input.value.replace(this.value + ',', '');
                                     ElemenTailor.delete(this);
                                 });
 

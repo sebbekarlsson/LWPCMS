@@ -242,42 +242,29 @@ def render_files(page):
 @login_required
 def render_settings():
     sidenav = get_sidenav()
-
-    form = SettingsForm(csrf_enabled=False)
-    if form.validate_on_submit():
-        set_option('site_demo', form.demo.data)
-        set_option('site_name', form.site_name.data)
-        set_option('site_description', form.site_description.data)
-        site_tags = ','.join(request.form.getlist('lwpcms_tag'))
-        set_option('site_tags', site_tags)
-        set_option('site_filespage_limit', form.site_filespage_limit.data)
-        set_option('site_postspage_limit', form.site_postspage_limit.data)
     
-    is_demo = get_option('site_demo')
-    if is_demo:
-        form.demo.data = is_demo['value']
+    if request.method == 'POST':
+        avail_options = request.form.getlist('avail_options')
+        
+        for key, value in request.form.items():
+            if key in ['avail_options', 'lwpcms_tag']:
+                continue
 
-    site_name = get_option('site_name')
-    if site_name:
-        form.site_name.data = site_name['value']
+            if value == 'on':
+                value = True
+            else:
+                value == False
+            
+            if type(value) is str:
+                value = value.replace(', ', ',')
 
-    site_description = get_option('site_description')
-    if site_description:
-        form.site_description.data = site_description['value']
+            set_option(key, value)
 
-    site_tags = get_option('site_tags')
-    if site_tags:
-        site_tags = site_tags['value']
-    else:
-        site_tags = ''
-    
-    site_filespage_limit = get_option('site_filespage_limit')
-    if site_filespage_limit:
-        form.site_filespage_limit.data = site_filespage_limit['value']
+        for key in avail_options:
+            if key not in request.form.keys():
+                set_option(key, False)
 
-    site_postspage_limit = get_option('site_postspage_limit')
-    if site_postspage_limit:
-        form.site_postspage_limit.data = site_postspage_limit['value']
 
-    
-    return render_template('admin_settings.html', sidenav=sidenav, site_tags=site_tags, form=form)
+    options = list(db.collections.find({'structure': '#Option'}))
+
+    return render_template('admin_settings.html', sidenav=sidenav, options=options)
