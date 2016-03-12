@@ -22,9 +22,11 @@ import shutil
 
 bp = Blueprint(
     __name__, __name__,
-    template_folder='templates',
+    template_folder=os.path.dirname(os.path.dirname(__file__)) + '/../templates/admin',
     url_prefix='/admin'
 )
+
+print(bp.template_folder)
 
 @bp.route('/')
 @login_required
@@ -77,7 +79,7 @@ def render_publish(id):
     if post is None:
         form.published.data = True
        
-    return render_template('admin_publish.html', sidenav=sidenav,
+    return render_template('publish.html', sidenav=sidenav,
             form=form, post=post, id=id)
 
 
@@ -98,7 +100,7 @@ def render_posts(page):
                         .skip(page * limit).limit(limit)
                 )
     page_count = int(db.collections.count(query) / limit)
-    return render_template('admin_posts.html', sidenav=sidenav,
+    return render_template('posts.html', sidenav=sidenav,
             posts=posts, page_count=page_count)
 
 
@@ -115,7 +117,7 @@ def render_users():
                 )
             )
 
-    return render_template('admin_users.html', sidenav=sidenav, users=users)
+    return render_template('users.html', sidenav=sidenav, users=users)
 
 
 @bp.route('/modules', methods=['POST', 'GET'])
@@ -156,7 +158,7 @@ def render_modules():
 
     modules = get_modules()
 
-    return render_template('admin_modules.html', sidenav=sidenav, modules=modules)
+    return render_template('modules.html', sidenav=sidenav, modules=modules)
 
 
 @bp.route('/themes', methods=['POST', 'GET'])
@@ -203,7 +205,7 @@ def render_themes():
 
     themes = get_themes()
 
-    return render_template('admin_themes.html', sidenav=sidenav, themes=themes)
+    return render_template('themes.html', sidenav=sidenav, themes=themes)
 
 
 @bp.route('/files', defaults={'page': 0}, methods=['POST', 'GET'])
@@ -230,7 +232,7 @@ def render_files(page):
                         .limit(limit)
             )
     page_count = int(db.collections.count(query) / limit)
-    return render_template('admin_files.html',
+    return render_template('files.html',
         sidenav=sidenav,
         form=form,
         files=files,
@@ -267,4 +269,4 @@ def render_settings():
 
     options = list(db.collections.find({'structure': '#Option'}))
 
-    return render_template('admin_settings.html', sidenav=sidenav, options=options)
+    return render_template('settings.html', sidenav=sidenav, options=options)
