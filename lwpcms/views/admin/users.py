@@ -1,21 +1,13 @@
 from flask import Blueprint, render_template, abort, request, redirect, url_for
 
-import glob
-
-import json
-
-from lwpcms.api.posts import publish_post, get_option, set_option
-from lwpcms.api.modules import call_module_event, get_modules
-from lwpcms.api.themes import get_themes
-from lwpcms.api.admin import get_sidenav
 from lwpcms.api.user import login_required
+from lwpcms.api.posts import publish_post, get_option, set_option
+from lwpcms.api.admin import get_sidenav
 
 from lwpcms.mongo import db
 import pymongo as pymongo
-from bson.objectid import ObjectId
 
 import os
-import shutil
 
 
 bp = Blueprint(
@@ -24,11 +16,17 @@ bp = Blueprint(
     url_prefix='/admin'
 )
 
-print(bp.template_folder)
-
-@bp.route('/')
+@bp.route('/users')
 @login_required
-def render():
+def render_users():
     sidenav = get_sidenav()
 
-    return render_template('admin.html', sidenav=sidenav)
+    users = list(
+                db.collections.find(
+                    {
+                        'structure': '#User',
+                    }
+                )
+            )
+
+    return render_template('users.html', sidenav=sidenav, users=users)

@@ -1,7 +1,16 @@
 from flask import Flask
 
 from lwpcms.views.index import bp as index_bp
+
 from lwpcms.views.admin.admin import bp as admin_bp
+from lwpcms.views.admin.publish import bp as admin_publish_bp
+from lwpcms.views.admin.posts import bp as admin_posts_bp
+from lwpcms.views.admin.users import bp as admin_users_bp
+from lwpcms.views.admin.modules import bp as admin_modules_bp
+from lwpcms.views.admin.themes import bp as admin_themes_bp
+from lwpcms.views.admin.files import bp as admin_files_bp
+from lwpcms.views.admin.settings import bp as admin_settings_bp
+
 from lwpcms.views.theme import bp as theme_bp
 from lwpcms.views.api.api import bp as api_bp
 from lwpcms.views.api.api_query import bp as api_query_bp
@@ -22,7 +31,16 @@ import pymongo
 app = Flask(__name__)
 app.register_blueprint(setup_bp)
 app.register_blueprint(index_bp)
+
 app.register_blueprint(admin_bp)
+app.register_blueprint(admin_publish_bp)
+app.register_blueprint(admin_posts_bp)
+app.register_blueprint(admin_users_bp)
+app.register_blueprint(admin_modules_bp)
+app.register_blueprint(admin_themes_bp)
+app.register_blueprint(admin_files_bp)
+app.register_blueprint(admin_settings_bp)
+
 app.register_blueprint(api_bp)
 app.register_blueprint(api_query_bp)
 app.register_blueprint(theme_bp)
