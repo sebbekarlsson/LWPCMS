@@ -18,6 +18,8 @@ setup(
         'pyyaml',
         'loremipsum',
         'pymongo',
-        'pillow'
+        'pillow',
+        'pytest',
+        'pytest-cov'
     ]
 )

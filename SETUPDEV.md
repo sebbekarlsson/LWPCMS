@@ -26,4 +26,10 @@
         sass --watch style.scss style.css
 
 > * (You will need to install sass for this)
+
+## Testing
+> To run tests, cd into the root of the project and run:
+
+        ./test.sh
+
 > * You're good to go!, start contributing to the project :)
