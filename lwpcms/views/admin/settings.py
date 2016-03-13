@@ -3,6 +3,7 @@ from flask import Blueprint, render_template, abort, request, redirect, url_for
 from lwpcms.api.user import login_required
 from lwpcms.api.posts import publish_post, get_option, set_option
 from lwpcms.api.admin import get_sidenav
+from lwpcms.forms import SettingsForm
 
 from lwpcms.mongo import db
 import pymongo as pymongo
@@ -21,29 +22,47 @@ bp = Blueprint(
 @login_required
 def render_settings():
     sidenav = get_sidenav()
+
+    form = SettingsForm(csrf_enabled=False)
+    if form.validate_on_submit():
+        set_option('site_demo', form.demo.data)
+        set_option('site_name', form.site_name.data)
+        set_option('site_description', form.site_description.data)
+        site_tags = ','.join(request.form.getlist('lwpcms_tag'))
+        set_option('site_tags', site_tags)
+        set_option('site_filespage_limit', form.site_filespage_limit.data)
+        set_option('site_postspage_limit', form.site_postspage_limit.data)
     
-    if request.method == 'POST':
-        avail_options = request.form.getlist('avail_options')
-        
-        for key, value in request.form.items():
-            if key in ['avail_options', 'lwpcms_tag']:
-                continue
+    is_demo = get_option('site_demo')
+    if is_demo:
+        form.demo.data = is_demo['value']
 
-            if value == 'on':
-                value = True
-            else:
-                value == False
-            
-            if type(value) is str:
-                value = value.replace(', ', ',')
+    site_name = get_option('site_name')
+    if site_name:
+        form.site_name.data = site_name['value']
 
-            set_option(key, value)
+    site_description = get_option('site_description')
+    if site_description:
+        form.site_description.data = site_description['value']
 
-        for key in avail_options:
-            if key not in request.form.keys():
-                set_option(key, False)
+    site_tags = get_option('site_tags')
+    if site_tags:
+        site_tags = site_tags['value']
+    else:
+        site_tags = ''
+    
+    site_filespage_limit = get_option('site_filespage_limit')
+    if site_filespage_limit:
+        form.site_filespage_limit.data = site_filespage_limit['value']
 
+    site_postspage_limit = get_option('site_postspage_limit')
+    if site_postspage_limit:
+        form.site_postspage_limit.data = site_postspage_limit['value']
 
-    options = list(db.collections.find({'structure': '#Option'}))
-
-    return render_template('settings.html', sidenav=sidenav, options=options)
+    
+    return render_template(
+            'settings.html',
+            sidenav=sidenav,
+            site_tags=site_tags,
+            form=form
+            )
