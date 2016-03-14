@@ -16,8 +16,23 @@ def get_current_user():
             }
         )
 
+def user_exists(name):
+    existing = db.collections.find_one({
+            'structure': '#User',
+            'nick_name': name
+        })
+
+    return existing is not None
+
 
 def register_user(name, password, avatar=None, id=None):
+    existing = db.collections.find_one({
+            'structure': '#User',
+            'nick_name': name
+        })
+    if existing is not None and id is None:
+        return False
+
     user = User(
                 nick_name=name,
                 password=password,

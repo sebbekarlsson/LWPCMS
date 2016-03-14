@@ -14,7 +14,11 @@
                 <h3>Edit User</h3>
             </section>
             <section>
-                {{ render_field(form.user_name) }}
+                {% if user %}
+                    {{ render_field(form.user_name, readonly=true, value=form.user_name.data) }}
+                {% else %}
+                    {{ render_field(form.user_name, readonly=false) }}
+                {% endif %}
                 {{ render_field(form.password) }}
                 {{ render_field(form.password_confirm) }}
             </section>
@@ -51,6 +55,11 @@
                     {{ render_field(form.update) }}
                 {% endif %}
             </section>
+            {% if msg %}
+                <section>
+                    {{ msg }}
+                </section>
+            {% endif %}
         </form>
     </section>
 {% endblock %}

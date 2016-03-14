@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, abort, request, redirect, url_for
 
 from lwpcms.forms import UserForm
-from lwpcms.api.user import login_required, register_user
+from lwpcms.api.user import login_required, register_user, user_exists
 from lwpcms.api.posts import publish_post
 from lwpcms.api.admin import get_sidenav
 
@@ -27,6 +27,7 @@ def render_publish(id):
     form = UserForm(csrf_enabled=False)
 
     user = None
+    msg = None
 
     if form.validate_on_submit():
         avatars = request.form.getlist('file_id')
@@ -41,13 +42,24 @@ def render_publish(id):
         else:
             avatar_file = None
 
+        if user_exists(form.user_name.data) and id is None:
+            msg = 'User already exists'
+            return render_template(
+                    'editUser.html',
+                    sidenav=sidenav,
+                    form=form,
+                    user=user,
+                    id=id,
+                    msg=msg
+                    )
+
         new_user = register_user(
                 name=form.user_name.data,
                 password=form.password.data,
                 avatar=avatar_file,
                 id=id)
-        
-        if not id:
+
+        if not id and new_user is not False:
             return redirect('/admin/edituser/{}'.format(new_user.inserted_id))
 
     if id:
@@ -57,4 +69,4 @@ def render_publish(id):
             form.password.data = user["password"]
         
     return render_template('editUser.html', sidenav=sidenav,
-            form=form, user=user, id=id)
+            form=form, user=user, id=id, msg=msg)

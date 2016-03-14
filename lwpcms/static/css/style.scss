@@ -545,3 +545,9 @@ object, svg {
 .right {
     float: right;
 }
+
+*[readonly] {
+    &:hover {
+        cursor: not-allowed;
+    }
+}
