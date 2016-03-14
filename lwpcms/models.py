@@ -56,6 +56,7 @@ class User(DBObject):
             first_name='',
             last_name='',
             password='',
+            role='user',
             *args,
             **kwargs
             ):
@@ -64,6 +65,7 @@ class User(DBObject):
         self.first_name = first_name
         self.last_name = last_name
         self.password = password
+        self.role = role
 
 
 class Option(DBObject):
