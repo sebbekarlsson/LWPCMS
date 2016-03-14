@@ -20,7 +20,7 @@ import shutil
 
 bp = Blueprint(
     __name__, __name__,
-    template_folder=os.path.dirname(os.path.abspath(__file__)) + '/../templates/admin',
+    template_folder=os.path.dirname(os.path.realpath(__file__)) + '/../templates/admin',
     url_prefix='/admin'
 )
 
