@@ -15,7 +15,7 @@
                     <td>{{ shorten_text(user.password, 32) }}</td>
                     <td class='lwpcms-table-td'>
                         <section>
-                            <button class='lwpcms-btn' onClick='window.location.href="/admin/publish/{{ user._id }}"'>Edit</button>
+                            <button class='lwpcms-btn' onClick='window.location.href="/admin/edituser/{{ user._id }}"'>Edit</button>
                         </section>
                         <section>
                             <button class='lwpcms-btn' onClick='event.cancelBubble=true; delete_post(this, "{{ user._id }}");' >Delete</button>

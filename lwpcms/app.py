@@ -6,6 +6,7 @@ from lwpcms.views.admin.admin import bp as admin_bp
 from lwpcms.views.admin.publish import bp as admin_publish_bp
 from lwpcms.views.admin.posts import bp as admin_posts_bp
 from lwpcms.views.admin.users import bp as admin_users_bp
+from lwpcms.views.admin.editUser import bp as admin_editUser_bp
 from lwpcms.views.admin.modules import bp as admin_modules_bp
 from lwpcms.views.admin.themes import bp as admin_themes_bp
 from lwpcms.views.admin.files import bp as admin_files_bp
@@ -36,6 +37,7 @@ app.register_blueprint(admin_bp)
 app.register_blueprint(admin_publish_bp)
 app.register_blueprint(admin_posts_bp)
 app.register_blueprint(admin_users_bp)
+app.register_blueprint(admin_editUser_bp)
 app.register_blueprint(admin_modules_bp)
 app.register_blueprint(admin_themes_bp)
 app.register_blueprint(admin_files_bp)

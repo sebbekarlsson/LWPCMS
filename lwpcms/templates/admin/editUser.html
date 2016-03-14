@@ -1,0 +1,29 @@
+{% extends 'admin.html' %}
+
+{% from '_formhelpers.html' import render_field %}
+{% from '_svg.html' import render_svg %}
+
+
+{% block admin_content %}
+    <section>
+        <form method='POST' class='lwpcms-form' enctype="multipart/form-data">
+            {% if post %}
+                <input type='hidden' name='post_id' value='{{ post._id }}'>
+            {% endif %}
+            <section>
+                <h3>Edit User</h3>
+            </section>
+            <section>
+                {{ render_field(form.title) }}
+                {{ render_field(form.content) }}
+            </section>
+            <section>
+                {% if not id %}
+                    {{ render_field(form.submit) }}
+                {% else %}
+                    {{ render_field(form.update) }}
+                {% endif %}
+            </section>
+        </form>
+    </section>
+{% endblock %}
