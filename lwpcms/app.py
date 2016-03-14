@@ -29,6 +29,8 @@ from bson.objectid import ObjectId
 
 import pymongo
 
+import logging
+
 
 app = Flask(__name__)
 app.register_blueprint(setup_bp)
@@ -66,7 +68,6 @@ app.jinja_env.globals.update(ObjectId=ObjectId)
 
 app.secret_key = 'super secret key'
 
-import logging
-handler = logging.FileHandler('/var/log/dot.log')  # errors logged to this file
-handler.setLevel(logging.ERROR) # only log errors and above
+handler = logging.FileHandler('log.log')
+handler.setLevel(logging.ERROR)
 app.logger.addHandler(handler)
