@@ -10,3 +10,5 @@ config.json
 *.tar.gz
 *.tar
 htmlcov
+*.log*
+log.log
