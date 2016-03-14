@@ -22,7 +22,7 @@ from lwpcms.api.files import is_image, file_thumbnail
 from lwpcms.api.modules import call_module_event
 from lwpcms.api.posts import shorten_text, get_posts, get_option, set_option, render_content
 from lwpcms.api.themes import get_activated_theme
-from lwpcms.api.site import is_site_demo
+from lwpcms.api.site import is_site_demo, get_random_greeting
 from lwpcms.api.user import get_current_user
 
 from bson.objectid import ObjectId
@@ -58,6 +58,7 @@ app.jinja_env.globals.update(get_activated_theme=get_activated_theme)
 app.jinja_env.globals.update(set_option=set_option)
 app.jinja_env.globals.update(get_option=get_option)
 app.jinja_env.globals.update(is_site_demo=is_site_demo)
+app.jinja_env.globals.update(get_random_greeting=get_random_greeting)
 app.jinja_env.globals.update(get_current_user=get_current_user)
 app.jinja_env.globals.update(render_content=render_content)
 app.jinja_env.globals.update(pymongo=pymongo)

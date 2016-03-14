@@ -1,4 +1,21 @@
 {% from '_svg.html' import render_svg %}
-
+{% set current_user = get_current_user() %}
+{% set posts = get_posts({'structure': '#Post'}) %}
 <section>
+    <h1>Hi, {{ current_user.nick_name }}!</h1>
+    <p>{{ get_random_greeting() }}</p>
+</section>
+<section>
+    <h1>Status</h1>
+    <p>
+        {{ get_option('site_name').value }} currently has
+
+        {% if posts | length > 0 %}
+            {{ posts | length }} posts and
+        {% endif %}
+        {{ get_posts({'structure': '#User'}) | length }} registered users.
+    </p>
+    <p>
+        The current theme is the "{{get_activated_theme().name}}"
+    </p>
 </section>
