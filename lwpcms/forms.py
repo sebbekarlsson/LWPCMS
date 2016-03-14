@@ -44,6 +44,17 @@ class PostForm(Form):
     update = SubmitField('Update')
 
 
+class UserForm(Form):
+    user_name = TextField('User Name', [validators.Length(min=4, max=35)])
+    password = TextField('Choose Password', [
+        validators.Required(),
+        validators.EqualTo('password_confirm', message='Passwords must match')
+    ])
+    password_confirm = TextField('Repeat Password')
+    submit = SubmitField('Publish')
+    update = SubmitField('Update')
+
+
 class SettingsForm(Form):
     demo = SetupForm.demo
     site_name = SetupForm.site_name

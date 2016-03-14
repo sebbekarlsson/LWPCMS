@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, abort, request, redirect, url_for
 
-from lwpcms.forms import PostForm
-from lwpcms.api.user import login_required
+from lwpcms.forms import UserForm
+from lwpcms.api.user import login_required, register_user
 from lwpcms.api.posts import publish_post
 from lwpcms.api.admin import get_sidenav
 
@@ -24,41 +24,22 @@ bp = Blueprint(
 def render_publish(id):
     sidenav = get_sidenav()
 
-    form = PostForm(csrf_enabled=False)
+    form = UserForm(csrf_enabled=False)
 
-    post = None
+    user = None
 
     if id:
-        post = db.collections.find_one({"_id": ObjectId(id)})
-        if post and request.method != 'POST':    
-            form.title.data = post["nick_name"]
-            form.content.data = post["nick_name"]
+        user = db.collections.find_one({"_id": ObjectId(id)})
+        if user and request.method != 'POST':    
+            form.user_name.data = user["nick_name"]
+            form.password.data = user["password"]
 
     if form.validate_on_submit():
-        file_ids = request.form.getlist('file_id')
-        tags = request.form.getlist('lwpcms_tag')
-        attachments = []
-
-        for a_id in file_ids:
-            if a_id is not None and len(a_id) > 3:
-                file = db.collections.find_one({"_id": ObjectId(a_id)})
-
-                if file is not None:
-                    attachments.append(file)
-
-        new_post = publish_post(
-                           title=form.title.data,
-                           content=form.content.data,
-                           attachments=attachments,
-                           published=form.published.data,
-                           tags=tags,
-                           id=id
-                       )
-
-        return redirect('/admin/edituser/{}'.format(new_post["_id"]))
-
-    if post is None:
-        form.published.data = True
-       
+        if id:
+            new_user = register_user(
+                    form.user_name.data,
+                    form.password.data,
+                    id)
+        
     return render_template('editUser.html', sidenav=sidenav,
-            form=form, post=post, id=id)
+            form=form, user=user, id=id)

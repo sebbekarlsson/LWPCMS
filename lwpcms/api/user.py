@@ -17,13 +17,20 @@ def get_current_user():
         )
 
 
-def register_user(name, password):
+def register_user(name, password, id=None):
     user = User(
                 nick_name=name,
                 password=password
             ).export()
 
-    return db.collections.insert_one(user)
+    if not id:
+        return db.collections.insert_one(user)
+    else:
+        return db.collections.update_one(
+                {'structure': '#User', '_id': ObjectId(id)},
+                {
+                    '$set' : user
+                })
 
 
 def login_user(name, password):

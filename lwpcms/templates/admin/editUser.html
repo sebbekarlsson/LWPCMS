@@ -7,15 +7,16 @@
 {% block admin_content %}
     <section>
         <form method='POST' class='lwpcms-form' enctype="multipart/form-data">
-            {% if post %}
-                <input type='hidden' name='post_id' value='{{ post._id }}'>
+            {% if user %}
+                <input type='hidden' name='user_id' value='{{ user._id }}'>
             {% endif %}
             <section>
                 <h3>Edit User</h3>
             </section>
             <section>
-                {{ render_field(form.title) }}
-                {{ render_field(form.content) }}
+                {{ render_field(form.user_name) }}
+                {{ render_field(form.password) }}
+                {{ render_field(form.password_confirm) }}
             </section>
             <section>
                 {% if not id %}
