@@ -13,8 +13,6 @@ setup(
         'flask',
         'flask-wtf',
         'wtforms',
-        'PyMySQL',
-        'sqlalchemy',
         'pyyaml',
         'loremipsum',
         'pymongo',
