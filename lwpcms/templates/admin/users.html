@@ -8,12 +8,21 @@
     <section>
         <table class='lwpcms-table'>
             <tr>
+                <th>Avatar</th>
                 <th>Name</th>
                 <th>Password</th>
                 <th>Action</th>
             </tr>
             {% for user in users %}
                 <tr>
+                    <td>
+                        {% set avatar = user.avatar %}
+                        {% if avatar is not none %}
+                            <img src='{{ '/static/upload/' + avatar.filename }}'>
+                        {% else %}
+                            <img src='/static/image/avatar.png'>
+                        {% endif %}
+                    </td>
                     <td>{{ shorten_text(user.nick_name, 32) }}</td>
                     <td>{{ shorten_text(user.password, 32) }}</td>
                     <td class='lwpcms-table-td'>

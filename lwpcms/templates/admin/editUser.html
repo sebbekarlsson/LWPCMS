@@ -19,6 +19,32 @@
                 {{ render_field(form.password_confirm) }}
             </section>
             <section>
+                {% if user %}
+                    {% if user.avatar is not none %}
+                        <div id='user_avatar' class='lwpcms-addlist' type='lwpcms-file'>
+                        <div class="lwpcms-addlist-items lwpcms-gallery">
+                            <div class="lwpcms-gallery-item" childs="[object HTMLInputElement]">
+                                    <div class='lwpcms-gallery-item-bar'>
+                                        <button class='lwpcms-gallery-item-bar-btn remove-attachment warning'>X</button>
+                                    </div>
+                                    <p>{{ user.avatar.filename }}</p>
+                                    <img src='/static/upload/{{user.avatar.filename}}'>
+                                    <input type="hidden" name="file_id" value="{{ user.avatar._id }}">
+                                 </ul>
+                            </div>
+                        </div>
+                    {% else %}
+                    <label for='user_avatar'>Avatar</label>
+                        <div id='user_avatar' class='lwpcms-addlist' type='lwpcms-file'>
+                    </div>
+                    {% endif %}
+                {% else %}
+                    <label for='user_avatar'>Avatar</label>
+                        <div id='user_avatar' class='lwpcms-addlist' type='lwpcms-file'>
+                    </div>
+                {% endif %}
+            </section>
+            <section>
                 {% if not id %}
                     {{ render_field(form.submit) }}
                 {% else %}

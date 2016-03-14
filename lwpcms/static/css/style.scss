@@ -87,9 +87,13 @@ html, body {
     li {
         justify-content: center;
         align-items: center;
-        object {
+        object, img {
             display: block;
             max-height: 32px;
+        }
+
+        img {
+            display: inline-block;
         }
 
         span {
@@ -153,6 +157,7 @@ section {
 
             img {
                 max-width: 48px;
+                max-height: 32px;
             }
         }
 

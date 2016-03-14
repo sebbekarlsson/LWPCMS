@@ -20,10 +20,19 @@
         </ul>
         <ul class='right'>
             <li>
-                <a href='/admin/edituser/{{ get_current_user()._id }}'
+                {% set avatar = get_current_user().avatar %}
+
+                {% if avatar is not none %}
+                    <img src='{{ '/static/upload/' + avatar.filename }}'>
+                {% else %}
+                    <img src='/static/image/avatar.png'>
+                {% endif %}
+                <span>
+                    <a href='/admin/edituser/{{ get_current_user()._id }}'
                     class='lwpcms-top-nav-btn'>
-                    {{ get_current_user().nick_name }}
-                </a>
+                            {{ get_current_user().nick_name }}
+                    </a>
+                </span>
             </li>
         </ul>
     </nav>

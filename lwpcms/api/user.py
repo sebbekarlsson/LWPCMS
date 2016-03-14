@@ -17,10 +17,11 @@ def get_current_user():
         )
 
 
-def register_user(name, password, id=None):
+def register_user(name, password, avatar=None, id=None):
     user = User(
                 nick_name=name,
-                password=password
+                password=password,
+                avatar=avatar
             ).export()
 
     if not id:

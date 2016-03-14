@@ -28,20 +28,33 @@ def render_publish(id):
 
     user = None
 
+    if form.validate_on_submit():
+        avatars = request.form.getlist('file_id')
+        avatar = None
+        if avatars is not None:
+            if len(avatars) > 0:
+                avatar = avatars[0]
+
+
+        if avatar is not None:
+            avatar_file = db.collections.find_one({'_id': ObjectId(avatar)})
+        else:
+            avatar_file = None
+
+        new_user = register_user(
+                name=form.user_name.data,
+                password=form.password.data,
+                avatar=avatar_file,
+                id=id)
+        
+        if not id:
+            return redirect('/admin/edituser/{}'.format(new_user.inserted_id))
+
     if id:
         user = db.collections.find_one({"_id": ObjectId(id)})
         if user and request.method != 'POST':    
             form.user_name.data = user["nick_name"]
             form.password.data = user["password"]
-
-    if form.validate_on_submit():
-        new_user = register_user(
-                form.user_name.data,
-                form.password.data,
-                id)
-        
-        if not id:
-            return redirect('/admin/edituser/{}'.format(new_user.inserted_id))
         
     return render_template('editUser.html', sidenav=sidenav,
             form=form, user=user, id=id)
