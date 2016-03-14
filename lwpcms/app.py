@@ -65,3 +65,8 @@ app.jinja_env.globals.update(pymongo=pymongo)
 app.jinja_env.globals.update(ObjectId=ObjectId)
 
 app.secret_key = 'super secret key'
+
+import logging
+handler = logging.FileHandler('/var/log/dot.log')  # errors logged to this file
+handler.setLevel(logging.ERROR) # only log errors and above
+app.logger.addHandler(handler)
