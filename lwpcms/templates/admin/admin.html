@@ -14,14 +14,15 @@
             <li>
                 <a href='/admin'>{{ render_svg('LWPCMS.svg') }}</a>
                 <span>
-                    <a href='/admin' class='lwpcms-top-nav-btn'>LWPCMS</a>
+                    <a href='/admin' class='lwpcms-top-nav-btn'>
+                        {{ get_option('site_name').value }}
+                    </a>
                 </span>
             </li>
         </ul>
         <ul class='right'>
             <li>
                 {% set avatar = get_current_user().avatar %}
-
                 {% if avatar is not none %}
                     <img src='{{ '/static/upload/' + avatar.filename }}'>
                 {% else %}
