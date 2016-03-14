@@ -11,10 +11,18 @@
 {% block lwpcms_content %}
     <nav class='lwpcms-top-nav'>
         <ul class='left'>
-            <li><a href='/admin'>{{ render_svg('LWPCMS.svg') }}</a><span>LWPCMS</span></li>
+            <li>
+                <a href='/admin'>{{ render_svg('LWPCMS.svg') }}</a>
+                <span>LWPCMS</span>
+            </li>
         </ul>
         <ul class='right'>
-            <li><a href='/admin/edituser/{{ get_current_user()._id }}' class='lwpcms-top-nav-btn'>{{ get_current_user().nick_name }}</a></li>
+            <li>
+                <a href='/admin/edituser/{{ get_current_user()._id }}'
+                    class='lwpcms-top-nav-btn'>
+                    {{ get_current_user().nick_name }}
+                </a>
+            </li>
         </ul>
     </nav>
     <div id='lwpcms-content-admin'>
