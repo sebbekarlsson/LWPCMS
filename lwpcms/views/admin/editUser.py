@@ -35,11 +35,13 @@ def render_publish(id):
             form.password.data = user["password"]
 
     if form.validate_on_submit():
-        if id:
-            new_user = register_user(
-                    form.user_name.data,
-                    form.password.data,
-                    id)
+        new_user = register_user(
+                form.user_name.data,
+                form.password.data,
+                id)
+        
+        if not id:
+            return redirect('/admin/edituser/{}'.format(new_user.inserted_id))
         
     return render_template('editUser.html', sidenav=sidenav,
             form=form, user=user, id=id)
