@@ -4,11 +4,19 @@
 
 {% block lwpcms_head %}
     {{ super() }}
-        
+
     {{ lwpcms_render_font() }}
 {% endblock %}
 
 {% block lwpcms_content %}
+    <nav class='lwpcms-top-nav'>
+        <ul class='left'>
+            <li><a href='/admin'>{{ render_svg('LWPCMS.svg') }}</a><span>LWPCMS</span></li>
+        </ul>
+        <ul class='right'>
+            <li><a href='/admin/edituser/{{ get_current_user()._id }}' class='lwpcms-top-nav-btn'>{{ get_current_user().nick_name }}</a></li>
+        </ul>
+    </nav>
     <div id='lwpcms-content-admin'>
         <nav class='lwpcms-side-nav'>
             <ul class='lwpcms-side-nav-side'>
@@ -32,6 +40,7 @@
         </nav>
         <section id='lwpcms-admin-content'> 
             {% block admin_content %}
+                {% include 'home.html' %}
             {% endblock %}
         </section>
     </div>

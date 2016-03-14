@@ -52,6 +52,35 @@ html, body {
       align-items: center;
       justify-content: center; }
 
+.lwpcms-top-nav {
+  height: 48px;
+  line-height: 48px;
+  width: 100%;
+  border-bottom-color: #bdc3c7;
+  border-bottom-width: 1px;
+  border-bottom-style: solid; }
+  .lwpcms-top-nav li {
+    justify-content: center;
+    align-items: center; }
+    .lwpcms-top-nav li object {
+      display: block;
+      max-height: 32px; }
+    .lwpcms-top-nav li span {
+      padding-left: 8px; }
+  .lwpcms-top-nav ul, .lwpcms-top-nav li {
+    display: inline-block;
+    list-style: none;
+    margin-left: 10px;
+    margin-right: 10px;
+    display: flex;
+    height: 100%; }
+  .lwpcms-top-nav .lwpcms-top-nav-btn {
+    text-decoration: none;
+    color: #3498db; }
+    .lwpcms-top-nav .lwpcms-top-nav-btn:hover {
+      color: black;
+      cursor: pointer; }
+
 #lwpcms-admin-content {
   width: 100%; }
 

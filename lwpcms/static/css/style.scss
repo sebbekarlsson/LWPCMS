@@ -76,6 +76,47 @@ html, body {
     }
 }
 
+.lwpcms-top-nav {
+    height: 48px;
+    line-height: 48px;
+    width: 100%;
+    border-bottom-color: $main-color;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+
+    li {
+        justify-content: center;
+        align-items: center;
+        object {
+            display: block;
+            max-height: 32px;
+        }
+
+        span {
+            padding-left: 8px;
+        }
+    }
+
+    ul, li {
+        display: inline-block;
+        list-style: none;
+        margin-left: 10px;
+        margin-right: 10px;
+        display: flex;
+        height: 100%;
+    }
+
+    .lwpcms-top-nav-btn {
+        text-decoration: none;
+        color: $main-color-lighter;
+
+        &:hover {
+            color: black;
+            cursor: pointer;
+        }
+    }
+}
+
 #lwpcms-admin-content {
     width: 100%;
 }
