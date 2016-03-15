@@ -13,7 +13,7 @@ for(var i = 0; i < attachment_remove_buttons.length; i++) {
         e.preventDefault();
 
         var attach_id = this.parentNode.parentNode.querySelector('input[name="file_id"]').value;
-        var post_id = document.querySelector('input[name="file_id"]').value;
+        var post_id = document.querySelector('input[name="post_id"]').value;
 
         var data = remove_attachment(post_id, attach_id);
         if (data['status'] == 200) {
