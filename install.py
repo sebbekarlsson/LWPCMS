@@ -7,7 +7,6 @@ config_name = 'config.json'
 parser = argparse.ArgumentParser()
 
 parser.add_argument('--database_name')
-parser.add_argument('--run')
 args = parser.parse_args()
 
 if os.path.isfile(config_name):
@@ -33,7 +32,4 @@ else:
     with open(config_name, 'w+') as file:
         file.write(json.dumps(data))
 
-
-if args.run:
-    from lwpcms.app import app
-    app.run(debug=True)
+    file.close()
