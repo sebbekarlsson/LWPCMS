@@ -24,7 +24,6 @@ bp = Blueprint(
     url_prefix='/admin'
 )
 
-print(bp.template_folder)
 
 @bp.route('/')
 @login_required

@@ -1,4 +1,3 @@
-from lwpcms.config import config
 from lwpcms.api.posts import get_option
 import random
 

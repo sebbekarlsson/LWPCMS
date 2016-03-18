@@ -1,4 +1,6 @@
 # How to set up the dev environment
+
+> * Make sure mongodb is running.
 > * clone, pull down the repo.
 > * cd into the folder.
 > * Run:
@@ -13,12 +15,17 @@
         mkdir upload
 
 > * cd back to the root of the project.
+> * Create a configuration file wherever you want, in this format:
+
+        [database]
+        name = awesomename
+
 > * Run:
 
         python3 setup.py develop
-        python3 install.py
-        python3 __main__.py
+        python3 __main__.py --config myconfig.cfg
 
+> * the "--config" argument needs to point to wherever your config file is.
 > * Open up another shell.
 > * cd into lwpcms/static/css
 > * Run:

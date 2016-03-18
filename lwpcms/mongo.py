@@ -1,6 +1,6 @@
 from pymongo import MongoClient
-from lwpcms.config import config
+from lwpcms.application import config
 
 
 client = MongoClient('localhost', 27017)
-db = client[config['database_name']]
+db = client[config['database']['name']]

@@ -26,9 +26,7 @@ from lwpcms.api.site import is_site_demo, get_random_greeting
 from lwpcms.api.user import get_current_user
 
 from bson.objectid import ObjectId
-
 import pymongo
-
 import logging
 
 
