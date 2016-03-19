@@ -10,25 +10,30 @@
 
 {% block lwpcms_content %}
     <section class='lwpcms-content-center'>
-        <div class='lwpcms-focused-card'>
-            <form method="POST" class='lwpcms-form'>
-                <section>
-                    <h1>Hello</h1>
-                    <p>Let's setup your site!</p>
-                </section>
-                <section>
-                    {{ render_field(form.site_name) }}
-                    {{ render_field(form.user_name) }}
-                    {{ render_field(form.password) }}
-                    {{ render_field(form.password_confirm) }} 
-                </section>
-                <section>
-                    {{ render_field(form.demo) }}
-                </section>
-                <section>
-                    {{ render_field(form.submit) }}
-                </section>
-            </form>
-        </div>
+        <section class='lwpcms-content-center-header'>
+            {{ lwpcms_render_svg('LWPCMS.svg') | safe }}
+        </section>
+        <section>
+            <div class='lwpcms-focused-card card-2'>
+                <form method="POST" class='lwpcms-form'>
+                    <section>
+                        <h1>Hello</h1>
+                        <p>Let's setup your site!</p>
+                    </section>
+                    <section>
+                        {{ render_field(form.site_name) }}
+                        {{ render_field(form.user_name) }}
+                        {{ render_field(form.password) }}
+                        {{ render_field(form.password_confirm) }} 
+                    </section>
+                    <section>
+                        {{ render_field(form.demo) }}
+                    </section>
+                    <section>
+                        {{ render_field(form.submit) }}
+                    </section>
+                </form>
+            </div>
+        </section>
     </section>
 {% endblock %}

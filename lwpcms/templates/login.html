@@ -10,49 +10,54 @@
 
 {% block lwpcms_content %}
     <section class='lwpcms-content-center'>
-        <div class='lwpcms-focused-card'>
-            <form method="POST" class='lwpcms-form'>
-                <section>
-                    <h1>Hello</h1>
-                    <p>Login to your site!</p>
-                </section>
-                <section>
-                    {{ render_field(form.user_name) }}
-                    {{ render_field(form.password) }}
-                </section>
-                <section>
-                    {{ render_field(form.submit) }}
-                </section>
-                {% if is_site_demo() %}
-                    {%
-                        set users = get_posts(
-                            {'structure': '#User'}
-                        )
-                    %}
+        <section class='lwpcms-content-center-header'>
+            {{ lwpcms_render_svg('LWPCMS.svg') | safe }}
+        </section>
+        <section>
+            <div class='lwpcms-focused-card'>
+                <form method="POST" class='lwpcms-form card-2'>
                     <section>
-                        <h1>This site is a demo</h1>
-                        <p>
-                            Since this site is a demo,
-                            you can have the password.
-                        </p>
-                        <table class='lwpcms-table'>
-                            <tr>
-                                <th>User Name</th>
-                                <th>Password</th>
-                            </tr>
-                            <tr>
-                                <td>{{ users[0].nick_name }}</td>
-                                <td>{{ users[0].password }}</td>
-                            </tr>
-                        </table>
+                        <h1>Hello</h1>
+                        <p>Login to your site!</p>
                     </section>
-                {% endif %}
-                {% if msg %}
                     <section>
-                        <p>{{ msg }}</p>
+                        {{ render_field(form.user_name) }}
+                        {{ render_field(form.password) }}
                     </section>
-                {% endif %}
-            </form>
-        </div>
+                    <section>
+                        {{ render_field(form.submit) }}
+                    </section>
+                    {% if is_site_demo() %}
+                        {%
+                            set users = get_posts(
+                                {'structure': '#User'}
+                            )
+                        %}
+                        <section>
+                            <h1>This site is a demo</h1>
+                            <p>
+                                Since this site is a demo,
+                                you can have the password.
+                            </p>
+                            <table class='lwpcms-table'>
+                                <tr>
+                                    <th>User Name</th>
+                                    <th>Password</th>
+                                </tr>
+                                <tr>
+                                    <td>{{ users[0].nick_name }}</td>
+                                    <td>{{ users[0].password }}</td>
+                                </tr>
+                            </table>
+                        </section>
+                    {% endif %}
+                    {% if msg %}
+                        <section>
+                            <p>{{ msg }}</p>
+                        </section>
+                    {% endif %}
+                </form>
+            </div>
+        </section>
     </section>
 {% endblock %}
