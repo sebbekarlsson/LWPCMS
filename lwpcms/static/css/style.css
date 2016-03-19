@@ -101,7 +101,7 @@ html, body {
       max-width: 128px; }
 
 section {
-  padding: 8px; }
+  padding: 16px; }
 
 .lwpcms-table {
   width: 100%;
@@ -273,6 +273,14 @@ section {
     cursor: pointer;
     background-color: #3498db;
     color: white;
+    transition: .2s; }
+
+.lwpcms-btn.lwpcms-btn-primary, input.lwpcms-btn-primary[type='lwpcms-file'] {
+  background-color: #3498db;
+  color: white; }
+  .lwpcms-btn.lwpcms-btn-primary:hover, input.lwpcms-btn-primary[type='lwpcms-file']:hover {
+    cursor: pointer;
+    background-color: #2ecc71;
     transition: .2s; }
 
 #lwpcms-window-manager {

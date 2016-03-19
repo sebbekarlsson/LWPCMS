@@ -4,6 +4,7 @@ $main-color-lighter: #3498db;
 $sec-color-strong: black;
 $sec-color-dim: #F1EED9;
 $warning-color: #e74c3c;
+$ok-color: #2ecc71;
 
 
 * {
@@ -146,7 +147,7 @@ html, body {
 }
 
 section {
-    padding: 8px;
+    padding: 16px;
 }
 
 .lwpcms-table {
@@ -370,6 +371,17 @@ section {
         cursor: pointer;
         background-color: $main-color-lighter;
         color: white;
+        transition: .2s;
+    }
+}
+
+.lwpcms-btn.lwpcms-btn-primary {
+    background-color: $main-color-lighter;
+    color: white;
+
+    &:hover {
+        cursor: pointer;
+        background-color: $ok-color;
         transition: .2s;
     }
 }

@@ -4,7 +4,7 @@
     {% endif %}
     <dd>
     {% if field.type == 'SubmitField' %}
-        {{ field(class_='lwpcms-btn', **kwargs)|safe }}
+        {{ field(class_='lwpcms-btn lwpcms-btn-primary', **kwargs)|safe }}
     {% elif field.type == 'IntegerField' %}
         {{ field(type='number', **kwargs)|safe }}
     {% else %}
