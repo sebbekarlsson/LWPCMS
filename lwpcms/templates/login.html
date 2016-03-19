@@ -1,11 +1,16 @@
 {% extends 'layout.html' %}
 {% from "_formhelpers.html" import render_field %}
-{% from "_lwpcmshelpers.html" import lwpcms_render_font %}
+{% 
+    from "_lwpcmshelpers.html" import
+    lwpcms_render_font,
+    lwpcms_color_background
+%}
 
 {% block lwpcms_head %}
     {{ super() }}
 
     {{ lwpcms_render_font() }}
+    {{ lwpcms_color_background() }}
 {% endblock %}
 
 {% block lwpcms_content %}
@@ -17,8 +22,7 @@
             <div class='lwpcms-focused-card'>
                 <form method="POST" class='lwpcms-form card-2'>
                     <section>
-                        <h1>Hello</h1>
-                        <p>Login to your site!</p>
+                        <h1>Login</h1>
                     </section>
                     <section>
                         {{ render_field(form.user_name) }}

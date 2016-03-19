@@ -1,3 +1,16 @@
 {% macro lwpcms_render_font() %}
     <link href='https://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
 {% endmacro %}
+
+
+{% macro lwpcms_color_background() %}
+    <style type='text/css'>
+        body {
+            background: #3498db; /* For browsers that do not support gradients */
+            background: -webkit-linear-gradient(bottom, #3498db, white); /* For Safari 5.1 to 6.0 */
+            background: -o-linear-gradient(bottom, #3498db, white); /* For Opera 11.1 to 12.0 */
+            background: -moz-linear-gradient(bottom, #3498db, white); /* For Firefox 3.6 to 15 */
+            background: linear-gradient(bottom, #3498db, white); /* Standard syntax */
+        }
+    </style>
+{% endmacro %}

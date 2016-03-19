@@ -91,6 +91,10 @@ html, body {
   display: flex;
   flex-wrap: wrap;
   justify-content: center; }
+  .lwpcms-content-center .lwpcms-form {
+    background-color: white !important; }
+    .lwpcms-content-center .lwpcms-form .lwpcms-btn-primary {
+      min-width: 100% !important; }
   .lwpcms-content-center .lwpcms-content-center-header {
     display: flex;
     justify-content: center;

@@ -133,6 +133,14 @@ html, body {
     flex-wrap: wrap;
     justify-content: center;
 
+    .lwpcms-form {
+        background-color: white !important;
+
+        .lwpcms-btn-primary {
+            min-width: 100% !important;
+        }
+    }
+
     .lwpcms-content-center-header {
        display: flex;
        justify-content: center;

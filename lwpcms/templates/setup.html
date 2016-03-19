@@ -1,11 +1,17 @@
 {% extends 'layout.html' %}
 {% from "_formhelpers.html" import render_field %}
 {% from "_lwpcmshelpers.html" import lwpcms_render_font %}
+{% 
+    from "_lwpcmshelpers.html" import
+    lwpcms_render_font,
+    lwpcms_color_background
+%}
 
 {% block lwpcms_head %}
     {{ super() }}
 
     {{ lwpcms_render_font() }}
+    {{ lwpcms_color_background() }}
 {% endblock %}
 
 {% block lwpcms_content %}
@@ -17,8 +23,11 @@
             <div class='lwpcms-focused-card card-2'>
                 <form method="POST" class='lwpcms-form'>
                     <section>
-                        <h1>Hello</h1>
-                        <p>Let's setup your site!</p>
+                        <h1>Setup</h1>
+                        <p>
+                            Let's get some basic stuff out of the way before
+                            we start.
+                        </p>
                     </section>
                     <section>
                         {{ render_field(form.site_name) }}
