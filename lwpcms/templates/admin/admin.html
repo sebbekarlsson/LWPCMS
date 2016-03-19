@@ -12,7 +12,7 @@
     <nav class='lwpcms-top-nav'>
         <ul class='left'>
             <li>
-                <a href='/admin'>{{ render_svg('LWPCMS.svg') }}</a>
+                <a href='/admin'>{{ lwpcms_render_svg('LWPCMS.svg') | safe }}</a>
                 <span>
                     <a href='/admin' class='lwpcms-top-nav-btn'>
                         {{ get_option('site_name').value }}
@@ -43,7 +43,7 @@
                 {% for button in sidenav['buttons'] %}
                     <li>
                         <a class='lwpcms-side-nav-point'>
-                            <span>{{ render_svg(button['svg'], 'white') }}</span>
+                            <span>{{ lwpcms_render_svg(button['svg']) | safe}}</span>
                         </a>
                     </li>
                 {% endfor %}

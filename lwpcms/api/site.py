@@ -1,5 +1,6 @@
 from lwpcms.api.posts import get_option
 import random
+import os
 
 
 def is_site_demo():
@@ -18,3 +19,18 @@ def get_random_greeting():
             ]
 
     return greetings[random.randint(0, len(greetings)-1)]
+
+
+def lwpcms_render_svg(filename):
+    contents = ''
+    abs_path = '{}{}'.\
+    format(
+            os.path.abspath(os.path.dirname(__file__)),
+            '/../static/image/{}'.format(filename)
+            )
+    with open(abs_path, 'r+') as file:
+        contents = file.read()
+
+    file.close()
+
+    return contents

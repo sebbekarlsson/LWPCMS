@@ -62,9 +62,10 @@ html, body {
   .lwpcms-top-nav li {
     justify-content: center;
     align-items: center; }
-    .lwpcms-top-nav li object, .lwpcms-top-nav li img {
+    .lwpcms-top-nav li object, .lwpcms-top-nav li img, .lwpcms-top-nav li svg {
       display: block;
-      max-height: 32px; }
+      max-height: 32px;
+      max-width: 32px; }
     .lwpcms-top-nav li img {
       display: inline-block; }
     .lwpcms-top-nav li span {

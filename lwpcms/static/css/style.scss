@@ -87,9 +87,11 @@ html, body {
     li {
         justify-content: center;
         align-items: center;
-        object, img {
+
+        object, img, svg {
             display: block;
             max-height: 32px;
+            max-width: 32px;
         }
 
         img {
