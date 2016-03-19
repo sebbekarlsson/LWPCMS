@@ -277,6 +277,13 @@ function apply_inputs (input) {
                             tag_element.addEventListener('click', function (e) {
                                 ElemenTailor.delete(this);
                             });
+                            
+                            var bounce = new Bounce();
+                            bounce.scale({
+                                from: {x: 0.1, y: 0.1},
+                                to: {x: 1, y: 1}
+                            });
+                            bounce.applyTo(tag_element);
 
                             tags_section.appendChild(tag_element);
                         }

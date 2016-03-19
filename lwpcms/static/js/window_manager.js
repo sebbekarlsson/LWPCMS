@@ -150,11 +150,20 @@ function lwpcms_window(waiter, title, content, action) {
     button.addEventListener('click', function(e) {
         if (action(e, content, w) == false) { close_lwpcms_windows(); }
     });
+    
+    var bounce = new Bounce();
+    bounce.scale({
+        from: {x: 0.1, y: 0.1},
+        to: {x: 1, y: 1},
+        duration: 2000 
+    });
+    bounce.applyTo(w);
 
     window_manager_element.appendChild(w);
     color_svgs();
 
     backdrop.style.pointerEvents = 'all';
     backdrop.style.zIndex = 20; 
-    backdrop.style.opacity = 1;
+    //backdrop.style.opacity = 1;
+    lwpcms_fade_in(backdrop, 0.05);
 }
