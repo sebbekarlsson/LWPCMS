@@ -1,4 +1,5 @@
 from flask import Flask
+from flask import render_template
 
 from lwpcms.views.index import bp as index_bp
 
@@ -70,3 +71,8 @@ app.secret_key = 'super secret key'
 handler = logging.FileHandler('log.log')
 handler.setLevel(logging.ERROR)
 app.logger.addHandler(handler)
+
+
+@app.errorhandler(404)
+def page_not_found(error):
+    return render_template('error.html', error=error), 404

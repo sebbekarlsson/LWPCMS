@@ -61,6 +61,12 @@ def render(template_name):
             os.symlink(filename, linked_file)
 
         call_module_event(hooks['site_request'], {'package': package})
+        
+        if not os.path.isfile(page_path):
+            return render_template(
+                    'error.html',
+                    error='This page does not exist'
+                    ), 404
 
         return render_template_string(open(page_path).read(), package=package)
     else:
