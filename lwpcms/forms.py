@@ -1,3 +1,7 @@
+"""
+This file contains some global forms that are available through the
+application.
+"""
 from wtforms import (
     BooleanField,
     TextField,

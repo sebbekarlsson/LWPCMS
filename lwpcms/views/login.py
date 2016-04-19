@@ -1,3 +1,4 @@
+""" This route is used for logging in to the site/application. """
 from flask import Blueprint, render_template, abort, request, redirect, session
 
 from lwpcms.forms import LoginForm

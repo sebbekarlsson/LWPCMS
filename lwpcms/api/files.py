@@ -13,6 +13,9 @@ from PIL import Image
 
 
 def file_thumbnail(file, size):
+    """ Return String
+    This function is used to get a thumbnailname for an image.
+    """
     fname = file.split('.')[0]
     ext = file.split('.')[1]
 
@@ -22,6 +25,9 @@ def file_thumbnail(file, size):
 
 
 def is_image(filename):
+    """ Return Boolean
+    This function is used to check if an image is an image.
+    """
     image_extensions = [
                 '.jpg',
                 '.jpeg',
@@ -41,6 +47,9 @@ def is_image(filename):
 
 
 def generate_thumnails(file):
+    """ Return void
+    This function is used to generate thumbnails for a specific imagefile.
+    """
     sizes = [(128,128), (64,64), (32,32)]
 
     for size in sizes:
@@ -52,6 +61,9 @@ def generate_thumnails(file):
 
 
 def upload_file(file):
+    """ Return Boolean
+    This function is used to upload and save a file.
+    """
     if file:        
         filename = secure_filename(
             time.strftime("%H:%M:%S")\
@@ -75,5 +87,8 @@ def upload_file(file):
 
 
 def make_tarfile(output_filename, source_dir):
+    """ Return void
+    This function is used to create a tar file from a directory.
+    """
     with tarfile.open(output_filename, "w:gz") as tar:
         tar.add(source_dir, arcname=os.path.basename(source_dir))

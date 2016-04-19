@@ -4,7 +4,9 @@ import json
 
 
 class APIWrapper(object):
-    
+    """
+    This class is used to talk to another LWPCMS site.
+    """
 
     def __init__(self, host):
         self.host = host

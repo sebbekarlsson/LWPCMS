@@ -1,3 +1,6 @@
+"""
+This piece of code is mainly for parsing the configuration.
+"""
 import argparse
 import configparser
 import os

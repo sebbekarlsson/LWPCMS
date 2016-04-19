@@ -5,6 +5,9 @@ import importlib
 
 
 def get_modules():
+    """ Return a list
+    This function is used to get all available modules.
+    """
     modules = []
 
     avail_modules = glob.glob('lwpcms/modules/*_module')
@@ -20,6 +23,9 @@ def get_modules():
 
 
 def get_activated_modules():
+    """ Return a list
+    This function is used to get all activated modules.
+    """
     modules = []
 
     avail_modules = glob.glob('lwpcms/modules/*_module')
@@ -37,6 +43,10 @@ def get_activated_modules():
 
 
 def call_module_event(event, data):
+    """ Return Object || Dict || List || String || ?
+    This function is used to call an event on all modules.
+    The module can later use this event.
+    """
     modules = get_activated_modules()
     results = []
 

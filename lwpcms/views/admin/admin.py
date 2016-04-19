@@ -1,3 +1,4 @@
+""" This route is used to render the frontpage of the admin panel."""
 from flask import Blueprint, render_template, abort, request, redirect, url_for
 
 import glob

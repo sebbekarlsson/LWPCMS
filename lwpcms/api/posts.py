@@ -6,6 +6,9 @@ from bson.objectid import ObjectId
 import re
 
 
+""" Return Object
+This function is used to publish a post.
+"""
 def publish_post(title, content, attachments, published=True, tags=[], id=None):
     if id is not None:
         post = db.collections.update_one(
@@ -52,6 +55,9 @@ def publish_post(title, content, attachments, published=True, tags=[], id=None):
 
 
 def get_posts(obj, sort=None):
+    """ Return list
+    This function is used to query for posts.
+    """
     if sort is not None:
         return list(db.collections.find(obj).sort(*sort))
     else:
@@ -59,6 +65,9 @@ def get_posts(obj, sort=None):
 
 
 def get_option(name):
+    """ Return dict
+    This function is used to fetch an option.
+    """
     option = list(
             db.collections.find(
                     {
@@ -75,6 +84,9 @@ def get_option(name):
 
 
 def set_option(name, value, type='text', editable=True):
+    """ Return void
+    This function is used to set/create an option.
+    """
     old = db.collections.find_one({
             'key': name,
             'structure': '#Option'
@@ -94,11 +106,18 @@ def set_option(name, value, type='text', editable=True):
             True
         )
 
+
 def shorten_text(text, max=16):
+    """ Return String
+    This function is used to shorten a text, creating a teaser.
+    """
     return (text[:max] + '..') if len(text) > max else text
 
 
 def render_content(content):
+    """ Return String
+    This function is used to render content, from a post or just anything.
+    """
     urls = re.findall('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+',
             content)
 

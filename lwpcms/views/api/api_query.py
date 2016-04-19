@@ -1,3 +1,4 @@
+""" This route is used to query objects from the database. """
 from flask import Blueprint, abort, request, send_file
 from flask import jsonify
 

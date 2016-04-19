@@ -3,11 +3,18 @@ import random
 import os
 
 
+
 def is_site_demo():
+    """ Return Boolean
+    This function is used to check if the site is a demo site.
+    """
     return get_option('site_demo')['value']
 
 
 def get_random_greeting():
+    """ Return String
+    This function is deprecated.
+    """
     greetings = [
             "Hope you're having a wonderful day!",
             "Nice to see you!",
@@ -22,6 +29,9 @@ def get_random_greeting():
 
 
 def lwpcms_render_svg(filename):
+    """ Return String
+    This function is used to render an SVG image.
+    """
     contents = ''
     abs_path = '{}{}'.\
     format(

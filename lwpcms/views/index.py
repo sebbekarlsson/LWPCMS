@@ -1,3 +1,10 @@
+"""
+This route is used to send the correct response to the user.
+The route finds the correct stylesheets and other static files of the current
+theme.
+The route also makes sure that the correct page of the current theme gets
+sent to the user.
+"""
 from flask import (
         Blueprint,
         render_template,

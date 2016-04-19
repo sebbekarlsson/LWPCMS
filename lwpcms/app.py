@@ -1,3 +1,8 @@
+"""
+This is the application file, all routes and inner methods are
+registered here.
+The 'app' object is the application.
+"""
 from flask import Flask
 from flask import render_template
 
@@ -73,6 +78,9 @@ handler.setLevel(logging.ERROR)
 app.logger.addHandler(handler)
 
 
+""" Return a template
+This is called when there is a request for a page that does not exists.
+"""
 @app.errorhandler(404)
 def page_not_found(error):
     return render_template('error.html', error=error), 404

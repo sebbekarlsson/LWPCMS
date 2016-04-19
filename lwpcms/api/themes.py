@@ -8,6 +8,9 @@ import tarfile
 
 
 def get_themes(name=None):
+    """ Return list
+    This function is used to get all or one theme.
+    """
     avail_themes = glob.glob('lwpcms/themes/*_theme')
     
     themes = []
@@ -27,6 +30,9 @@ def get_themes(name=None):
 
 
 def get_activated_theme():
+    """ Return dict
+    This function is used to get the currently activated theme.
+    """
     avail_themes = glob.glob('lwpcms/themes/*_theme')
     for avail_theme in avail_themes:
         with open('{}/theme.json'.format(avail_theme)) as file:
@@ -43,6 +49,9 @@ def get_activated_theme():
 
 
 def install_theme(url):
+    """ Return Boolean
+    This function is used to download an install a theme from an url.
+    """
     response = urllib.request.urlopen(url)
     data = response.read()
     fname = os.path.basename(url)

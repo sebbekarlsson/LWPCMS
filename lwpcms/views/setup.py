@@ -1,3 +1,8 @@
+"""
+This route is used when first creating the site.
+This route is used to make sure everything gets configured by the administrator
+of the site.
+"""
 from flask import Blueprint, render_template, abort, request, redirect
 
 from lwpcms.forms import SetupForm

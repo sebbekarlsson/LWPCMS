@@ -1,3 +1,4 @@
+""" This route is used for API requests. """
 from flask import Blueprint, render_template, abort, request, send_file
 from flask import jsonify
 

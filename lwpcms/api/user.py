@@ -6,6 +6,9 @@ from functools import wraps
 
 
 def get_current_user():
+    """ Return Object
+    This function is used to get the current user object.
+    """
     if 'user_id' not in session:
         return None
     else:
@@ -17,6 +20,9 @@ def get_current_user():
         )
 
 def user_exists(name):
+    """ Return Boolean
+    This function is used to check if an user exists.
+    """
     existing = db.collections.find_one({
             'structure': '#User',
             'nick_name': name
@@ -26,6 +32,9 @@ def user_exists(name):
 
 
 def register_user(name, password, avatar=None, id=None):
+    """ Return Boolean
+    This function is used to register a new user.
+    """
     existing = db.collections.find_one({
             'structure': '#User',
             'nick_name': name
@@ -50,6 +59,9 @@ def register_user(name, password, avatar=None, id=None):
 
 
 def login_user(name, password):
+    """ Return Boolean
+    This funciton is used to login a user.
+    """
     user = db.collections.find_one(
             {
                 'nick_name': name,
@@ -70,6 +82,11 @@ def login_user(name, password):
 
 
 def login_required(f):
+    """
+    This is a wrapper for routes.
+    Routes are decorated with this function to make them secure and require
+    a login.
+    """
     @wraps(f)
     def decorated_function(*args, **kwargs):
         if not get_current_user():

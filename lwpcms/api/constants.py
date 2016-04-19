@@ -1,3 +1,9 @@
+"""
+This file contains constant variables and information for the application
+to use.
+"""
+
+
 hooks = {
     'post_publish': 0,
     'post_published': 1,

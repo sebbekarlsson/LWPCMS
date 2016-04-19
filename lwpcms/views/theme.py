@@ -1,3 +1,4 @@
+"""This route is used to get static files from a theme."""
 from flask import (
     Blueprint,
     render_template,

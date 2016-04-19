@@ -1,3 +1,4 @@
+""" This route is used for administrating modules in the admin panel. """
 from flask import Blueprint, render_template, abort, request, redirect, url_for
 
 from lwpcms.api.user import login_required
