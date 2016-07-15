@@ -27,7 +27,12 @@ free to use it right now or why not contribute to the project?
 >
 > Some of these stuff are not implemented yet, please see "issues".<br>
 > And of course, there is more to come...<br>
-> <b><i>
+> <br>
+
+> ##### NOTE
+> Please note that passwords are currently not encrypted since this project<br>
+> is still under development and should not be used at this stage.<br>
+> You can view the demo below.
 
 > ##### Demo
 > [View The Demo](http://demo.lwpcms.com/admin)
