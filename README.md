@@ -1,6 +1,5 @@
 # LWPCMS
 > ##### (L)ight(w)eight (P)ython (C)ontent (Ma)nagement (S)ystem
-> ([See full documentation here](http://docs.lwpcms.com/))
 
 > ##### Table of content:
 > * [Info](README.md)
