@@ -27,7 +27,6 @@ free to use it right now or why not contribute to the project?
 >
 > Some of these stuff are not implemented yet, please see "issues".<br>
 > And of course, there is more to come...<br>
-> <br>
 
 > ##### NOTE
 > Please note that passwords are currently not encrypted since this project<br>
