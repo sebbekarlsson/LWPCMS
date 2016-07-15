@@ -29,7 +29,7 @@ free to use it right now or why not contribute to the project?
 > And of course, there is more to come...<br>
 
 > ##### NOTE
-> Please note that passwords are currently not encrypted since this project<br>
+> Please note that passwords are currently <b>not encrypted</b> since this project<br>
 > is still under development and should not be used at this stage.<br>
 > You can view the demo below.
 
