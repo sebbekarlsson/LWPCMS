@@ -11,8 +11,8 @@
 > Most people would probably compare it with Wordpress.
 
 > LWPCMS is currently in the alpha stage, work-in-progress.
-> A demo will be out once it reaches the beta stage; alhough, you are
-free to use it right now or why not contribute to the project?
+> Since LWPCMS is in the alpha stage, there is no reason to use this project
+> professionally at this point.
 
 > ##### LWPCMS will bring you:
 > * Management of content.
@@ -26,7 +26,7 @@ free to use it right now or why not contribute to the project?
 > * Full access to source code.
 >
 > Some of these stuff are not implemented yet, please see "issues".<br>
-> And of course, there is more to come...<br>
+> And of course, there is more to come...
 
 > ##### NOTE
 > Please note that passwords are currently <b>not encrypted</b> since this project<br>
